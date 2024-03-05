@@ -17,23 +17,23 @@ const meta = {
 export const metadata: Metadata = {
   ...meta,
   title: {
-    default: 'AI RSC Demo',
-    template: `%s - AI RSC Demo`,
+    default: "Ziran AI",
+    template: `%s - Ziran AI`,
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
   twitter: {
     ...meta,
-    card: 'summary_large_image',
-    site: '@vercel',
+    card: "summary_large_image",
+    site: "@krishaamer",
   },
   openGraph: {
     ...meta,
-    locale: 'en-US',
-    type: 'website',
+    locale: "en-US",
+    type: "website",
   },
 };
 
