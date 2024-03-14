@@ -1,179 +1,72 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-
-import { useUIState, useActions, useAIState } from 'ai/rsc';
-import { UserMessage } from '@/components/llm-stocks/message';
-
-import { type AI } from './action';
-import { ChatScrollAnchor } from '@/lib/hooks/chat-scroll-anchor';
-import { FooterText } from '@/components/footer';
-import Textarea from 'react-textarea-autosize';
-import { useEnterSubmit } from '@/lib/hooks/use-enter-submit';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
-import { IconPlus, IconSparkles } from "@/components/ui/icons";
-import { Button } from '@/components/ui/button';
-import { ChatList } from '@/components/chat-list';
-import { EmptyScreen } from '@/components/empty-screen';
+import { useUIState, useActions, useAIState } from "ai/rsc";
+import { UserMessage } from "@/components/llm-stocks/message";
+import { type AI } from "./action";
+import { ChatScrollAnchor } from "@/lib/hooks/chat-scroll-anchor";
+import { ChatList } from "@/components/chat-list";
+import { EmptyScreen } from "@/components/empty-screen";
+import { Search } from "@/components/search";
 
 export default function Page() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions();
-  const [inputValue, setInputValue] = useState('');
-  const { formRef, onKeyDown } = useEnterSubmit();
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === '/') {
-        if (
-          e.target &&
-          ['INPUT', 'TEXTAREA'].includes((e.target as any).nodeName)
-        ) {
-          return;
-        }
-        e.preventDefault();
-        e.stopPropagation();
-        if (inputRef?.current) {
-          inputRef.current.focus();
-        }
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [inputRef]);
 
   return (
-    <div>
-      <div className="pb-[200px] pt-4 md:pt-10">
-        {messages.length ? (
-          <>
-            <ChatList messages={messages} />
-          </>
-        ) : (
-          <EmptyScreen
-            submitMessage={async (message) => {
-              // Add user message UI
-              setMessages((currentMessages) => [
-                ...currentMessages,
-                {
-                  id: Date.now(),
-                  display: <UserMessage>{message}</UserMessage>,
-                },
-              ]);
+    <>
+      <div className="sticky top-0 z-50 flex items-center justify-between w-full px-4 border-b h-20 shrink-0 bg-background backdrop-blur-xl docu-shadow">
+        <Search
+          submitMessage={async (message) => {
+            // Add user message UI
+            setMessages((currentMessages) => [
+              ...currentMessages,
+              {
+                id: Date.now(),
+                display: <UserMessage>{message}</UserMessage>,
+              },
+            ]);
 
-              // Submit and get response message
-              const responseMessage = await submitUserMessage(message);
-              setMessages((currentMessages) => [
-                ...currentMessages,
-                responseMessage,
-              ]);
-            }}
-          />
-        )}
-        <ChatScrollAnchor trackVisibility={true} />
+            // Submit and get response message
+            const responseMessage = await submitUserMessage(message);
+            setMessages((currentMessages) => [
+              ...currentMessages,
+              responseMessage,
+            ]);
+          }}
+        />
       </div>
-      <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-muted/30 from-0% to-muted/30 to-50% duration-300 ease-in-out animate-in dark:from-background/10 dark:from-10% dark:to-background/80 peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
-        <div className="mx-auto sm:max-w-2xl sm:px-4">
-          <div className="px-4 py-2 space-y-4 md:py-4 md:px-0">
-            <form
-              ref={formRef}
-              onSubmit={async (e: any) => {
-                e.preventDefault();
+      <div className="flex flex-col min-h-screen">
+        <main className="home flex flex-col flex-1 bg-muted/50 dark:bg-background">
+          <div className="pb-[200px] pt-4 md:pt-10">
+            {messages.length ? (
+              <>
+                <ChatList messages={messages} />
+              </>
+            ) : (
+              <EmptyScreen
+                submitMessage={async (message) => {
+                  // Add user message UI
+                  setMessages((currentMessages) => [
+                    ...currentMessages,
+                    {
+                      id: Date.now(),
+                      display: <UserMessage>{message}</UserMessage>,
+                    },
+                  ]);
 
-                // Blur focus on mobile
-                if (window.innerWidth < 600) {
-                  e.target["message"]?.blur();
-                }
-
-                const value = inputValue.trim();
-                setInputValue("");
-                if (!value) return;
-
-                // Add user message UI
-                setMessages((currentMessages) => [
-                  ...currentMessages,
-                  {
-                    id: Date.now(),
-                    display: <UserMessage>{value}</UserMessage>,
-                  },
-                ]);
-
-                try {
                   // Submit and get response message
-                  const responseMessage = await submitUserMessage(value);
+                  const responseMessage = await submitUserMessage(message);
                   setMessages((currentMessages) => [
                     ...currentMessages,
                     responseMessage,
                   ]);
-                } catch (error) {
-                  // You may want to show a toast or trigger an error state.
-                  console.error(error);
-                }
-              }}
-            >
-              <div className="relative flex flex-col w-full px-8 overflow-hidden max-h-60 grow shadow-xl bg-background rounded-lg border sm:px-12">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="absolute left-2 w-8 h-8 p-0 rounded-full top-4 bg-background sm:left-4"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        window.location.reload();
-                      }}
-                    >
-                      <IconPlus />
-                      <span className="sr-only">New Question</span>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>New Question</TooltipContent>
-                </Tooltip>
-                <Textarea
-                  ref={inputRef}
-                  tabIndex={0}
-                  onKeyDown={onKeyDown}
-                  placeholder="Ask a question"
-                  className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
-                  autoFocus
-                  spellCheck={false}
-                  autoComplete="off"
-                  autoCorrect="off"
-                  name="message"
-                  rows={1}
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                />
-                <div className="absolute right-2 top-2 sm:right-2">
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        type="submit"
-                        size="lg"
-                        disabled={inputValue === ""}
-                      >
-                        <span>Ask</span>
-                        <IconSparkles />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>Ask Question</TooltipContent>
-                  </Tooltip>
-                </div>
-              </div>
-            </form>
-            <FooterText className="hidden sm:block" />
+                }}
+              />
+            )}
+            <ChatScrollAnchor trackVisibility={true} />
           </div>
-        </div>
+        </main>
       </div>
-    </div>
+    </>
   );
 }
