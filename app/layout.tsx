@@ -17,8 +17,8 @@ const meta = {
 export const metadata: Metadata = {
   ...meta,
   title: {
-    default: "Ziran AI",
-    template: `%s - Ziran AI`,
+    default: "綠濾",
+    template: `%s - 綠濾`,
   },
   icons: {
     icon: "/favicon.ico",
