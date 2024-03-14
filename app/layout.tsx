@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
+import Head from "next/head";
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from '@/components/ui/toaster';
-import './globals.css';
-
 import { AI } from './action';
 import { Header } from '@/components/header';
-import { Providers } from '@/components/providers';
-import Head from "next/head";
+import { Providers } from '@/components/providers'
+import "./globals.css";
 
 const meta = {
   title: "綠濾",
@@ -52,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <Head>
+        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <body
