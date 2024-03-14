@@ -15,7 +15,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { IconArrowElbow, IconPlus, IconSparkles } from "@/components/ui/icons";
+import { IconPlus, IconSparkles } from "@/components/ui/icons";
 import { Button } from '@/components/ui/button';
 import { ChatList } from '@/components/chat-list';
 import { EmptyScreen } from '@/components/empty-screen';
