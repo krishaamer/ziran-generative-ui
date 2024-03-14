@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 export function UserMessage({ children }: { children: React.ReactNode }) {
   return (
     <div className="group relative flex items-start md:-ml-12">
-      <div className="flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md border bg-background">
+      <div className="flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border bg-background">
         <IconUser />
       </div>
       <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
@@ -27,7 +27,7 @@ export function BotMessage({
 }) {
   return (
     <div className={cn('group relative flex items-start md:-ml-12', className)}>
-      <div className="flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md border bg-primary text-primary-foreground">
+      <div className="flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border bg-primary text-primary-foreground">
         <IconAI />
       </div>
       <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
@@ -48,7 +48,7 @@ export function BotCard({
     <div className="group relative flex items-start md:-ml-12">
       <div
         className={cn(
-          'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md border bg-primary text-primary-foreground',
+          'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border bg-primary text-primary-foreground',
           !showAvatar && 'invisible',
         )}
       >

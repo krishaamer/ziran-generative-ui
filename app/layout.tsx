@@ -8,11 +8,11 @@ import './globals.css';
 import { AI } from './action';
 import { Header } from '@/components/header';
 import { Providers } from '@/components/providers';
+import Head from "next/head";
 
 const meta = {
-  title: 'AI RSC Demo',
-  description:
-    'Demo of an interactive financial assistant built using Next.js and Vercel AI SDK.',
+  title: "綠濾",
+  description: "See your money through the lens of sustainability",
 };
 export const metadata: Metadata = {
   ...meta,
@@ -51,6 +51,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head>
+        <link rel="manifest" href="/manifest.json" />
+      </Head>
       <body
         className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable}`}
       >
