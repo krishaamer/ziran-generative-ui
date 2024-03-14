@@ -18,6 +18,10 @@ const exampleMessages = [
     message: "Where did my Nike sneakers come from?",
   },
   {
+    heading: "What are Nike sneakers made of?",
+    message: "What are Nike sneakers made of?",
+  },
+  {
     heading: "Check product sustainability",
     message: "What are some sustainable stocks?",
   },

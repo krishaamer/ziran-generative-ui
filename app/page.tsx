@@ -120,7 +120,7 @@ export default function Page() {
                 }
               }}
             >
-              <div className="relative flex flex-col w-full px-8 overflow-hidden max-h-60 grow bg-background rounded-lg border sm:px-12">
+              <div className="relative flex flex-col w-full px-8 overflow-hidden max-h-60 grow shadow-xl bg-background rounded-lg border sm:px-12">
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button

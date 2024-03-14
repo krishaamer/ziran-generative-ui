@@ -21,6 +21,7 @@ import { z } from "zod";
 import { StocksSkeleton } from "@/components/llm-stocks/stocks-skeleton";
 import SimpleMap from "@/components/llm-map";
 import Origin from "@/components/llm-origin";
+import Materials from "@/components/llm-materials";
 import { messageRateLimit } from "@/lib/rate-limit";
 import { headers } from "next/headers";
 
@@ -139,6 +140,7 @@ You can show a map of sustainable companies in the area.
 You can show a map where the user can purchase sustainable products or repair their clothes.
 
 You can show the product origin visually,
+You can show the product materials visually,
 
 Messages inside [] means that it's a UI element or a user event. For example:
 - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
@@ -147,6 +149,7 @@ Messages inside [] means that it's a UI element or a user event. For example:
 If you want to show sustainable stocks, call \`list_stocks\`.
 If you want to show a map, call \`show_map\`.
 If you want to show the product origin, call \`show_product_origin\`.
+If you want to show the product materials, call \`show_product_materials\`.
 
 Complement function calls with text responses from your own data.
 If the user wants to complete an impossible task, respond that you are an AI and cannot do that.`,
@@ -179,6 +182,11 @@ If the user wants to complete an impossible task, respond that you are an AI and
       {
         name: "show_product_origin",
         description: "Show product origin",
+        parameters: z.object({}),
+      },
+      {
+        name: "show_product_materials",
+        description: "Show product materials",
         parameters: z.object({}),
       },
     ],
@@ -247,6 +255,23 @@ If the user wants to complete an impossible task, respond that you are an AI and
       {
         role: "function",
         name: "show_product_origin",
+        content: "",
+      },
+    ]);
+  });
+
+  completion.onFunctionCall("show_product_materials", async () => {
+    reply.update(<Materials />);
+
+    await sleep(500);
+
+    reply.done(<Materials />);
+
+    aiState.done([
+      ...aiState.get(),
+      {
+        role: "function",
+        name: "show_product_materials",
         content: "",
       },
     ]);
