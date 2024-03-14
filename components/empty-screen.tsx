@@ -10,8 +10,8 @@ const exampleMessages = [
     message: "How sustainable is Coca Cola?",
   },
   {
-    heading: "What are the living conditions of the animals I eat?",
-    message: "What are the living conditions of the animals I eat?",
+    heading: "What are the living conditions of the animals I eat in Taiwan?",
+    message: "What are the living conditions of the animals I eat in Taiwan?",
   },
   {
     heading: "Where did my Nike sneakers come from?",
@@ -65,7 +65,7 @@ export function EmptyScreen({
             <Button
               key={index}
               variant="ghost"
-              className="h-auto p-1 text-base shadow-sm"
+              className="h-auto p-1 text-base shadow-sm border border-slate-100"
               onClick={async () => {
                 submitMessage(message.message);
               }}
