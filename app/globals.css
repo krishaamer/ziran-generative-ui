@@ -24,6 +24,9 @@
     --destructive-foreground: 0 0% 98%;
     --ring: 240 5% 64.9%;
     --radius: 0.5rem;
+    --ifm-color-primary-lightest: #3cad6e;
+    --home-border-color: #ffe4c4;
+    --ifm-global-shadow-lw: 0 2px 5px 0 #0000001a;
   }
 
   .dark {
@@ -46,6 +49,17 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
     --ring: 240 3.7% 15.9%;
+  }
+
+  .home {
+    background-color: var(--ifm-color-primary-lightest) !important;
+    border: 1rem solid var(--home-border-color);
+    border-radius: 162px 13px 155px 55px / 39px 38px 7px 116px;
+    margin: 1rem 2rem;
+  }
+
+  .docu-shadow {
+    box-shadow: var(--ifm-global-shadow-lw) !important;
   }
 }
 
