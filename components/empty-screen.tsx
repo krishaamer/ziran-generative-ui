@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { IconArrowRight } from "@/components/ui/icons";
 
 const exampleMessages = [
   {
@@ -9,6 +8,14 @@ const exampleMessages = [
   {
     heading: "How sustainable is Coca Cola?",
     message: "How sustainable is Coca Cola?",
+  },
+  {
+    heading: "What are the living conditions of the animals I eat?",
+    message: "What are the living conditions of the animals I eat?",
+  },
+  {
+    heading: "Where did my Nike sneakers come from?",
+    message: "Where did my Nike sneakers come from?",
   },
   {
     heading: "Check product sustainability",
@@ -42,30 +49,6 @@ const exampleMessages = [
     heading: "投資前查看公司的環保認證和生態評分",
     message: "投資前查看公司的環保認證和生態評分",
   },
-  {
-    heading: "投資前比較公司的環保表現",
-    message: "投資前比較公司的環保表現",
-  },
-  {
-    heading: "用社交網絡認識其他環保的同學",
-    message: "用社交網絡認識其他環保的同學",
-  },
-  {
-    heading: "每個月查看我自己的環保分數報告（了解我用錢的方式多環保）",
-    message: "每個月查看我自己的環保分數報告（了解我用錢的方式多環保）",
-  },
-  {
-    heading: "如何讓我支持的公司更環保",
-    message: "如何讓我支持的公司更環保",
-  },
-  {
-    heading: "跟我的AI幫手討論環保問題",
-    message: "跟我的AI幫手討論環保問題",
-  },
-  {
-    heading: "老實說我對任何環保資訊都沒有太多興趣",
-    message: "老實說我對任何環保資訊都沒有太多興趣",
-  },
 ];
 
 export function EmptyScreen({
@@ -75,18 +58,17 @@ export function EmptyScreen({
 }) {
   return (
     <div className="mx-auto max-w-2xl px-4">
-      <div className="rounded-lg border bg-background p-8 mb-4">
-        <div className="mt-4 flex flex-col items-start space-y-2 mb-4">
+      <div className="rounded-lg border bg-background p-4 mb-4">
+        <div className="flex flex-col items-start space-y-2 mb-4">
           {exampleMessages.map((message, index) => (
             <Button
               key={index}
-              variant="link"
-              className="h-auto p-0 text-base"
+              variant="ghost"
+              className="h-auto p-1 text-base shadow-sm"
               onClick={async () => {
                 submitMessage(message.message);
               }}
             >
-              <IconArrowRight className="mr-2 text-muted-foreground" />
               {message.heading}
             </Button>
           ))}
