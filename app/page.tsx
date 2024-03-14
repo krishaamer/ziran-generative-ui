@@ -83,7 +83,7 @@ export default function Page() {
       </div>
       <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-muted/30 from-0% to-muted/30 to-50% duration-300 ease-in-out animate-in dark:from-background/10 dark:from-10% dark:to-background/80 peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
         <div className="mx-auto sm:max-w-2xl sm:px-4">
-          <div className="px-4 py-2 space-y-4 border-t bg-background sm:rounded-t-xl sm:border md:py-4">
+          <div className="px-4 py-2 space-y-4 md:py-4">
             <form
               ref={formRef}
               onSubmit={async (e: any) => {
@@ -120,13 +120,13 @@ export default function Page() {
                 }
               }}
             >
-              <div className="relative flex flex-col w-full px-8 overflow-hidden max-h-60 grow bg-background sm:rounded-md sm:border sm:px-12">
+              <div className="relative flex flex-col w-full px-8 overflow-hidden max-h-60 grow bg-background rounded-md border sm:px-12">
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
                       variant="outline"
                       size="icon"
-                      className="absolute left-0 w-8 h-8 p-0 rounded-full top-4 bg-background sm:left-4"
+                      className="absolute left-2 w-8 h-8 p-0 rounded-full top-4 bg-background sm:left-4"
                       onClick={(e) => {
                         e.preventDefault();
                         window.location.reload();
@@ -153,7 +153,7 @@ export default function Page() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
-                <div className="absolute right-0 top-2 sm:right-2">
+                <div className="absolute right-2 top-2 sm:right-2">
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button
