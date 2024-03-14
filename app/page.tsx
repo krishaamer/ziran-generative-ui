@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useUIState, useActions, useAIState } from 'ai/rsc';
 import { UserMessage } from '@/components/llm-stocks/message';
+import SimpleMap from "@/components/llm-map";
 
 import { type AI } from './action';
 import { ChatScrollAnchor } from '@/lib/hooks/chat-scroll-anchor';
@@ -53,6 +54,7 @@ export default function Page() {
 
   return (
     <div>
+      <SimpleMap />
       <div className="pb-[200px] pt-4 md:pt-10">
         {messages.length ? (
           <>
