@@ -19,7 +19,12 @@ export default function SimpleMap() {
           "AIzaSyB6uP_GJFF4Ngfxdp3aftquS7cYp_tgw18"
         }
       >
-        <Map defaultCenter={position} defaultZoom={13}>
+        <Map
+          defaultCenter={position}
+          defaultZoom={13}
+          gestureHandling={"greedy"}
+          disableDefaultUI={true}
+        >
           <Marker position={marker1} />
           <Marker position={marker2} />
           <Marker position={marker3} />
