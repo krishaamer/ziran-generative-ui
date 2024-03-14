@@ -7,6 +7,10 @@ const exampleMessages = [
     message: "Where can I repair my clothes in Tainan?",
   },
   {
+    heading: "How sustainable is Coca Cola?",
+    message: "How sustainable is Coca Cola?",
+  },
+  {
     heading: "Check product sustainability",
     message: "What are some sustainable stocks?",
   },
