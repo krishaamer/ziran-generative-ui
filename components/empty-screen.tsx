@@ -3,6 +3,10 @@ import { IconArrowRight } from "@/components/ui/icons";
 
 const exampleMessages = [
   {
+    heading: "Where can I repair my clothes in Tainan?",
+    message: "Where can I repair my clothes in Tainan?",
+  },
+  {
     heading: "Check product sustainability",
     message: "What are some sustainable stocks?",
   },
