@@ -21,22 +21,24 @@ interface DefaultProps {
 export default function SimpleMap() {
   const defaultProps: DefaultProps = {
     center: {
-      lat: 10.99835602,
-      lng: 77.01502627
+      lat: 23.0124433,
+      lng: 120.212851
     },
-    zoom: 11
+    zoom: 13
   };
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{
-          key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "",
+          key:
+            process.env.REACT_APP_GOOGLE_MAPS_API_KEY ||
+            "AIzaSyB6uP_GJFF4Ngfxdp3aftquS7cYp_tgw18",
         }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
-        <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
+        <AnyReactComponent lat={23.123411} lng={120.337844} text="My Marker" />
       </GoogleMapReact>
     </div>
   );

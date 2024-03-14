@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useUIState, useActions, useAIState } from 'ai/rsc';
 import { UserMessage } from '@/components/llm-stocks/message';
-import SimpleMap from "@/components/llm-map";
 
 import { type AI } from './action';
 import { ChatScrollAnchor } from '@/lib/hooks/chat-scroll-anchor';
@@ -54,7 +53,6 @@ export default function Page() {
 
   return (
     <div>
-      <SimpleMap />
       <div className="pb-[200px] pt-4 md:pt-10">
         {messages.length ? (
           <>
@@ -62,9 +60,9 @@ export default function Page() {
           </>
         ) : (
           <EmptyScreen
-            submitMessage={async message => {
+            submitMessage={async (message) => {
               // Add user message UI
-              setMessages(currentMessages => [
+              setMessages((currentMessages) => [
                 ...currentMessages,
                 {
                   id: Date.now(),
@@ -74,7 +72,7 @@ export default function Page() {
 
               // Submit and get response message
               const responseMessage = await submitUserMessage(message);
-              setMessages(currentMessages => [
+              setMessages((currentMessages) => [
                 ...currentMessages,
                 responseMessage,
               ]);
@@ -93,15 +91,15 @@ export default function Page() {
 
                 // Blur focus on mobile
                 if (window.innerWidth < 600) {
-                  e.target['message']?.blur();
+                  e.target["message"]?.blur();
                 }
 
                 const value = inputValue.trim();
-                setInputValue('');
+                setInputValue("");
                 if (!value) return;
 
                 // Add user message UI
-                setMessages(currentMessages => [
+                setMessages((currentMessages) => [
                   ...currentMessages,
                   {
                     id: Date.now(),
@@ -112,7 +110,7 @@ export default function Page() {
                 try {
                   // Submit and get response message
                   const responseMessage = await submitUserMessage(value);
-                  setMessages(currentMessages => [
+                  setMessages((currentMessages) => [
                     ...currentMessages,
                     responseMessage,
                   ]);
@@ -129,16 +127,16 @@ export default function Page() {
                       variant="outline"
                       size="icon"
                       className="absolute left-0 w-8 h-8 p-0 rounded-full top-4 bg-background sm:left-4"
-                      onClick={e => {
+                      onClick={(e) => {
                         e.preventDefault();
                         window.location.reload();
                       }}
                     >
                       <IconPlus />
-                      <span className="sr-only">New Chat</span>
+                      <span className="sr-only">New Question</span>
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>New Chat</TooltipContent>
+                  <TooltipContent>New Question</TooltipContent>
                 </Tooltip>
                 <Textarea
                   ref={inputRef}
@@ -153,7 +151,7 @@ export default function Page() {
                   name="message"
                   rows={1}
                   value={inputValue}
-                  onChange={e => setInputValue(e.target.value)}
+                  onChange={(e) => setInputValue(e.target.value)}
                 />
                 <div className="absolute right-0 top-4 sm:right-4">
                   <Tooltip>
@@ -161,7 +159,7 @@ export default function Page() {
                       <Button
                         type="submit"
                         size="icon"
-                        disabled={inputValue === ''}
+                        disabled={inputValue === ""}
                       >
                         <IconArrowElbow />
                         <span className="sr-only">Send message</span>
