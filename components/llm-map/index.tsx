@@ -11,7 +11,7 @@ export default function SimpleMap() {
   return (
     <div
       style={{ height: "500px", width: "100%" }}
-      className="rounded-md shadow-lg ring overflow-hidden"
+      className="rounded-lg shadow-lg ring overflow-hidden"
     >
       <APIProvider
         apiKey={

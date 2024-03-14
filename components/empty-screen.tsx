@@ -60,6 +60,7 @@ export function EmptyScreen({
     <div className="mx-auto max-w-2xl px-4">
       <div className="rounded-lg border bg-background p-4 mb-4">
         <div className="flex flex-col items-start space-y-2 mb-4">
+          <span className="p-1 text-bold">Example questions:</span>
           {exampleMessages.map((message, index) => (
             <Button
               key={index}
