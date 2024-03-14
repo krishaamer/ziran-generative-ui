@@ -19,39 +19,6 @@ function IconAI({ className, ...props }: React.ComponentProps<'svg'>) {
   );
 }
 
-function IconVercel({ className, ...props }: React.ComponentProps<'svg'>) {
-  return (
-    <svg
-      aria-label="Vercel logomark"
-      role="img"
-      viewBox="0 0 74 64"
-      className={cn('h-4 w-4', className)}
-      {...props}
-    >
-      <path
-        d="M37.5896 0.25L74.5396 64.25H0.639648L37.5896 0.25Z"
-        fill="currentColor"
-      ></path>
-    </svg>
-  );
-}
-
-function IconGitHub({ className, ...props }: React.ComponentProps<'svg'>) {
-  return (
-    <svg
-      role="img"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      className={cn('h-4 w-4', className)}
-      {...props}
-    >
-      <title>GitHub</title>
-      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-    </svg>
-  );
-}
-
 function IconSeparator({ className, ...props }: React.ComponentProps<'svg'>) {
   return (
     <svg
@@ -155,20 +122,6 @@ function IconMessage({ className, ...props }: React.ComponentProps<'svg'>) {
   );
 }
 
-function IconCopy({ className, ...props }: React.ComponentProps<'svg'>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 256 256"
-      fill="currentColor"
-      className={cn('h-4 w-4', className)}
-      {...props}
-    >
-      <path d="M216 32H88a8 8 0 0 0-8 8v40H40a8 8 0 0 0-8 8v128a8 8 0 0 0 8 8h128a8 8 0 0 0 8-8v-40h40a8 8 0 0 0 8-8V40a8 8 0 0 0-8-8Zm-56 176H48V96h112Zm48-48h-32V88a8 8 0 0 0-8-8H96V48h112Z" />
-    </svg>
-  );
-}
-
 function IconCheck({ className, ...props }: React.ComponentProps<'svg'>) {
   return (
     <svg
@@ -197,68 +150,6 @@ function IconClose({ className, ...props }: React.ComponentProps<'svg'>) {
   );
 }
 
-function IconShare({ className, ...props }: React.ComponentProps<'svg'>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      className={cn('h-4 w-4', className)}
-      viewBox="0 0 256 256"
-      {...props}
-    >
-      <path d="m237.66 106.35-80-80A8 8 0 0 0 144 32v40.35c-25.94 2.22-54.59 14.92-78.16 34.91-28.38 24.08-46.05 55.11-49.76 87.37a12 12 0 0 0 20.68 9.58c11-11.71 50.14-48.74 107.24-52V192a8 8 0 0 0 13.66 5.65l80-80a8 8 0 0 0 0-11.3ZM160 172.69V144a8 8 0 0 0-8-8c-28.08 0-55.43 7.33-81.29 21.8a196.17 196.17 0 0 0-36.57 26.52c5.8-23.84 20.42-46.51 42.05-64.86C99.41 99.77 127.75 88 152 88a8 8 0 0 0 8-8V51.32L220.69 112Z" />
-    </svg>
-  );
-}
-
-function IconUsers({ className, ...props }: React.ComponentProps<'svg'>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      className={cn('h-4 w-4', className)}
-      viewBox="0 0 256 256"
-      {...props}
-    >
-      <path d="M117.25 157.92a60 60 0 1 0-66.5 0 95.83 95.83 0 0 0-47.22 37.71 8 8 0 1 0 13.4 8.74 80 80 0 0 1 134.14 0 8 8 0 0 0 13.4-8.74 95.83 95.83 0 0 0-47.22-37.71ZM40 108a44 44 0 1 1 44 44 44.05 44.05 0 0 1-44-44Zm210.14 98.7a8 8 0 0 1-11.07-2.33A79.83 79.83 0 0 0 172 168a8 8 0 0 1 0-16 44 44 0 1 0-16.34-84.87 8 8 0 1 1-5.94-14.85 60 60 0 0 1 55.53 105.64 95.83 95.83 0 0 1 47.22 37.71 8 8 0 0 1-2.33 11.07Z" />
-    </svg>
-  );
-}
-
-function IconExternalLink({
-  className,
-  ...props
-}: React.ComponentProps<'svg'>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      className={cn('h-4 w-4', className)}
-      viewBox="0 0 256 256"
-      {...props}
-    >
-      <path d="M224 104a8 8 0 0 1-16 0V59.32l-66.33 66.34a8 8 0 0 1-11.32-11.32L196.68 48H152a8 8 0 0 1 0-16h64a8 8 0 0 1 8 8Zm-40 24a8 8 0 0 0-8 8v72H48V80h72a8 8 0 0 0 0-16H48a16 16 0 0 0-16 16v128a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-72a8 8 0 0 0-8-8Z" />
-    </svg>
-  );
-}
-
-function IconChevronUpDown({
-  className,
-  ...props
-}: React.ComponentProps<'svg'>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      className={cn('h-4 w-4', className)}
-      viewBox="0 0 256 256"
-      {...props}
-    >
-      <path d="M181.66 170.34a8 8 0 0 1 0 11.32l-48 48a8 8 0 0 1-11.32 0l-48-48a8 8 0 0 1 11.32-11.32L128 212.69l42.34-42.35a8 8 0 0 1 11.32 0Zm-96-84.68L128 43.31l42.34 42.35a8 8 0 0 0 11.32-11.32l-48-48a8 8 0 0 0-11.32 0l-48 48a8 8 0 0 0 11.32 11.32Z" />
-    </svg>
-  );
-}
-
 function IconSparkles({ className, ...props }: React.ComponentProps<'svg'>) {
   return (
     <svg
@@ -278,8 +169,6 @@ function IconSparkles({ className, ...props }: React.ComponentProps<'svg'>) {
 
 export {
   IconAI,
-  IconVercel,
-  IconGitHub,
   IconSeparator,
   IconUser,
   IconPlus,
@@ -287,12 +176,7 @@ export {
   IconArrowElbow,
   IconSpinner,
   IconMessage,
-  IconCopy,
   IconCheck,
   IconClose,
-  IconShare,
-  IconUsers,
-  IconExternalLink,
-  IconChevronUpDown,
   IconSparkles,
 };
