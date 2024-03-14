@@ -19,7 +19,8 @@ import {
 } from "@/lib/utils";
 import { z } from "zod";
 import { StocksSkeleton } from "@/components/llm-stocks/stocks-skeleton";
-import SimpleMap from "@/components/llm-map"
+import SimpleMap from "@/components/llm-map";
+import Origin from "@/components/llm-origin";
 import { messageRateLimit } from "@/lib/rate-limit";
 import { headers } from "next/headers";
 
@@ -38,7 +39,7 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
       <p className="mb-2">
         Purchasing {amount} ${symbol}...
       </p>
-    </div>,
+    </div>
   );
 
   const systemMessage = createStreamableUI(null);
@@ -53,7 +54,7 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
         <p className="mb-2">
           Purchasing {amount} ${symbol}... working on it...
         </p>
-      </div>,
+      </div>
     );
 
     await sleep(1000);
@@ -64,14 +65,14 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
           You have successfully purchased {amount} ${symbol}. Total cost:{" "}
           {formatNumber(amount * price)}
         </p>
-      </div>,
+      </div>
     );
 
     systemMessage.done(
       <SystemMessage>
         You have purchased {amount} shares of {symbol} at ${price}. Total cost ={" "}
         {formatNumber(amount * price)}.
-      </SystemMessage>,
+      </SystemMessage>
     );
 
     aiState.done([
@@ -98,7 +99,7 @@ async function submitUserMessage(content: string) {
   "use server";
 
   const reply = createStreamableUI(
-    <BotMessage className="items-center">{spinner}</BotMessage>,
+    <BotMessage className="items-center">{spinner}</BotMessage>
   );
 
   const ip = headers().get("x-real-ip") ?? "local";
@@ -106,7 +107,7 @@ async function submitUserMessage(content: string) {
 
   if (!rl.success) {
     reply.done(
-      <BotMessage>Rate limit exceeded. Try again in 15 minutes.</BotMessage>,
+      <BotMessage>Rate limit exceeded. Try again in 15 minutes.</BotMessage>
     );
     return {
       id: Date.now(),
@@ -125,6 +126,7 @@ async function submitUserMessage(content: string) {
 
   const completion = runOpenAICompletion(openai, {
     model: "gpt-4-turbo-preview",
+    response_format: { type: "text" },
     stream: true,
     messages: [
       {
@@ -136,12 +138,15 @@ You and the user can discuss stock prices and the user can adjust the amount of 
 You can show a map of sustainable companies in the area.
 You can show a map where the user can purchase sustainable products or repair their clothes.
 
+You can show the product origin visually,
+
 Messages inside [] means that it's a UI element or a user event. For example:
 - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
 - "[User has changed the amount of AAPL to 10]" means that the user has changed the amount of AAPL to 10 in the UI.
 
 If you want to show sustainable stocks, call \`list_stocks\`.
 If you want to show a map, call \`show_map\`.
+If you want to show the product origin, call \`show_product_origin\`.
 If the user wants to sell stock, or complete another impossible task, respond that you are a demo and cannot do that.
 
 Besides that, you can also chat with users and do some calculations if needed.`,
@@ -171,6 +176,11 @@ Besides that, you can also chat with users and do some calculations if needed.`,
         description: "Show map with results",
         parameters: z.object({}),
       },
+      {
+        name: "show_product_origin",
+        description: "Show product origin",
+        parameters: z.object({}),
+      },
     ],
     temperature: 0,
   });
@@ -187,7 +197,7 @@ Besides that, you can also chat with users and do some calculations if needed.`,
     reply.update(
       <BotCard>
         <StocksSkeleton />
-      </BotCard>,
+      </BotCard>
     );
 
     await sleep(1000);
@@ -195,7 +205,7 @@ Besides that, you can also chat with users and do some calculations if needed.`,
     reply.done(
       <BotCard>
         <Stocks stocks={stocks} />
-      </BotCard>,
+      </BotCard>
     );
 
     aiState.done([
@@ -209,9 +219,7 @@ Besides that, you can also chat with users and do some calculations if needed.`,
   });
 
   completion.onFunctionCall("show_map", async () => {
-    reply.update(
-      <SimpleMap />
-    );
+    reply.update(<SimpleMap />);
 
     await sleep(1000);
 
@@ -222,6 +230,23 @@ Besides that, you can also chat with users and do some calculations if needed.`,
       {
         role: "function",
         name: "show_map",
+        content: "",
+      },
+    ]);
+  });
+
+  completion.onFunctionCall("show_product_origin", async () => {
+    reply.update(<Origin />);
+
+    await sleep(1000);
+
+    reply.done(<Origin />);
+
+    aiState.done([
+      ...aiState.get(),
+      {
+        role: "function",
+        name: "show_product_origin",
         content: "",
       },
     ]);
