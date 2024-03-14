@@ -208,7 +208,7 @@ Besides that, you can also chat with users and do some calculations if needed.`,
     ]);
   });
 
-  completion.onFunctionCall("show_map", async ({ stocks }) => {
+  completion.onFunctionCall("show_map", async () => {
     reply.update(
       <SimpleMap />
     );
@@ -222,7 +222,7 @@ Besides that, you can also chat with users and do some calculations if needed.`,
       {
         role: "function",
         name: "show_map",
-        content: JSON.stringify(stocks),
+        content: "",
       },
     ]);
   });
