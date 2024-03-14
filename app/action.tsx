@@ -107,7 +107,7 @@ async function submitUserMessage(content: string) {
 
   if (!rl.success) {
     reply.done(
-      <BotMessage>Rate limit exceeded. Try again in 15 minutes.</BotMessage>
+      <BotMessage>Rate limit exceeded. Try again in 1 minute.</BotMessage>
     );
     return {
       id: Date.now(),
@@ -147,9 +147,9 @@ Messages inside [] means that it's a UI element or a user event. For example:
 If you want to show sustainable stocks, call \`list_stocks\`.
 If you want to show a map, call \`show_map\`.
 If you want to show the product origin, call \`show_product_origin\`.
-If the user wants to sell stock, or complete another impossible task, respond that you are a demo and cannot do that.
 
-Besides that, you can also chat with users and do some calculations if needed.`,
+Complement function calls with text responses from your own data.
+If the user wants to complete an impossible task, respond that you are an AI and cannot do that.`,
       },
       ...aiState.get().map((info: any) => ({
         role: info.role,
@@ -221,7 +221,7 @@ Besides that, you can also chat with users and do some calculations if needed.`,
   completion.onFunctionCall("show_map", async () => {
     reply.update(<SimpleMap />);
 
-    await sleep(1000);
+    await sleep(500);
 
     reply.done(<SimpleMap />);
 
@@ -238,7 +238,7 @@ Besides that, you can also chat with users and do some calculations if needed.`,
   completion.onFunctionCall("show_product_origin", async () => {
     reply.update(<Origin />);
 
-    await sleep(1000);
+    await sleep(500);
 
     reply.done(<Origin />);
 
