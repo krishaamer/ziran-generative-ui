@@ -1,0 +1,13 @@
+{
+  "name": "綠濾",
+  "short_name": "綠濾",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "fullscreen"
+}
