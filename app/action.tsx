@@ -19,6 +19,7 @@ import {
 } from "@/lib/utils";
 import { z } from "zod";
 import { StocksSkeleton } from "@/components/llm-stocks/stocks-skeleton";
+import SimpleMap from "@/components/llm-map"
 import { messageRateLimit } from "@/lib/rate-limit";
 import { headers } from "next/headers";
 
@@ -132,12 +133,15 @@ async function submitUserMessage(content: string) {
 You are a sustainability bot and you can help users buy sustainable products and investments, step by step.
 Your should respond to the user briefly and succintly (3 sentences is enough) both in English and Chinese using traditional characters.
 You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
+You can show a map of sustainable companies in the area.
+You can show a map where the user can purchase sustainable products or repair their clothes.
 
 Messages inside [] means that it's a UI element or a user event. For example:
 - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
 - "[User has changed the amount of AAPL to 10]" means that the user has changed the amount of AAPL to 10 in the UI.
 
 If you want to show sustainable stocks, call \`list_stocks\`.
+If you want to show a map, call \`show_map\`.
 If the user wants to sell stock, or complete another impossible task, respond that you are a demo and cannot do that.
 
 Besides that, you can also chat with users and do some calculations if needed.`,
@@ -158,9 +162,14 @@ Besides that, you can also chat with users and do some calculations if needed.`,
               symbol: z.string().describe("The symbol of the stock"),
               price: z.number().describe("The price of the stock"),
               delta: z.number().describe("The change in price of the stock"),
-            }),
+            })
           ),
         }),
+      },
+      {
+        name: "show_map",
+        description: "Show map with results",
+        parameters: z.object({}),
       },
     ],
     temperature: 0,
@@ -194,6 +203,25 @@ Besides that, you can also chat with users and do some calculations if needed.`,
       {
         role: "function",
         name: "list_stocks",
+        content: JSON.stringify(stocks),
+      },
+    ]);
+  });
+
+  completion.onFunctionCall("show_map", async ({ stocks }) => {
+    reply.update(
+      <SimpleMap />
+    );
+
+    await sleep(1000);
+
+    reply.done(<SimpleMap />);
+
+    aiState.done([
+      ...aiState.get(),
+      {
+        role: "function",
+        name: "show_map",
         content: JSON.stringify(stocks),
       },
     ]);
