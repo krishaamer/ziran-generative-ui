@@ -36,7 +36,7 @@ export default function Page() {
         />
       </div>
       <div className="flex flex-col min-h-screen">
-        <main className="home flex flex-col flex-1 bg-muted/50 dark:bg-background">
+        <main className="flex flex-col flex-1 bg-muted/50">
           <div className="pb-[200px] pt-4 md:pt-10">
             {messages.length ? (
               <>
