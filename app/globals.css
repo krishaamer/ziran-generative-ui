@@ -73,12 +73,18 @@
     height: 300px;
     width: auto;
   }
+
+  .tinySvg {
+    height: 50px;
+    width: auto;
+  }
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

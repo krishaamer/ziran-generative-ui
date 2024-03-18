@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage, AvatarSVG } from "@/components/ui/avatar";
 import {
   Card,
   CardContent,
@@ -10,6 +10,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
+import Lottie from "lottie-react";
+import easy from "@/public/easy.json";
+import carrot from "@/public/carrot.json";
+import dragon from "@/public/dragon.json";
 
 // Different types of message bubbles.
 
@@ -42,19 +46,24 @@ export function BotMessage({
   className?: string;
 }) {
   return (
-    <div className={cn("group relative flex items-start md:-ml-12", className)}>
-      <Avatar className="outline outline-offset-2 outline-amber-950">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Card className="py-2 outline outline-offset-2 outline-orange-950 bg-amber-200	">
-        <CardContent>
-          <div className="flex-1 space-y-2 overflow-hidden px-1">
-            {children}
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+    <>
+      <Lottie animationData={easy} loop={true} className="tinySvg" role="img" />
+      <div
+        className={cn("group relative flex items-start md:-ml-12", className)}
+      >
+        <Avatar className="outline outline-offset-2 outline-amber-950">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Card className="py-2 outline outline-offset-2 outline-orange-950 bg-amber-200	">
+          <CardContent>
+            <div className="flex-1 space-y-2 overflow-hidden px-1">
+              {children}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 }
 
@@ -66,24 +75,27 @@ export function BotCard({
   showAvatar?: boolean;
 }) {
   return (
-    <div className="group relative flex items-start md:-ml-12">
-      <div
-        className={cn(
-          "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border bg-primary text-primary-foreground",
-          !showAvatar && "invisible"
-        )}
-      >
-        <Avatar className="outline outline-offset-2 outline-orange-950">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+    <>
+      <Lottie animationData={easy} loop={true} className="tinySvg" role="img" />
+      <div className="group relative flex items-start md:-ml-12">
+        <div
+          className={cn(
+            "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border bg-primary text-primary-foreground",
+            !showAvatar && "invisible"
+          )}
+        >
+          <Avatar className="outline outline-offset-2 outline-orange-950">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </div>
+        <Card className="py-2 outline outline-offset-2 outline-orange-950 bg-amber-200	">
+          <CardContent>
+            <div className="flex-1 px-1">{children}</div>
+          </CardContent>
+        </Card>
       </div>
-      <Card className="py-2 outline outline-offset-2 outline-orange-950 bg-amber-200	">
-        <CardContent>
-          <div className="flex-1 px-1">{children}</div>
-        </CardContent>
-      </Card>
-    </div>
+    </>
   );
 }
 

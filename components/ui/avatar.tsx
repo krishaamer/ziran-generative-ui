@@ -29,7 +29,6 @@ const AvatarImage = React.forwardRef<
     {...props}
   />
 ));
-
 AvatarImage.displayName = "AvatarImage";
 
 const AvatarFallback = React.forwardRef<
