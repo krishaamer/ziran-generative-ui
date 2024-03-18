@@ -24,8 +24,8 @@ const shopping = [
     message: "Where did my Nike sneakers come from?",
   },
   {
-    heading: "What are Nike sneakers made of?",
-    message: "What are Nike sneakers made of?",
+    heading: "What are Adidas sneakers made of?",
+    message: "What are Adidas sneakers made of?",
   },
   {
     heading: "Check product sustainability",
