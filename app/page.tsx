@@ -6,6 +6,7 @@ import { type AI } from "./action";
 import { ChatScrollAnchor } from "@/lib/hooks/chat-scroll-anchor";
 import { ChatList } from "@/components/chat-list";
 import { EmptyScreen } from "@/components/empty-screen";
+import { Sidebar } from "@/components/sidebar";
 import { Search } from "@/components/search";
 
 export default function Page() {
@@ -41,6 +42,7 @@ export default function Page() {
             {messages.length ? (
               <>
                 <ChatList messages={messages} />
+                <Sidebar />
               </>
             ) : (
               <EmptyScreen
