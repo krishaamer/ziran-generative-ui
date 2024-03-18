@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Head from "next/head";
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import { Analytics } from '@vercel/analytics/react';
@@ -33,6 +32,18 @@ export const metadata: Metadata = {
     locale: "en-US",
     type: "website",
   },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    title: "綠濾",
+    statusBarStyle: "black-translucent",
+    startupImage: [
+      "/apple-touch-icon.png",
+      {
+        url: "/apple-touch-icon.png",
+        media: "(device-width: 768px) and (device-height: 1024px)",
+      },
+    ],
+  },
 };
 
 export const viewport = {
@@ -49,10 +60,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
-        <link rel="manifest" href="/manifest.json" />
-      </Head>
       <body
         className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable}`}
       >
