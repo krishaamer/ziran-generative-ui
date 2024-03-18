@@ -9,6 +9,11 @@ import { EmptyScreen } from "@/components/empty-screen";
 import { Sidebar } from "@/components/sidebar";
 import { Search } from "@/components/search";
 
+import Lottie from "lottie-react";
+import easy from "../public/easy.json";
+import carrot from "../public/carrot.json";
+import dragon from "../public/dragon.json";
+
 export default function Page() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions();
@@ -29,25 +34,33 @@ export default function Page() {
                 <Sidebar />
               </>
             ) : (
-              <EmptyScreen
-                submitMessage={async (message) => {
-                  // Add user message UI
-                  setMessages((currentMessages) => [
-                    ...currentMessages,
-                    {
-                      id: Date.now(),
-                      display: <UserMessage>{message}</UserMessage>,
-                    },
-                  ]);
+              <>
+                <Lottie
+                  animationData={easy}
+                  loop={true}
+                  className="featureSvg"
+                  role="img"
+                />
+                <EmptyScreen
+                  submitMessage={async (message) => {
+                    // Add user message UI
+                    setMessages((currentMessages) => [
+                      ...currentMessages,
+                      {
+                        id: Date.now(),
+                        display: <UserMessage>{message}</UserMessage>,
+                      },
+                    ]);
 
-                  // Submit and get response message
-                  const responseMessage = await submitUserMessage(message);
-                  setMessages((currentMessages) => [
-                    ...currentMessages,
-                    responseMessage,
-                  ]);
-                }}
-              />
+                    // Submit and get response message
+                    const responseMessage = await submitUserMessage(message);
+                    setMessages((currentMessages) => [
+                      ...currentMessages,
+                      responseMessage,
+                    ]);
+                  }}
+                />
+              </>
             )}
             <ChatScrollAnchor trackVisibility={true} />
           </div>
