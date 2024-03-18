@@ -2,6 +2,12 @@ import { Button } from "@/components/ui/button";
 
 const exampleMessages = [
   {
+    heading:
+      "How are shopping, saving, and investing related to sustainability?",
+    message:
+      "How are shopping, saving, and investing related to sustainability?",
+  },
+  {
     heading: "Where can I repair my clothes in Tainan?",
     message: "Where can I repair my clothes in Tainan?",
   },
@@ -77,6 +83,10 @@ export function EmptyScreen({
               {message.heading}
             </Button>
           ))}
+          <span className="p-1 font-bold">Shopping Questions:</span>
+          <span className="p-1 font-bold">Saving Questions:</span>
+          <span className="p-1 font-bold">Investing Questions:</span>
+          <span className="p-1 font-bold">These are examples. You can come up with any question yourself and Ziran will guide you step-by-step in becoming an investor in sustainability.</span>
         </div>
       </div>
     </div>
