@@ -1,6 +1,7 @@
 'use client';
 
 import { IconAI, IconUser } from '@/components/ui/icons';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from '@/lib/utils';
 
 // Different types of message bubbles.
@@ -8,6 +9,10 @@ import { cn } from '@/lib/utils';
 export function UserMessage({ children }: { children: React.ReactNode }) {
   return (
     <div className="group relative flex items-start md:-ml-12">
+      <Avatar>
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
       <div className="flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border bg-background">
         <IconUser />
       </div>
