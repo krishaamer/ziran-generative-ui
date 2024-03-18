@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-const exampleMessages = [
+const shopping = [
   {
     heading:
       "How are shopping, saving, and investing related to sustainability?",
@@ -31,6 +31,9 @@ const exampleMessages = [
     heading: "Check product sustainability",
     message: "What are some sustainable stocks?",
   },
+];
+
+const saving = [
   {
     heading: "買東西先查看產品的運輸距離（是不是當地食品）",
     message: "買東西先查看產品的運輸距離（是不是當地食品）",
@@ -61,6 +64,13 @@ const exampleMessages = [
   },
 ];
 
+const investing = [
+  {
+    heading: "What are some sustainable stocks?",
+    message: "What are some sustainable stocks?",
+  },
+];
+
 export function EmptyScreen({
   submitMessage,
 }: {
@@ -70,23 +80,50 @@ export function EmptyScreen({
     <div className="mx-auto max-w-2xl px-4">
       <div className="rounded-lg border bg-background p-4 mb-4">
         <div className="flex flex-col items-start space-y-2 mb-4">
-          <span className="p-1 font-bold">Popular Questions:</span>
-          {exampleMessages.map((message, index) => (
+          <span className="p-1 font-bold text-xl">Shopping:</span>
+          {shopping.map((msg, index) => (
             <Button
               key={index}
               variant="ghost"
               className="h-auto p-1 text-base shadow-sm border border-slate-100"
               onClick={async () => {
-                submitMessage(message.message);
+                submitMessage(msg.message);
               }}
             >
-              {message.heading}
+              {msg.heading}
             </Button>
           ))}
-          <span className="p-1 font-bold">Shopping Questions:</span>
-          <span className="p-1 font-bold">Saving Questions:</span>
-          <span className="p-1 font-bold">Investing Questions:</span>
-          <span className="p-1 font-bold">These are examples. You can come up with any question yourself and Ziran will guide you step-by-step in becoming an investor in sustainability.</span>
+          <span className="p-1 font-bold text-xl">Saving:</span>
+          {saving.map((msg, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              className="h-auto p-1 text-base shadow-sm border border-slate-100"
+              onClick={async () => {
+                submitMessage(msg.message);
+              }}
+            >
+              {msg.heading}
+            </Button>
+          ))}
+          <span className="p-1 font-bold text-xl">Investing:</span>
+          {investing.map((msg, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              className="h-auto p-1 text-base shadow-sm border border-slate-100"
+              onClick={async () => {
+                submitMessage(msg.message);
+              }}
+            >
+              {msg.heading}
+            </Button>
+          ))}
+          <span className="p-1 italic">
+            You can come up with any question yourself and
+            Ziran will guide you step-by-step in becoming an investor in
+            sustainability.
+          </span>
         </div>
       </div>
     </div>

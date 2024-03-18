@@ -47,7 +47,7 @@ export function Search({
   }, [inputRef]);
 
   return (
-    <div className="relative inset-x-0 top-0 w-full">
+    <div className="relative inset-x-0 bottom-0 w-full">
       <div className="mx-auto sm:max-w-2xl sm:px-4">
         <div>
           <form
