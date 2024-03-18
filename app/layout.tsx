@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import { GeistMono } from 'geist/font/mono';
-import { GeistSans } from 'geist/font/sans';
-import { Analytics } from '@vercel/analytics/react';
-import { Toaster } from '@/components/ui/toaster';
-import { AI } from './action';
-import { Providers } from '@/components/providers'
+import type { Metadata } from "next";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "@/components/ui/toaster";
+import { AI } from "./action";
+import { Providers } from "@/components/providers";
 import "./globals.css";
 
 const meta = {
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
 
 export const viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
 };
 
@@ -71,9 +71,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-
-                {children}
-              
+            {children}
           </Providers>
         </AI>
         <Analytics />
@@ -82,4 +80,4 @@ export default function RootLayout({
   );
 }
 
-export const runtime = 'edge';
+export const runtime = "edge";
