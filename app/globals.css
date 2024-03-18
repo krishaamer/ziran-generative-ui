@@ -61,6 +61,18 @@
   .docu-shadow {
     box-shadow: var(--ifm-global-shadow-lw) !important;
   }
+
+  .features {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    width: 100%;
+  }
+
+  .featureSvg {
+    height: 300px;
+    width: auto;
+  }
 }
 
 @layer base {
