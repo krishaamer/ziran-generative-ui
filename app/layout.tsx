@@ -5,7 +5,6 @@ import { GeistSans } from 'geist/font/sans';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from '@/components/ui/toaster';
 import { AI } from './action';
-import { Header } from '@/components/header';
 import { Providers } from '@/components/providers'
 import "./globals.css";
 
