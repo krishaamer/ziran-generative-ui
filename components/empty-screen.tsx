@@ -97,19 +97,21 @@ export function EmptyScreen({
           className="featureSvg"
           role="img"
         />
-        <span className="p-1 font-bold text-xl">Shopping:</span>
-        {shopping.map((msg, index) => (
-          <Button
-            key={index}
-            variant="ghost"
-            className="h-auto p-1 text-base shadow-sm border border-slate-100"
-            onClick={async () => {
-              submitMessage(msg.message);
-            }}
-          >
-            {msg.heading}
-          </Button>
-        ))}
+        <div className="p-1 font-bold text-4xl text-center">Shop</div>
+        <div className="flex flex-wrap gap-2">
+          {shopping.map((msg, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+              onClick={async () => {
+                submitMessage(msg.message);
+              }}
+            >
+              {msg.heading}
+            </Button>
+          ))}
+        </div>
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Lottie
@@ -118,19 +120,21 @@ export function EmptyScreen({
           className="featureSvg"
           role="img"
         />
-        <span className="p-1 font-bold text-xl">Saving:</span>
-        {saving.map((msg, index) => (
-          <Button
-            key={index}
-            variant="ghost"
-            className="h-auto p-1 text-base shadow-sm border border-slate-100"
-            onClick={async () => {
-              submitMessage(msg.message);
-            }}
-          >
-            {msg.heading}
-          </Button>
-        ))}
+        <div className="p-1 font-bold text-4xl text-center">Save</div>
+        <div className="flex flex-wrap gap-2">
+          {saving.map((msg, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+              onClick={async () => {
+                submitMessage(msg.message);
+              }}
+            >
+              {msg.heading}
+            </Button>
+          ))}
+        </div>
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Lottie
@@ -139,22 +143,26 @@ export function EmptyScreen({
           className="featureSvg"
           role="img"
         />
-        <span className="p-1 font-bold text-xl">Investing:</span>
-        {investing.map((msg, index) => (
-          <Button
-            key={index}
-            variant="ghost"
-            className="h-auto p-1 text-base shadow-sm border border-slate-100"
-            onClick={async () => {
-              submitMessage(msg.message);
-            }}
-          >
-            {msg.heading}
-          </Button>
-        ))}
+        <div className="p-1 font-bold text-4xl text-center">Invest</div>
+        <div className="flex flex-wrap gap-2">
+          {investing.map((msg, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+              onClick={async () => {
+                submitMessage(msg.message);
+              }}
+            >
+              {msg.heading}
+            </Button>
+          ))}
+        </div>
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
-        <span className="p-1 italic">You can come up with any question yourself and Ziran will guide you step-by-step in becoming an investor in sustainability.
+        <span className="p-1 italic">
+          You can come up with any question yourself and Ziran will guide you
+          step-by-step in becoming an investor in sustainability.
         </span>
       </div>
     </div>
