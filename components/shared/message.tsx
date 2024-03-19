@@ -20,14 +20,14 @@ import dragon from "@/public/dragon.json";
 export function UserMessage({ children }: { children: React.ReactNode }) {
   return (
     <div className="group relative flex items-start md:ml-12">
-      <Card className="mb-4 py-2 outline outline-offset-2 outline-orange-950 bg-green-200	">
+      <Card className="mb-4 py-2 ring-1 ring-orange-950 ring-offset-2 bg-green-200">
         <CardContent>
           <div className="flex-1 space-y-2 overflow-hidden px-1">
             {children}
           </div>
         </CardContent>
       </Card>
-      <Avatar className="outline outline-offset-2 outline-amber-950">
+      <Avatar className="ring-1 ring-amber-950 ring-offset-2">
         <AvatarImage
           src="https://github.com/krishaamer.png"
           alt="@krishaamer"
@@ -51,11 +51,11 @@ export function BotMessage({
       <div
         className={cn("group relative flex items-start md:-ml-12", className)}
       >
-        <Avatar className="outline outline-offset-2 outline-amber-950">
+        <Avatar className="ring-1 ring-offset-2 ring-amber-950">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
-        <Card className="py-2 outline outline-offset-2 outline-orange-950 bg-amber-200	">
+        <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200">
           <CardContent>
             <div className="flex-1 space-y-2 overflow-hidden px-1">
               {children}
@@ -84,12 +84,12 @@ export function BotCard({
             !showAvatar && "invisible"
           )}
         >
-          <Avatar className="outline outline-offset-2 outline-orange-950">
+          <Avatar className="ring-1 ring-offset-2 ring-orange-950">
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </div>
-        <Card className="py-2 outline outline-offset-2 outline-orange-950 bg-amber-200	">
+        <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200	">
           <CardContent>
             <div className="flex-1 px-1">{children}</div>
           </CardContent>
