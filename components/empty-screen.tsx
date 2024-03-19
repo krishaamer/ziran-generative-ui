@@ -97,7 +97,7 @@ export function EmptyScreen({
           className="featureSvg"
           role="img"
         />
-        <div className="p-1 font-bold text-4xl text-center">Shop</div>
+        <div className="p-1 font-bold text-2xl text-center">買東西</div>
         <div className="flex flex-wrap gap-2">
           {shopping.map((msg, index) => (
             <Button
@@ -120,7 +120,7 @@ export function EmptyScreen({
           className="featureSvg"
           role="img"
         />
-        <div className="p-1 font-bold text-4xl text-center">Save</div>
+        <div className="p-1 font-bold text-2xl text-center">存錢</div>
         <div className="flex flex-wrap gap-2">
           {saving.map((msg, index) => (
             <Button
@@ -143,7 +143,7 @@ export function EmptyScreen({
           className="featureSvg"
           role="img"
         />
-        <div className="p-1 font-bold text-4xl text-center">Invest</div>
+        <div className="p-1 font-bold text-2xl text-center">投資錢</div>
         <div className="flex flex-wrap gap-2">
           {investing.map((msg, index) => (
             <Button
@@ -160,9 +160,8 @@ export function EmptyScreen({
         </div>
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
-        <span className="p-1 italic">
-          You can come up with any question yourself and Ziran will guide you
-          step-by-step in becoming an investor in sustainability.
+        <span className="p-1">
+          你/妳可以自己提出任何問題，自然會逐步引導你成為永續投資者
         </span>
       </div>
     </div>
