@@ -10,7 +10,7 @@ import {
 export function Sidebar() {
   return (
     <div className="relative mx-auto max-w-2xl px-4 mt-10">
-      <h2 className="text-xl font-bold">Related:</h2>
+      <h2 className="text-xl font-bold">Related Questions:</h2>
       <Card className="ring-1 ring-orange-950 ring-offset-2 mb-4 mt-2">
         <CardHeader>
           <CardTitle>
@@ -22,6 +22,7 @@ export function Sidebar() {
           Brand YXZ.
         </CardContent>
       </Card>
+      <h2 className="text-xl font-bold">Brand Credentials:</h2>
       <Card className="ring-1 ring-orange-950 ring-offset-2">
         <CardHeader>
           <CardTitle>
