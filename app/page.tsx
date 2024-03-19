@@ -2,6 +2,7 @@
 
 import { useUIState, useActions, useAIState } from "ai/rsc";
 import { UserMessage } from "@/components/shared/message";
+import Header from "@/components/shared/header";
 import { type AI } from "./action";
 import { ChatScrollAnchor } from "@/lib/hooks/chat-scroll-anchor";
 import { ChatList } from "@/components/chat-list";
@@ -9,23 +10,16 @@ import { EmptyScreen } from "@/components/empty-screen";
 import { Sidebar } from "@/components/sidebar";
 import { Search } from "@/components/search";
 
-import Lottie from "lottie-react";
-import easy from "../public/easy.json";
-
 export default function Page() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions();
 
   return (
     <>
-      <div className="sticky top-0 z-50 flex items-center justify-between w-full px-4 border-b h-8 shrink-0 bg-background uppercase">
-        <div />
-        <a href="/">Ziran</a>
-        <div />
-      </div>
+      <Header />
       <div className="flex flex-col min-h-screen">
         <main className="flex flex-col flex-1 bg-muted/50">
-          <div className="pb-[200px] pt-2">
+          <div className="pb-[200px] mt-4">
             {messages.length ? (
               <>
                 <ChatList messages={messages} />
