@@ -90,6 +90,7 @@ export function EmptyScreen({
 }) {
   return (
     <div className="mx-auto max-w-2xl px-4">
+      <div className="rounded-lg border bg-background p-4 mb-4 text-3xl font-bold">Kris 早安！</div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Lottie
           animationData={easy}
