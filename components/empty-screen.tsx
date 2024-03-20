@@ -32,8 +32,12 @@ const shopping = [
     message: "What are Adidas sneakers made of?",
   },
   {
-    heading: "Check product sustainability",
-    message: "What are some sustainable stocks?",
+    heading: "What are digital product passports?",
+    message: "What are digital product passports?",
+  },
+  {
+    heading: "How to check a product's sustainability?",
+    message: "How to check a product's sustainability?",
   },
 ];
 
