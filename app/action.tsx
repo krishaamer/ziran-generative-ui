@@ -20,6 +20,7 @@ import {
 import { z } from "zod";
 import { StocksSkeleton } from "@/components/llm-stocks/stocks-skeleton";
 import SimpleMap from "@/components/llm-map";
+import Factories from "@/components/llm-factories";
 import Origin from "@/components/llm-origin";
 import Materials from "@/components/llm-materials";
 import { messageRateLimit } from "@/lib/rate-limit";
@@ -138,6 +139,7 @@ You are a friendly sustainability assistant for college students in Taiwan and y
 Your should respond to the user briefly both in English and Chinese using traditional characters. Even if the question is in Chinese, always provide also an English answer. If the question is in English, also provide a Chinese answer.
 You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
 You can show a map of sustainable companies in the area.
+You can show a map of factories in the area to help the user understand where the product come from.
 You can show a map where the user can purchase sustainable products or repair their clothes.
 
 You can show the product origin visually,
@@ -151,6 +153,7 @@ If you want to show sustainable stocks, call \`list_stocks\`.
 If you want to show a map, call \`show_map\`.
 If you want to show the product origin, call \`show_product_origin\`.
 If you want to show the product materials, call \`show_product_materials\`.
+If you want to show factories, call \`show_factories\`.
 
 Complement function calls with text responses from your own data.
 If the user wants to complete an impossible task, respond that you are an AI and cannot do that.`,
@@ -188,6 +191,11 @@ If the user wants to complete an impossible task, respond that you are an AI and
       {
         name: "show_product_materials",
         description: "Show product materials",
+        parameters: z.object({}),
+      },
+      {
+        name: "show_factories",
+        description: "Show factories",
         parameters: z.object({}),
       },
     ],
@@ -239,6 +247,23 @@ If the user wants to complete an impossible task, respond that you are an AI and
       {
         role: "function",
         name: "show_map",
+        content: "",
+      },
+    ]);
+  });
+
+  completion.onFunctionCall("show_factories", async () => {
+    reply.update(<Factories />);
+
+    await sleep(500);
+
+    reply.done(<Factories />);
+
+    aiState.done([
+      ...aiState.get(),
+      {
+        role: "function",
+        name: "show_factories",
         content: "",
       },
     ]);
