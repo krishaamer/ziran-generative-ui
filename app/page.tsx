@@ -23,7 +23,7 @@ export default function Page() {
       <div className="flex flex-col min-h-screen">
         <main className="flex flex-col flex-1 bg-muted/50">
           <div className="pb-[200px] mt-4">
-            <p>Question: {query?.ask}</p>
+            <p>Question: {query?.ask ? decodeURIComponent(query?.ask) : ""}</p>
             {messages.length ? (
               <>
                 <ChatList messages={messages} />
