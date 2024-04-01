@@ -14,6 +14,8 @@ import Lottie from "lottie-react";
 import easy from "@/public/easy.json";
 import carrot from "@/public/carrot.json";
 import dragon from "@/public/dragon.json";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 // Different types of message bubbles.
 
@@ -58,7 +60,9 @@ export function BotMessage({
         <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200">
           <CardContent>
             <div className="flex-1 space-y-2 overflow-hidden px-1">
-              {children}
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {children}
+              </ReactMarkdown>
             </div>
           </CardContent>
         </Card>
