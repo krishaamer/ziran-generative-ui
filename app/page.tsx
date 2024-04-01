@@ -16,7 +16,7 @@ export default function Page() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions();
   const searchParams = useSearchParams();
-  
+
   useEffect(() => {
     const query = searchParams.get("ask");
     if (query) {
@@ -44,7 +44,6 @@ export default function Page() {
       <div className="flex flex-col min-h-screen">
         <main className="flex flex-col flex-1 bg-muted/50">
           <div className="pb-[200px] mt-4">
-            <p>Question: {searchParams.get("ask")}</p>
             {messages.length ? (
               <>
                 <ChatList messages={messages} />
