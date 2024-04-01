@@ -1,11 +1,8 @@
-'use client';
+"use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
-import { cn } from '@/lib/utils';
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import easy from "@/public/easy.json";
 import carrot from "@/public/carrot.json";
@@ -40,9 +37,11 @@ export function BotMessage({
   children,
   className,
 }: {
-  children: string;
+  children: React.ReactNode;
   className?: string;
 }) {
+  const content = typeof children === "string" ? children : "";
+
   return (
     <>
       <Lottie animationData={easy} loop={true} className="tinySvg" role="img" />
@@ -57,7 +56,7 @@ export function BotMessage({
           <CardContent>
             <div className="flex-1 space-y-2 overflow-hidden px-1">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {children}
+                {content}
               </ReactMarkdown>
             </div>
           </CardContent>
@@ -103,10 +102,10 @@ export function SystemMessage({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={
-        'mt-2 flex items-center justify-center gap-2 text-xs text-gray-500'
+        "mt-2 flex items-center justify-center gap-2 text-xs text-gray-500"
       }
     >
-      <div className={'max-w-[600px] flex-initial px-2 py-2'}>{children}</div>
+      <div className={"max-w-[600px] flex-initial px-2 py-2"}>{children}</div>
     </div>
   );
 }
