@@ -9,13 +9,12 @@ import { ChatList } from "@/components/chat-list";
 import { EmptyScreen } from "@/components/empty-screen";
 import { Sidebar } from "@/components/sidebar";
 import { Search } from "@/components/search";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 
 export default function Page() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions();
-  const router = useRouter();
-  const { query } = router;
+  const searchParams = useSearchParams();
 
   return (
     <>
@@ -23,7 +22,7 @@ export default function Page() {
       <div className="flex flex-col min-h-screen">
         <main className="flex flex-col flex-1 bg-muted/50">
           <div className="pb-[200px] mt-4">
-            <p>Question: {query?.ask ? decodeURIComponent(query?.ask) : ""}</p>
+            <p>Question: {searchParams.get("ask")}</p>
             {messages.length ? (
               <>
                 <ChatList messages={messages} />
