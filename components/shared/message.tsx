@@ -4,10 +4,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { cn } from '@/lib/utils';
 import Lottie from "lottie-react";
@@ -44,7 +40,7 @@ export function BotMessage({
   children,
   className,
 }: {
-  children: React.ReactNode;
+  children: string;
   className?: string;
 }) {
   return (
