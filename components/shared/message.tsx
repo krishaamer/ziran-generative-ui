@@ -11,14 +11,16 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 // Different types of message bubbles.
-
 export function UserMessage({ children }: { children: React.ReactNode }) {
+
+  const content = typeof children === "string" ? children : "";
+
   return (
     <div className="group relative flex items-start md:ml-12">
       <Card className="mb-4 py-2 ring-1 ring-orange-950 ring-offset-2 bg-green-200">
         <CardContent>
           <div className="flex-1 space-y-2 overflow-hidden px-1">
-            {children}
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
           </div>
         </CardContent>
       </Card>
