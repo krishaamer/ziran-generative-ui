@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { IconPlus, IconSparkles } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
