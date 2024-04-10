@@ -4,6 +4,8 @@ import easy from "../public/easy.json";
 import carrot from "../public/carrot.json";
 import dragon from "../public/dragon.json";
 
+const brands = ["3m", "canon", "csd", "debuyer", "lanew", "loreal", "nikon", "olympus", "panasonic", "pentax", "philips", "sony"];
+
 const shopping = [
   {
     heading:
@@ -94,8 +96,24 @@ export function EmptyScreen({
 }) {
   return (
     <div className="mx-auto max-w-2xl px-4">
-      <div className="rounded-lg border bg-background p-4 mb-4 text-3xl font-bold">
-        Kris 早安！
+      <div className="rounded-lg border bg-background p-4 mb-4 text-3xl font-bold text-center">
+        怎麼知道自己的錢花去支持了啥物呢？
+      </div>
+      <div className="rounded-lg border bg-background p-4 mb-4">
+        <div className="flex flex-wrap gap-2">
+          {brands.map((brand, idx) => (
+            <Button
+              key={idx}
+              variant="ghost"
+              className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+              onClick={async () => {
+                submitMessage(`How sustainable is the ${brand} brand?`);
+              }}
+            >
+              <img src={`/brands/${brand}.jpg`} />
+            </Button>
+          ))}
+        </div>
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Lottie
