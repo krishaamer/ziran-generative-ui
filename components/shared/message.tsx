@@ -51,7 +51,7 @@ export function BotMessage({
         className={cn("group relative flex items-start md:-ml-12", className)}
       >
         <Avatar className="ring-1 ring-offset-2 ring-amber-950">
-          <AvatarImage src="/images/avatar-1.jpg" alt="@shadcn" />
+          <AvatarImage src="/images/avatar-2.jpg" alt="@shadcn" />
           <AvatarFallback>AI</AvatarFallback>
         </Avatar>
         <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200">

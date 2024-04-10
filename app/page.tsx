@@ -47,7 +47,25 @@ export default function Page() {
             {messages.length ? (
               <>
                 <ChatList messages={messages} />
-                <Sidebar />
+                <Sidebar
+                  submitMessage={async (message) => {
+                    // Add user message UI
+                    setMessages((currentMessages) => [
+                      ...currentMessages,
+                      {
+                        id: Date.now(),
+                        display: <UserMessage>{message}</UserMessage>,
+                      },
+                    ]);
+
+                    // Submit and get response message
+                    const responseMessage = await submitUserMessage(message);
+                    setMessages((currentMessages) => [
+                      ...currentMessages,
+                      responseMessage,
+                    ]);
+                  }}
+                />
               </>
             ) : (
               <>
