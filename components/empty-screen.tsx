@@ -94,7 +94,9 @@ export function EmptyScreen({
 }) {
   return (
     <div className="mx-auto max-w-2xl px-4">
-      <div className="rounded-lg border bg-background p-4 mb-4 text-3xl font-bold">Kris 早安！</div>
+      <div className="rounded-lg border bg-background p-4 mb-4 text-3xl font-bold">
+        Kris 早安！
+      </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Lottie
           animationData={easy}
@@ -164,10 +166,8 @@ export function EmptyScreen({
           ))}
         </div>
       </div>
-      <div className="rounded-lg border bg-background p-4 mb-4">
-        <span className="p-1">
-          你/妳可以自己提出任何問題，自然會逐步引導你成為永續投資者
-        </span>
+      <div className="rounded-lg p-4 mb-4">
+        <span className="p-1">買環保的品牌成為永續投資者</span>
       </div>
     </div>
   );
