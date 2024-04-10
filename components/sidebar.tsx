@@ -12,36 +12,42 @@ export function Sidebar({
 }) {
   return (
     <div className="relative mx-auto max-w-2xl px-4 mt-10">
-      <h2 className="text-xl font-bold">Related Questions:</h2>
+      <h2 className="text-xl font-bold text-center">相關問題</h2>
       <Card
         className="ring-1 ring-orange-950 ring-offset-2 mb-4 mt-2 cursor-pointer hover:bg-yellow-300"
         onClick={async () => {
-          submitMessage("What factories is it produced in?");
+          submitMessage(
+            "I'm a consumer of this brand. Should I invest? What factories is this brand produced in? What is the sustainability score? Compare it to other brands."
+          );
         }}
       >
         <CardHeader>
           <CardTitle>
-            <h2>I'm a consumer of Brand. Should I invest?</h2>
+            <h2>I'm a consumer of this brand. Should I invest?</h2>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          This brand is produced in factories A, B, C. Sust score D. Compare to
-          Brand YXZ.
+          What factories is this brand produced in? What is the sustainability
+          score? Compare it to other brands.
         </CardContent>
       </Card>
-      <h2 className="text-xl font-bold">Brand Credentials:</h2>
       <Card
         className="ring-1 ring-orange-950 ring-offset-2 cursor-pointer hover:bg-yellow-300"
         onClick={async () => {
-          submitMessage("Is this brand a B Corporation?");
+          submitMessage(
+            "Is this company a B Corporation? What sustainability credentials does it hold to prove sustainability?"
+          );
         }}
       >
         <CardHeader>
           <CardTitle>
-            <h2>B Corporation</h2>
+            <h2>Sustainability Credentials</h2>
           </CardTitle>
         </CardHeader>
-        <CardContent>This brand is not a B Corporation</CardContent>
+        <CardContent>
+          Is this company a B Corporation? What credentials does it hold to
+          prove sustainability?
+        </CardContent>
       </Card>
     </div>
   );
