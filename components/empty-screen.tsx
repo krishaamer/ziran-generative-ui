@@ -107,7 +107,7 @@ export function EmptyScreen({
               variant="ghost"
               className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
               onClick={async () => {
-                submitMessage(`How sustainable is the ${brand} brand?`);
+                submitMessage(`How sustainable is the ${brand} brand? What are some more sustainable alternatives?`);
               }}
             >
               <img src={`/brands/${brand}.jpg`} />
