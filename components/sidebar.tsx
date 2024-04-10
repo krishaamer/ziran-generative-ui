@@ -4,6 +4,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Lottie from "lottie-react";
+import easy from "../public/easy.json";
+import dragon from "../public/dragon.json";
+import carrot from "../public/carrot.json";
 
 export function Sidebar({
   submitMessage,
@@ -23,12 +27,44 @@ export function Sidebar({
       >
         <CardHeader>
           <CardTitle>
-            <h2>I'm a consumer of this brand. Should I invest?</h2>
+            <h2>Shopping</h2>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          What factories is this brand produced in? What is the sustainability
-          score? Compare it to other brands.
+          Should I buy this brand's products? What factories is this brand
+          produced in? What is the sustainability score? Compare it to other
+          brands.
+          <Lottie
+            animationData={easy}
+            loop={true}
+            className="featureSvg"
+            role="img"
+          />
+        </CardContent>
+      </Card>
+      <Card
+        className="ring-1 ring-orange-950 ring-offset-2 mb-4 mt-2 cursor-pointer hover:bg-yellow-300"
+        onClick={async () => {
+          submitMessage(
+            "I'm a consumer of this brand. Should I invest? What factories is this brand produced in? What is the sustainability score? Compare it to other brands."
+          );
+        }}
+      >
+        <CardHeader>
+          <CardTitle>
+            <h2>Saving</h2>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          What does it brand do to help the environment? What factories is this
+          brand produced in? What is the sustainability score? Compare it to
+          other brands.
+          <Lottie
+            animationData={carrot}
+            loop={true}
+            className="featureSvg"
+            role="img"
+          />
         </CardContent>
       </Card>
       <Card
@@ -41,12 +77,18 @@ export function Sidebar({
       >
         <CardHeader>
           <CardTitle>
-            <h2>Sustainability Credentials</h2>
+            <h2>Investing</h2>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          Is this company a B Corporation? What credentials does it hold to
-          prove sustainability?
+          Should I invest in this brand? Is this company a B Corporation? What
+          credentials does it hold to prove sustainability?
+          <Lottie
+            animationData={dragon}
+            loop={true}
+            className="featureSvg"
+            role="img"
+          />
         </CardContent>
       </Card>
     </div>
