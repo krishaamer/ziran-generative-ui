@@ -17,7 +17,7 @@ export function UserMessage({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="group relative flex items-start md:ml-12">
-      <Card className="mb-4 py-2 ring-1 ring-orange-950 ring-offset-2 bg-green-200">
+      <Card className="mb-4 py-2 ring-1 ring-orange-950 ring-offset-2 bg-green-200 dark:bg-green-900">
         <CardContent>
           <div className="flex-1 space-y-2 overflow-hidden px-1">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
@@ -51,10 +51,10 @@ export function BotMessage({
         className={cn("group relative flex items-start md:-ml-12", className)}
       >
         <Avatar className="ring-1 ring-offset-2 ring-amber-950">
-          <AvatarImage src="/images/avatar-2.jpg" alt="@shadcn" />
+          <AvatarImage src="/images/avatar-2.jpg" alt="AI" />
           <AvatarFallback>AI</AvatarFallback>
         </Avatar>
-        <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200">
+        <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200 dark:bg-amber-950">
           <CardContent>
             <div className="flex-1 space-y-2 overflow-hidden px-1">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -86,8 +86,8 @@ export function BotCard({
           )}
         >
           <Avatar className="ring-1 ring-offset-2 ring-orange-950">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarImage src="/images/avatar-2.jpg" alt="AI" />
+            <AvatarFallback>AI</AvatarFallback>
           </Avatar>
         </div>
         <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200	">
