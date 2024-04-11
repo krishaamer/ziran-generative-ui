@@ -4,6 +4,11 @@ import HighchartsReact from "highcharts-react-official";
 
 type ChartPoint = [number, number]; // Define the type for a data point in Highcharts
 
+type StockData = {
+  t: number; // timestamp
+  c: number; // closing price
+};
+
 export default function High() {
   const [chartOptions, setChartOptions] = useState({
     title: {
@@ -36,23 +41,29 @@ export default function High() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `/api/polygon?symbol=NVDA&from=${fromDate}&to=${toDate}`
-      );
-      const json = await response.json();
-
-      if (json.status === "OK" && Array.isArray(json.results)) {
-        // Map the data to the format Highcharts expects: [[time, close price], ...]
-        const chartData: ChartPoint[] = json.results.map(
-          (item: { t: number; c: number }) => [item.t, item.c]
+      try {
+        const response = await fetch(
+          `/api/polygon?symbol=NVDA&from=${fromDate}&to=${toDate}`
         );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const json = await response.json();
 
-        setChartOptions((prevOptions) => ({
-          ...prevOptions,
-          series: [{ ...prevOptions.series[0], data: chartData }],
-        }));
-      } else {
-        console.error("Error fetching stock data:", json);
+        if (json.status === "OK" && Array.isArray(json.results)) {
+          const chartData: ChartPoint[] = json.results.map(
+            (item: StockData) => [item.t * 1000, item.c]
+          );
+
+          setChartOptions((prevOptions) => ({
+            ...prevOptions,
+            series: [{ ...prevOptions.series[0], data: chartData }],
+          }));
+        } else {
+          console.error("Error fetching stock data:", json);
+        }
+      } catch (error) {
+        console.error("Error fetching stock data:", error);
       }
     };
 
