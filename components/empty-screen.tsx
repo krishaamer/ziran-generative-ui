@@ -3,6 +3,7 @@ import Lottie from "lottie-react";
 import easy from "../public/easy.json";
 import carrot from "../public/carrot.json";
 import dragon from "../public/dragon.json";
+import High from "@/components/llm-highchart"
 
 const brands = ["3m", "canon", "csd", "debuyer", "lanew", "loreal", "nikon", "olympus", "panasonic", "pentax", "philips", "sony"];
 
@@ -87,6 +88,10 @@ const investing = [
     heading: "How to read a candle chart?",
     message: "How to read a candle chart?",
   },
+  {
+    heading: "如果我買環保的品牌成為永續投資者嗎？",
+    message: "如果我買環保的品牌成為永續投資者嗎？",
+  },
 ];
 
 export function EmptyScreen({
@@ -96,8 +101,8 @@ export function EmptyScreen({
 }) {
   return (
     <div className="mx-auto max-w-2xl px-4">
-      <div className="rounded-lg border bg-background p-4 mb-4 text-3xl font-bold text-center">
-        怎麼知道自己的錢花去支持了啥物呢？
+      <div className="rounded-lg border bg-background p-4 mb-4">
+        <High />
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <div className="flex flex-wrap gap-2">
@@ -107,7 +112,9 @@ export function EmptyScreen({
               variant="ghost"
               className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
               onClick={async () => {
-                submitMessage(`How sustainable is the ${brand} brand? What are some more sustainable alternatives?`);
+                submitMessage(
+                  `How sustainable is the ${brand} brand? What are some more sustainable alternatives?`
+                );
               }}
             >
               <img src={`/brands/${brand}.jpg`} />
@@ -183,9 +190,6 @@ export function EmptyScreen({
             </Button>
           ))}
         </div>
-      </div>
-      <div className="rounded-lg p-4 mb-4">
-        <span className="p-1">買環保的品牌成為永續投資者</span>
       </div>
     </div>
   );

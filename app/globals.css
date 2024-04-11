@@ -78,9 +78,7 @@
     height: 50px;
     width: auto;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
