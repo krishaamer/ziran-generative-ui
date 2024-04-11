@@ -5,6 +5,7 @@ import easy from "../public/easy.json";
 import carrot from "../public/carrot.json";
 import dragon from "../public/dragon.json";
 import High from "@/components/llm-polygon"
+import Personal from "@/components/llm-personal";
 
 const brands = ["3m", "canon", "csd", "debuyer", "lanew", "loreal", "nikon", "olympus", "panasonic", "pentax", "philips", "sony"];
 
@@ -106,6 +107,9 @@ export function EmptyScreen({
         <AvatarImage src="/images/avatar-2.jpg" alt="AI" />
         <AvatarFallback>AI</AvatarFallback>
       </Avatar>
+      <div className="rounded-lg border bg-background p-4 mb-4">
+        <Personal />
+      </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <High />
       </div>
