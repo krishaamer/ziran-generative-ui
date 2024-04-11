@@ -1,15 +1,16 @@
+"use client"
+
 import React, { useEffect, useState } from "react";
 
 export default function Personal() {
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    // Fetch the initial value from Redis when the component mounts
     fetch("/api/personal")
       .then((response) => response.json())
       .then((data) => {
-        // Access the nested 'value' property
-        setValue(data.value?.value || "");
+        // Ensure the received value is a string before setting the state
+        setValue(typeof data.value === "string" ? data.value : "");
       });
   }, []);
 

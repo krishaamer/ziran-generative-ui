@@ -20,6 +20,7 @@ import {
 import { z } from "zod";
 import { StocksSkeleton } from "@/components/llm-stocks/stocks-skeleton";
 import SimpleMap from "@/components/llm-map";
+import Personal from "@/components/llm-personal";
 import Factories from "@/components/llm-factories";
 import Origin from "@/components/llm-origin";
 import Materials from "@/components/llm-materials";
@@ -146,6 +147,7 @@ You can show the product origin visually.
 You can show the product materials visually.
 You can create comparison tables using markdown.
 You can invent ESG scores for companies based on fictional sustainability reports.
+You can save personal user data to be later used.
 
 Messages inside [] means that it's a UI element or a user event. For example:
 - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
@@ -156,6 +158,7 @@ If you want to show a map, call \`show_map\`.
 If you want to show the product origin, call \`show_product_origin\`.
 If you want to show the product materials, call \`show_product_materials\`.
 If you want to show factories, call \`show_factories\`.
+If you want to show personal data saving form, call \`show_personal\`.
 
 Complement function calls with text responses from your own data.
 If the user wants to complete an impossible task, respond that you are an AI and cannot do that.`,
@@ -200,6 +203,11 @@ If the user wants to complete an impossible task, respond that you are an AI and
         description: "Show factories",
         parameters: z.object({}),
       },
+      {
+        name: "show_personal",
+        description: "Show personal",
+        parameters: z.object({}),
+      },
     ],
     temperature: 0,
   });
@@ -236,6 +244,24 @@ If the user wants to complete an impossible task, respond that you are an AI and
       },
     ]);
   });
+
+  completion.onFunctionCall("show_personal", async () => {
+    reply.update("Loading personal data..");
+
+    await sleep(500);
+
+    reply.done(<Personal />);
+
+    aiState.done([
+      ...aiState.get(),
+      {
+        role: "function",
+        name: "show_persnal",
+        content: "",
+      },
+    ]);
+  });
+  
 
   completion.onFunctionCall("show_map", async () => {
     reply.update(<SimpleMap />);
