@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import easy from "../public/easy.json";
 import carrot from "../public/carrot.json";
 import dragon from "../public/dragon.json";
-import High from "@/components/llm-highchart"
+import High from "@/components/llm-highchart3"
 
 const brands = ["3m", "canon", "csd", "debuyer", "lanew", "loreal", "nikon", "olympus", "panasonic", "pentax", "philips", "sony"];
 
