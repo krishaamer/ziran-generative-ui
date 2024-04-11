@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Lottie from "lottie-react";
 import easy from "../public/easy.json";
 import carrot from "../public/carrot.json";
 import dragon from "../public/dragon.json";
-import High from "@/components/llm-highchart3"
+import High from "@/components/llm-polygon"
 
 const brands = ["3m", "canon", "csd", "debuyer", "lanew", "loreal", "nikon", "olympus", "panasonic", "pentax", "philips", "sony"];
 
@@ -101,6 +102,10 @@ export function EmptyScreen({
 }) {
   return (
     <div className="mx-auto max-w-2xl px-4">
+      <Avatar className="ring-1 ring-offset-2 ring-amber-950">
+        <AvatarImage src="/images/avatar-2.jpg" alt="AI" />
+        <AvatarFallback>AI</AvatarFallback>
+      </Avatar>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <High />
       </div>

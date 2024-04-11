@@ -10,6 +10,9 @@ export default function High() {
     title: {
       text: "NVDA Stock Price",
     },
+    rangeSelector: {
+      enabled: false, // Disable the range selector to hide zoom level controls
+    },
     series: [
       {
         name: "NVDA",
