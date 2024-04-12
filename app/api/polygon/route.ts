@@ -1,6 +1,5 @@
 import "server-only";
 import { NextRequest, NextResponse } from "next/server";
-import fetch from "node-fetch";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -30,6 +29,9 @@ export async function GET(req: NextRequest) {
 
   try {
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
