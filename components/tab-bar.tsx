@@ -110,33 +110,37 @@ export default function TabBar({
       <Tabs defaultValue="one">
         <TabsList>
           <TabsTrigger value="one">
-            {" "}
-            <Lottie
-              animationData={carrot}
-              loop={true}
-              className="featureSvg"
-              role="img"
-            />
-            <div className="p-1 font-bold text-2xl text-center">存錢</div>
+            <div className="p-1 font-bold text-2xl text-center">
+              <Lottie
+                animationData={carrot}
+                loop={true}
+                className="tinySvg"
+                role="img"
+              />
+              存錢
+            </div>
           </TabsTrigger>
           <TabsTrigger value="two">
-            {" "}
-            <Lottie
-              animationData={easy}
-              loop={true}
-              className="featureSvg"
-              role="img"
-            />
-            <div className="p-1 font-bold text-2xl text-center">買東西</div>
+            <div className="p-1 font-bold text-2xl text-center">
+              <Lottie
+                animationData={easy}
+                loop={true}
+                className="tinySvg"
+                role="img"
+              />
+              買東西
+            </div>
           </TabsTrigger>
           <TabsTrigger value="three">
-            <Lottie
-              animationData={dragon}
-              loop={true}
-              className="featureSvg"
-              role="img"
-            />
-            <div className="p-1 font-bold text-2xl text-center">投資錢</div>
+            <div className="p-1 font-bold text-2xl text-center">
+              <Lottie
+                animationData={dragon}
+                loop={true}
+                className="tinySvg"
+                role="img"
+              />
+              投資錢
+            </div>
           </TabsTrigger>
         </TabsList>
         <TabsContent value="one">
