@@ -17,29 +17,29 @@ export function Sidebar({
   return (
     <div className="relative mx-auto max-w-2xl px-4 mt-10">
       <h2 className="text-xl font-bold text-center">相關問題</h2>
+
       <Card
         className="ring-1 ring-orange-950 ring-offset-2 mb-4 mt-2 cursor-pointer hover:bg-yellow-300"
         onClick={async () => {
           submitMessage(
-            "I'm a consumer of this brand. Should I invest? What factories is this brand produced in? What is the sustainability score? Compare it to other brands."
+            "我應該買這個品牌的產品嗎？ 這個品牌的產品是在哪些工廠製造的？這個品牌的可持續性評分是多少？ 與其他品牌比較一下～～"
           );
         }}
       >
         <CardHeader>
           <CardTitle>
+            <Lottie
+              animationData={easy}
+              loop={true}
+              className="tinySvg"
+              role="img"
+            />
             <h2>Shopping</h2>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          Should I buy this brand's products? What factories is this brand
-          produced in? What is the sustainability score? Compare it to other
-          brands.
-          <Lottie
-            animationData={easy}
-            loop={true}
-            className="featureSvg"
-            role="img"
-          />
+          我應該買這個品牌的產品嗎？ 這個品牌的產品是在哪些工廠製造的？
+          這個品牌的可持續性評分是多少？ 與其他品牌比較一下～～
         </CardContent>
       </Card>
       <Card
@@ -51,6 +51,12 @@ export function Sidebar({
         }}
       >
         <CardHeader>
+          <Lottie
+            animationData={carrot}
+            loop={true}
+            className="tinySvg"
+            role="img"
+          />
           <CardTitle>
             <h2>Saving</h2>
           </CardTitle>
@@ -59,16 +65,16 @@ export function Sidebar({
           What does it brand do to help the environment? What factories is this
           brand produced in? What is the sustainability score? Compare it to
           other brands.
-          <Lottie
-            animationData={carrot}
-            loop={true}
-            className="featureSvg"
-            role="img"
-          />
         </CardContent>
       </Card>
+      <Lottie
+        animationData={dragon}
+        loop={true}
+        className="tinySvg"
+        role="img"
+      />
       <Card
-        className="ring-1 ring-orange-950 ring-offset-2 cursor-pointer hover:bg-yellow-300"
+        className="ring-1 ring-orange-950 ring-offset-2 cursor-pointer hover:bg-yellow-200"
         onClick={async () => {
           submitMessage(
             "Is this company a B Corporation? What sustainability credentials does it hold to prove sustainability?"
@@ -83,12 +89,6 @@ export function Sidebar({
         <CardContent>
           Should I invest in this brand? Is this company a B Corporation? What
           credentials does it hold to prove sustainability?
-          <Lottie
-            animationData={dragon}
-            loop={true}
-            className="featureSvg"
-            role="img"
-          />
         </CardContent>
       </Card>
     </div>
