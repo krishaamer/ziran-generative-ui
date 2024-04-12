@@ -31,7 +31,7 @@ export function UserMessage({ children }: { children: React.ReactNode }) {
       </Card>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Avatar className="ring-1 ring-amber-950 ring-offset-2">
+          <Avatar className="ring-1 ring-amber-950 ring-offset-2 cursor-pointer">
             <AvatarImage
               src="https://github.com/krishaamer.png"
               alt="@krishaamer"
@@ -62,7 +62,7 @@ export function BotMessage({
       >
         <Tooltip>
           <TooltipTrigger asChild>
-            <Avatar className="ring-1 ring-offset-2 ring-amber-950">
+            <Avatar className="ring-1 ring-offset-2 ring-amber-950 cursor-pointer">
               <AvatarImage src="/images/avatar-2.jpg" alt="助手" />
               <AvatarFallback>助手</AvatarFallback>
             </Avatar>
@@ -102,7 +102,7 @@ export function BotCard({
         >
           <Tooltip>
             <TooltipTrigger asChild>
-              <Avatar className="ring-1 ring-offset-2 ring-amber-950">
+              <Avatar className="ring-1 ring-offset-2 ring-amber-950 cursor-pointer">
                 <AvatarImage src="/images/avatar-2.jpg" alt="助手" />
                 <AvatarFallback>助手</AvatarFallback>
               </Avatar>

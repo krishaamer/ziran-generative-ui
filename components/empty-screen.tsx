@@ -33,7 +33,7 @@ export function EmptyScreen({
     <div className="mx-auto max-w-2xl px-4">
       <Tooltip>
         <TooltipTrigger asChild>
-          <Avatar className="ring-1 ring-offset-2 ring-amber-950">
+          <Avatar className="ring-1 ring-offset-2 ring-amber-950 cursor-pointer">
             <AvatarImage src="/images/avatar-2.jpg" alt="助手" />
             <AvatarFallback>助手</AvatarFallback>
           </Avatar>
