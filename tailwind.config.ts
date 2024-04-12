@@ -1,5 +1,6 @@
 import { fontFamily } from 'tailwindcss/defaultTheme';
 import type { Config } from 'tailwindcss';
+const { blackA, green, mauve, violet } = require("@radix-ui/colors");
 
 const config: Config = {
   content: [
@@ -21,6 +22,10 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
+        ...blackA,
+        ...green,
+        ...mauve,
+        ...violet,
         green: {
           "50": "#f0fdf6",
           "100": "#dbfdec",
