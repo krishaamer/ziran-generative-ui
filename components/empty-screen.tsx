@@ -52,6 +52,10 @@ const saving = [
     message: "買東西先查看產品的運輸距離（是不是當地食品）",
   },
   {
+    heading: "How can I increase my savings?",
+    message: "How can I increase my savings?",
+  },
+  {
     heading: "買東西先查看公司生產過程多環保",
     message: "買東西先查看公司工人的員工福利多好",
   },
