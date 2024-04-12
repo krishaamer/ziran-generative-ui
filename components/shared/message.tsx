@@ -7,6 +7,11 @@ import Lottie from "lottie-react";
 import easy from "@/public/easy.json";
 import carrot from "@/public/carrot.json";
 import dragon from "@/public/dragon.json";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -24,13 +29,18 @@ export function UserMessage({ children }: { children: React.ReactNode }) {
           </div>
         </CardContent>
       </Card>
-      <Avatar className="ring-1 ring-amber-950 ring-offset-2">
-        <AvatarImage
-          src="https://github.com/krishaamer.png"
-          alt="@krishaamer"
-        />
-        <AvatarFallback>KH</AvatarFallback>
-      </Avatar>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Avatar className="ring-1 ring-amber-950 ring-offset-2">
+            <AvatarImage
+              src="https://github.com/krishaamer.png"
+              alt="@krishaamer"
+            />
+            <AvatarFallback>我</AvatarFallback>
+          </Avatar>
+        </TooltipTrigger>
+        <TooltipContent>我自己</TooltipContent>
+      </Tooltip>
     </div>
   );
 }
@@ -50,10 +60,15 @@ export function BotMessage({
       <div
         className={cn("group relative flex items-start md:-ml-12", className)}
       >
-        <Avatar className="ring-1 ring-offset-2 ring-amber-950">
-          <AvatarImage src="/images/avatar-2.jpg" alt="AI" />
-          <AvatarFallback>AI</AvatarFallback>
-        </Avatar>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Avatar className="ring-1 ring-offset-2 ring-amber-950">
+              <AvatarImage src="/images/avatar-2.jpg" alt="助手" />
+              <AvatarFallback>助手</AvatarFallback>
+            </Avatar>
+          </TooltipTrigger>
+          <TooltipContent>綠濾助手</TooltipContent>
+        </Tooltip>
         <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200 dark:bg-amber-950">
           <CardContent>
             <div className="flex-1 space-y-2 overflow-hidden px-1">
@@ -85,10 +100,15 @@ export function BotCard({
             !showAvatar && "invisible"
           )}
         >
-          <Avatar className="ring-1 ring-offset-2 ring-orange-950">
-            <AvatarImage src="/images/avatar-2.jpg" alt="AI" />
-            <AvatarFallback>AI</AvatarFallback>
-          </Avatar>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Avatar className="ring-1 ring-offset-2 ring-amber-950">
+                <AvatarImage src="/images/avatar-2.jpg" alt="助手" />
+                <AvatarFallback>助手</AvatarFallback>
+              </Avatar>
+            </TooltipTrigger>
+            <TooltipContent>綠濾助手</TooltipContent>
+          </Tooltip>
         </div>
         <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200	">
           <CardContent>

@@ -2,6 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import High from "@/components/llm-polygon";
 import Personal from "@/components/llm-personal";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import TabBar from "./tab-bar";
 
 const brands = [
@@ -26,10 +31,15 @@ export function EmptyScreen({
 }) {
   return (
     <div className="mx-auto max-w-2xl px-4">
-      <Avatar className="ring-1 ring-offset-2 ring-amber-950">
-        <AvatarImage src="/images/avatar-2.jpg" alt="AI" />
-        <AvatarFallback>AI</AvatarFallback>
-      </Avatar>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Avatar className="ring-1 ring-offset-2 ring-amber-950">
+            <AvatarImage src="/images/avatar-2.jpg" alt="助手" />
+            <AvatarFallback>助手</AvatarFallback>
+          </Avatar>
+        </TooltipTrigger>
+        <TooltipContent>綠濾助手</TooltipContent>
+      </Tooltip>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Personal />
       </div>

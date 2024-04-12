@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useUIState, useActions, useAIState } from "ai/rsc";
 import { UserMessage } from "@/components/shared/message";
 import Header from "@/components/shared/header";
@@ -94,27 +94,25 @@ export default function Page() {
           </div>
         </main>
       </div>
-      <div className="sticky bottom-0 z-50 flex items-center justify-between w-full px-4 border-b h-20 shrink-0 bg-background backdrop-blur-xl docu-shadow">
-        <Search
-          submitMessage={async (message) => {
-            // Add user message UI
-            setMessages((currentMessages) => [
-              ...currentMessages,
-              {
-                id: Date.now(),
-                display: <UserMessage>{message}</UserMessage>,
-              },
-            ]);
+      <Search
+        submitMessage={async (message) => {
+          // Add user message UI
+          setMessages((currentMessages) => [
+            ...currentMessages,
+            {
+              id: Date.now(),
+              display: <UserMessage>{message}</UserMessage>,
+            },
+          ]);
 
-            // Submit and get response message
-            const responseMessage = await submitUserMessage(message);
-            setMessages((currentMessages) => [
-              ...currentMessages,
-              responseMessage,
-            ]);
-          }}
-        />
-      </div>
+          // Submit and get response message
+          const responseMessage = await submitUserMessage(message);
+          setMessages((currentMessages) => [
+            ...currentMessages,
+            responseMessage,
+          ]);
+        }}
+      />
     </>
   );
 }
