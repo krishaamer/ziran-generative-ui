@@ -50,7 +50,10 @@ export default function High() {
         }
         const json = await response.json();
 
-        if (json.status === "OK" && Array.isArray(json.results)) {
+        if (
+          (json.status === "OK" || "DELAYED") &&
+          Array.isArray(json.results)
+        ) {
           const chartData: ChartPoint[] = json.results.map(
             (item: StockData) => [item.t * 1000, item.c]
           );
@@ -60,10 +63,10 @@ export default function High() {
             series: [{ ...prevOptions.series[0], data: chartData }],
           }));
         } else {
-          console.error("Error fetching stock data:", json);
+          console.error("Error fetching stock data error here:", json);
         }
       } catch (error) {
-        console.error("Error fetching stock data:", error);
+        console.error("Error fetching stock data fetch failed:", error);
       }
     };
 
