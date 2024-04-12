@@ -49,27 +49,24 @@ export default function High() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const json = await response.json();
-
         if (
-          (json.status === "OK" || "DELAYED") &&
+          (json.status === "OK" || json.status === "DELAYED") &&
           Array.isArray(json.results)
         ) {
           const chartData: ChartPoint[] = json.results.map(
-            (item: StockData) => [item.t * 1000, item.c]
+            (item: StockData) => [new Date(item.t).getTime(), item.c]
           );
-
           setChartOptions((prevOptions) => ({
             ...prevOptions,
             series: [{ ...prevOptions.series[0], data: chartData }],
           }));
         } else {
-          console.error("Error fetching stock data error here:", json);
+          console.error("Error fetching stock data:", json);
         }
       } catch (error) {
-        console.error("Error fetching stock data fetch failed:", error);
+        console.error("Error fetching stock data:", error);
       }
     };
-
     fetchData();
   }, [fromDate, toDate]); // Make sure useEffect reacts to changes in fromDate and toDate
 
