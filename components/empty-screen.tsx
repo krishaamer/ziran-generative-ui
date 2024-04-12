@@ -21,8 +21,8 @@ const shopping = [
     message: "Where can I repair my clothes in Tainan?",
   },
   {
-    heading: "How sustainable is Coca Cola?",
-    message: "How sustainable is Coca Cola?",
+    heading: "Is my current lifestyle sustainable?",
+    message: "Is my current lifestyle sustainable?",
   },
   {
     heading: "What are the living conditions of the animals I eat in Taiwan?",
@@ -85,6 +85,10 @@ const investing = [
   {
     heading: "Are stocks or cryptocurrencies more sustainable?",
     message: "Are stocks or cryptocurrencies more sustainable?",
+  },
+  {
+    heading: "How sustainable is Coca Cola?",
+    message: "How sustainable is Coca Cola?",
   },
   {
     heading: "How to read a candle chart?",
