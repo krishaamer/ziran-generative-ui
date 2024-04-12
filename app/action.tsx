@@ -1,6 +1,7 @@
 import "server-only";
 
 import { createAI, createStreamableUI, getMutableAIState } from "ai/rsc";
+import { kv } from "@vercel/kv";
 import OpenAI from "openai";
 
 import {
@@ -127,6 +128,8 @@ async function submitUserMessage(content: string) {
     },
   ]);
 
+  const clientData = await kv.get("userData");
+
   const completion = runOpenAICompletion(openai, {
     model: "gpt-4-turbo-preview",
     response_format: { type: "text" },
@@ -161,7 +164,10 @@ If you want to show factories, call \`show_factories\`.
 If you want to show personal data saving form, call \`show_personal\`.
 
 Complement function calls with text responses from your own data.
-If the user wants to complete an impossible task, respond that you are an AI and cannot do that.`,
+If the user wants to complete an impossible task, respond that you are an AI and cannot do that. 
+
+Here is some user data you can use to personalize your responses and offer specific advice:
+${clientData}`,
       },
       ...aiState.get().map((info: any) => ({
         role: info.role,
@@ -262,7 +268,6 @@ If the user wants to complete an impossible task, respond that you are an AI and
     ]);
   });
   
-
   completion.onFunctionCall("show_map", async () => {
     reply.update(<SimpleMap />);
 
