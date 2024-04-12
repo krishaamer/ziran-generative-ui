@@ -1,7 +1,9 @@
+import "server-only";
 import { NextRequest, NextResponse } from "next/server";
 import fetch from "node-fetch";
 
-interface DailyTimeSeries {
+// Interface for the daily stock data
+interface DailyData {
   "1. open": string;
   "2. high": string;
   "3. low": string;
@@ -9,43 +11,69 @@ interface DailyTimeSeries {
   "5. volume": string;
 }
 
+// Interface for the metadata
+interface MetaData {
+  "1. Information": string;
+  "2. Symbol": string;
+  "3. Last Refreshed": string;
+  "4. Output Size": string;
+  "5. Time Zone": string;
+}
+
+// Interface for the entire API response including a possible error message
+interface ApiResponse {
+  "Meta Data"?: MetaData;
+  "Time Series (Daily)"?: { [key: string]: DailyData };
+  "Error Message"?: string;
+}
+
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const symbol = searchParams.get("symbol");
-  const api_key = "NOQ41DSYXDIUNRN0"; // Replace with your Alpha Vantage API key
+  const api_key = "NOQ41DSYXDIUNRN0"; // Replace with your actual API key
 
-  // Construct the API URL
   const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${api_key}`;
 
   try {
-    // Fetch data from the Alpha Vantage API
     const response = await fetch(apiUrl);
-    const data = await response.json();
+    if (!response.ok) {
+      console.error("API response not OK:", response.statusText);
+      return new NextResponse(
+        JSON.stringify({ error: "Error fetching data from API" }),
+        { status: 500 }
+      );
+    }
+    const jsonData = await response.json();
+    const data = jsonData as ApiResponse; // Type assertion here
 
-    // Check if data contains error message
     if (data["Error Message"]) {
-      return NextResponse.json(
-        { error: data["Error Message"] },
+      return new NextResponse(
+        JSON.stringify({ error: data["Error Message"] }),
         { status: 500 }
       );
     }
 
-    // Extract daily time series data
-    const dailyTimeSeries = data["Time Series (Daily)"];
-    const dataArray = Object.entries<DailyTimeSeries>(dailyTimeSeries).map(
-      ([date, values]) => ({
-        date,
-        open: parseFloat(values["1. open"]),
-        high: parseFloat(values["2. high"]),
-        low: parseFloat(values["3. low"]),
-        close: parseFloat(values["4. close"]),
-        volume: parseInt(values["5. volume"]),
-      })
-    );
+    if (!data["Time Series (Daily)"]) {
+      return new NextResponse(JSON.stringify({ error: "No data available" }), {
+        status: 404,
+      });
+    }
 
-    return NextResponse.json(dataArray);
+    const dailyTimeSeries = data["Time Series (Daily)"];
+    const dataArray = Object.entries(dailyTimeSeries).map(([date, values]) => ({
+      date,
+      open: parseFloat(values["1. open"]),
+      high: parseFloat(values["2. high"]),
+      low: parseFloat(values["3. low"]),
+      close: parseFloat(values["4. close"]),
+      volume: parseInt(values["5. volume"]),
+    }));
+
+    return new NextResponse(JSON.stringify(dataArray), { status: 200 });
   } catch (error) {
     console.error("Error fetching data from Alpha Vantage API:", error);
-    return NextResponse.json({ error: "Error fetching data" }, { status: 500 });
+    return new NextResponse(JSON.stringify({ error: "Server error" }), {
+      status: 500,
+    });
   }
 }
