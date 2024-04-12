@@ -54,7 +54,9 @@ export function EmptyScreen({
           ))}
         </div>
       </div>
-      <TabBar submitMessage={submitMessage} />
+      <div className="rounded-lg border bg-background">
+        <TabBar submitMessage={submitMessage} />
+      </div>
     </div>
   );
 }

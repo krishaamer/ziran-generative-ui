@@ -106,7 +106,7 @@ export default function TabBar({
   submitMessage: (message: string) => void;
 }) {
   return (
-    <div className="mt-16">
+    <div>
       <Tabs defaultValue="one">
         <TabsList>
           <TabsTrigger value="one">
@@ -144,57 +144,51 @@ export default function TabBar({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="one">
-          <div className="rounded-lg border bg-background p-4 mb-4">
-            <div className="flex flex-wrap gap-2">
-              {shopping.map((msg, index) => (
-                <Button
-                  key={index}
-                  variant="ghost"
-                  className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
-                  onClick={async () => {
-                    submitMessage(msg.message);
-                  }}
-                >
-                  {msg.heading}
-                </Button>
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-2 p-4 mb-4">
+            {shopping.map((msg, index) => (
+              <Button
+                key={index}
+                variant="ghost"
+                className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+                onClick={async () => {
+                  submitMessage(msg.message);
+                }}
+              >
+                {msg.heading}
+              </Button>
+            ))}
           </div>
         </TabsContent>
         <TabsContent value="two">
-          <div className="rounded-lg border bg-background p-4 mb-4">
-            <div className="flex flex-wrap gap-2">
-              {saving.map((msg, index) => (
-                <Button
-                  key={index}
-                  variant="ghost"
-                  className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
-                  onClick={async () => {
-                    submitMessage(msg.message);
-                  }}
-                >
-                  {msg.heading}
-                </Button>
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-2 p-4 mb-4">
+            {saving.map((msg, index) => (
+              <Button
+                key={index}
+                variant="ghost"
+                className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+                onClick={async () => {
+                  submitMessage(msg.message);
+                }}
+              >
+                {msg.heading}
+              </Button>
+            ))}
           </div>
         </TabsContent>
         <TabsContent value="three">
-          <div className="rounded-lg border bg-background p-4 mb-4">
-            <div className="flex flex-wrap gap-2">
-              {investing.map((msg, index) => (
-                <Button
-                  key={index}
-                  variant="ghost"
-                  className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
-                  onClick={async () => {
-                    submitMessage(msg.message);
-                  }}
-                >
-                  {msg.heading}
-                </Button>
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-2 p-4 mb-4">
+            {investing.map((msg, index) => (
+              <Button
+                key={index}
+                variant="ghost"
+                className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+                onClick={async () => {
+                  submitMessage(msg.message);
+                }}
+              >
+                {msg.heading}
+              </Button>
+            ))}
           </div>
         </TabsContent>
       </Tabs>
