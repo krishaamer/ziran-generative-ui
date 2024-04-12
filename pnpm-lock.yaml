@@ -125,6 +125,9 @@ dependencies:
   sass:
     specifier: ^1.75.0
     version: 1.75.0
+  server-only:
+    specifier: ^0.0.1
+    version: 0.0.1
   tailwind-merge:
     specifier: ^2.2.2
     version: 2.2.2
