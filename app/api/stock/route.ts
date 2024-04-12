@@ -1,6 +1,5 @@
 import "server-only";
 import { NextRequest, NextResponse } from "next/server";
-import fetch from "node-fetch";
 
 // Interface for the daily stock data
 interface DailyData {
