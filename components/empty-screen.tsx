@@ -30,6 +30,7 @@ export function EmptyScreen({
 }: {
   submitMessage: (message: string) => void;
 }) {
+
   return (
     <div className="mx-auto max-w-2xl px-4">
       <Tooltip>
