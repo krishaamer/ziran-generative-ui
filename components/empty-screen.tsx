@@ -43,9 +43,6 @@ export function EmptyScreen({
         <TooltipContent>綠濾助手</TooltipContent>
       </Tooltip>
       <div className="rounded-lg border bg-background p-4 mb-4">
-        <LoginScreen />
-      </div>
-      <div className="rounded-lg border bg-background p-4 mb-4">
         <Personal />
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
