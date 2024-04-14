@@ -34,7 +34,7 @@ export function Sidebar({
               className="tinySvg"
               role="img"
             />
-            <h2>Shopping</h2>
+            <h2>購物主題</h2>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -58,7 +58,7 @@ export function Sidebar({
             role="img"
           />
           <CardTitle>
-            <h2>Saving</h2>
+            <h2>存錢主題</h2>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -83,7 +83,7 @@ export function Sidebar({
       >
         <CardHeader>
           <CardTitle>
-            <h2>Investing</h2>
+            <h2>投資主題</h2>
           </CardTitle>
         </CardHeader>
         <CardContent>

@@ -8,7 +8,7 @@ export default function SignIn() {
         await signInWithGoogle();
       }}
     >
-      <button type="submit">Sign in with Google</button>
+      <button type="submit">用 Google 登入</button>
     </form>
   );
 }
