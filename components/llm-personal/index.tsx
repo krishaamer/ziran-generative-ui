@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 
-export default async function Personal() {
+export default function Personal() {
   const [clientData, setClientData] = useState("");
 
   useEffect(() => {
