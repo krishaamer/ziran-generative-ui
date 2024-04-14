@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { auth } from "@/auth";
 import {
   Tooltip,
   TooltipContent,
@@ -11,7 +10,6 @@ import { Button } from "@/components/ui/button";
 
 export default async function Personal() {
   const [clientData, setClientData] = useState("");
-  const session = await auth();
 
   useEffect(() => {
     fetch("/api/personal")
@@ -33,8 +31,6 @@ export default async function Personal() {
       body: JSON.stringify({ clientData }),
     });
   };
-
-  console.log(session);
 
   return (
     <>
@@ -64,7 +60,6 @@ export default async function Personal() {
           <TooltipContent>Save me!</TooltipContent>
         </Tooltip>
       </form>
-      {session ? <div>Logged in</div> : <div>Logged out</div>}
     </>
   );
 }
