@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import High from "@/components/llm-polygon";
 import Personal from "@/components/llm-personal";
+import LoginScreen from "@/components/llm-login";
 import {
   Tooltip,
   TooltipContent,
@@ -40,6 +41,9 @@ export function EmptyScreen({
         </TooltipTrigger>
         <TooltipContent>綠濾助手</TooltipContent>
       </Tooltip>
+      <div className="rounded-lg border bg-background p-4 mb-4">
+        <LoginScreen />
+      </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Personal />
       </div>

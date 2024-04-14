@@ -15,7 +15,6 @@ export default function Personal() {
     fetch("/api/personal")
       .then((response) => response.json())
       .then((data) => {
-        // Directly use 'clientData' instead of nested 'data.value'
         setClientData(
           typeof data.clientData === "string" ? data.clientData : ""
         );
