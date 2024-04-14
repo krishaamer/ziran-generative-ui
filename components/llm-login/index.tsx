@@ -1,7 +1,7 @@
+"use client";
 import { signInWithGoogle } from "./authActions";
 
 export default function SignIn() {
-  
   return (
     <>
       <form
