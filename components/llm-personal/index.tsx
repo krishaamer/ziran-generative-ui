@@ -34,7 +34,7 @@ export default function Personal() {
 
   return (
     <>
-      <h2 className="text-sm font-medium">Personal Data and Financial Goals</h2>
+      <h2 className="text-sm font-medium">我的個人資料和財務目標</h2>
       <form onSubmit={handleSubmit}>
         <textarea
           className="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 mb-2"
@@ -54,10 +54,10 @@ export default function Personal() {
               }`}
               disabled={!clientData.trim()}
             >
-              Save
+              儲存
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Save me!</TooltipContent>
+          <TooltipContent>儲存個人資料</TooltipContent>
         </Tooltip>
       </form>
     </>
