@@ -46,9 +46,11 @@ export function EmptyScreen({
         <Personal />
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
+        <h2>The Stocks I Own</h2>
         <High />
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
+        <h2>The Brands I Buy</h2>
         <div className="flex flex-wrap gap-2">
           {brands.map((brand, idx) => (
             <Button
