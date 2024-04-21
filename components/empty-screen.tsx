@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import Polygon from "@/components/llm-polygon";
@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import TabBar from "./tab-bar";
+import Brands from "./brands";
 
 export function EmptyScreen({
   submitMessage,
@@ -70,25 +71,7 @@ export function EmptyScreen({
         <Polygon ticker="TSM" />
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
-        <h2 className="font-bold px-4 pt-4 text-xl text-center">
-          我之前買過的品牌（今年）
-        </h2>
-        <div className="flex flex-wrap gap-2">
-          {brandsData.map((brand, idx) => (
-            <Button
-              key={idx}
-              variant="ghost"
-              className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
-              onClick={async () => {
-                submitMessage(
-                  `How sustainable is the ${brand} brand? What are some more sustainable alternatives?`
-                );
-              }}
-            >
-              <img src={`/brands/${brand}.jpg`} alt={`${brand} brand`} />
-            </Button>
-          ))}
-        </div>
+        <Brands submitMessage={submitMessage} brandsData={brandsData} />
       </div>
       <div className="rounded-lg border bg-background">
         <TabBar submitMessage={submitMessage} />
