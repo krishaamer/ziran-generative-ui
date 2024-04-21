@@ -127,7 +127,7 @@ export default function TabBar({
                 className="tinySvg"
                 role="img"
               />
-              存錢
+              學省錢
             </div>
           </TabsTrigger>
           <TabsTrigger value="investing">
@@ -138,7 +138,7 @@ export default function TabBar({
                 className="tinySvg"
                 role="img"
               />
-              投資錢
+              學投資
             </div>
           </TabsTrigger>
         </TabsList>
