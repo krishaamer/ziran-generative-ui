@@ -43,6 +43,10 @@ const shopping = [
 
 const saving = [
   {
+    heading: "Where can I buy products in bulk in Tainan?",
+    message: "Where can I buy products in bulk in Tainan?",
+  },
+  {
     heading: "買東西先查看產品的運輸距離（是不是當地食品）",
     message: "買東西先查看產品的運輸距離（是不是當地食品）",
   },
