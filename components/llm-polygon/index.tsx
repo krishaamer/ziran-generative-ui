@@ -9,17 +9,22 @@ type StockData = {
   c: number; // closing price
 };
 
-export default function High() {
+type Props = {
+  ticker: string;
+};
+
+export default function Polygon(props: Props) {
+
   const [chartOptions, setChartOptions] = useState({
     title: {
-      text: "NVDA Stock Price",
+      text: `${props?.ticker} 股票價格`,
     },
     rangeSelector: {
       enabled: true,
     },
     series: [
       {
-        name: "NVDA",
+        name: `${props?.ticker} 股票價格`,
         data: [] as ChartPoint[],
         tooltip: {
           valueDecimals: 2,
@@ -43,7 +48,7 @@ export default function High() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `/api/polygon?symbol=NVDA&from=${fromDate}&to=${toDate}`
+          `/api/polygon?symbol=${props?.ticker}&from=${fromDate}&to=${toDate}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
-import High from "@/components/llm-polygon";
+import Polygon from "@/components/llm-polygon";
 import Personal from "@/components/llm-personal";
 import {
   Tooltip,
@@ -37,7 +37,7 @@ export function EmptyScreen({
     return (
       <div className="mx-auto max-w-2xl px-4">
         <div className="flex flex-col space-y-3">
-          <h2>Loading...</h2>
+          <h2>加載中...</h2>
           <Skeleton className="h-[125px] w-full rounded-xl" />
           <div className="space-y-2">
             <Skeleton className="h-4 w-full" />
@@ -63,11 +63,16 @@ export function EmptyScreen({
         <Personal />
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
-        <h2>The Stocks I Own</h2>
-        <High />
+        <h2 className="font-bold px-4 pt-4 text-xl text-center">
+          我持有的股票
+        </h2>
+        <Polygon ticker="KO" />
+        <Polygon ticker="TSM" />
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
-        <h2>我之前買過的品牌</h2>
+        <h2 className="font-bold px-4 pt-4 text-xl text-center">
+          我之前買過的品牌（今年）
+        </h2>
         <div className="flex flex-wrap gap-2">
           {brandsData.map((brand, idx) => (
             <Button
