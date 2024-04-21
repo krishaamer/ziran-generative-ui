@@ -11,8 +11,12 @@ const brandQuestions = [
     message: "How sustainable are the brands I buy? Make a table.",
   },
   {
-    heading: "Show me digital product passports for the products I bought.",
-    message: "Show me digital product passports for the products I bought.",
+    heading: "Show me my digital product passports",
+    message: "List all the products I bought. Make a table and show me my digital product passports.",
+  },
+  {
+    heading: "Where did the products I bought come from?",
+    message: "Where did the products I bought come from?",
   },
 ];
 

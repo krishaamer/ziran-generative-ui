@@ -63,6 +63,9 @@ export function EmptyScreen({
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Personal />
       </div>
+      <div className="rounded-lg border bg-background mb-4">
+        <TabBar submitMessage={submitMessage} />
+      </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <h2 className="font-bold px-4 pt-4 text-xl text-center">
           我持有的股票
@@ -72,9 +75,6 @@ export function EmptyScreen({
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Brands submitMessage={submitMessage} brandsData={brandsData} />
-      </div>
-      <div className="rounded-lg border bg-background">
-        <TabBar submitMessage={submitMessage} />
       </div>
     </div>
   );

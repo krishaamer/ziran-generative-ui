@@ -40,7 +40,7 @@ export default function Personal() {
           className="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 mb-2"
           value={clientData}
           onChange={(e) => setClientData(e.target.value)}
-          placeholder="Enter client data here"
+          placeholder="我的基本個人財務資訊"
           required
         />
         <Tooltip>
