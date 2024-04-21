@@ -147,7 +147,7 @@ async function submitUserMessage(content: string) {
   ]);
 
   const clientData = await kv.get("userData");
-  const brandData = await kv.get("brandData");
+  const brandsData = await kv.get("brandsData");
   const investingData = await kv.get("investingData");
 
   const completion = runOpenAICompletion(openai, {
@@ -191,7 +191,7 @@ If the user wants to complete an impossible task, respond that you are an AI and
 Here is some user data you can use to personalize your responses and offer specific advice:
 ${clientData}
 
-The user has previously bought products from the following brands: ${brandData}
+The user has previously bought products from the following brands: ${brands.join(',')}
 
 The user currently owns investments in the following companies: ${investingData}
 `,
