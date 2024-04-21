@@ -12,38 +12,32 @@ const shopping = [
     message: "我之前買過哪些品牌？它們在可持續性方面的比較如何？製作一個表格。",
   },
   {
-    heading:
-      "How are shopping, saving, and investing related to sustainability?",
-    message:
-      "How are shopping, saving, and investing related to sustainability?",
+    heading: "購物、儲蓄和投資與可持續性有什麼關聯？",
+    message: "購物、儲蓄和投資與可持續性有什麼關聯？製作一個表格。",
   },
   {
-    heading: "Where can I repair my clothes in Tainan?",
-    message: "Where can I repair my clothes in Tainan?",
+    heading: "我在台南哪裡可以修理我的衣服？",
+    message: "我在台南哪裡可以修理我的衣服？",
   },
   {
-    heading: "Is my current lifestyle sustainable?",
-    message: "Is my current lifestyle sustainable?",
+    heading: "我目前的生活方式可持續嗎？",
+    message: "我目前的生活方式可持續嗎？",
   },
   {
-    heading: "What are the living conditions of the animals I eat in Taiwan?",
-    message: "What are the living conditions of the animals I eat in Taiwan?",
+    heading: "我在台灣吃的動物的生活條件如何？",
+    message: "我在台灣吃的動物的生活條件如何？",
   },
   {
-    heading: "Where did my Nike sneakers come from?",
-    message: "Where did my Nike sneakers come from?",
+    heading: "我的Nike運動鞋來自哪裡？",
+    message: "我的Nike運動鞋來自哪裡？",
   },
   {
-    heading: "What are Adidas sneakers made of?",
-    message: "What are Adidas sneakers made of?",
+    heading: "什麼是數位產品護照？",
+    message: "什麼是數位產品護照？",
   },
   {
-    heading: "What are digital product passports?",
-    message: "What are digital product passports?",
-  },
-  {
-    heading: "How to check a product's sustainability?",
-    message: "How to check a product's sustainability?",
+    heading: "如何檢查一個產品的可持續性？",
+    message: "如何檢查一個產品的可持續性？",
   },
 ];
 
@@ -151,7 +145,7 @@ export default function TabBar({
         <TabsContent value="shopping">
           <div>
             <h2 className="font-bold px-4 pt-4 text-xl text-center">
-              Chat about shopping
+              購物建議
             </h2>
             <div className="flex flex-wrap gap-2 p-4 mb-4">
               {shopping.map((msg, index) => (
@@ -172,7 +166,7 @@ export default function TabBar({
         <TabsContent value="saving">
           <div>
             <h2 className="font-bold px-4 pt-4 text-xl text-center">
-              Chat about saving
+              儲蓄建議
             </h2>
             <div className="flex flex-wrap gap-2 p-4 mb-4">
               {saving.map((msg, index) => (
@@ -193,7 +187,7 @@ export default function TabBar({
         <TabsContent value="investing">
           <div>
             <h2 className="font-bold px-4 pt-4 text-xl text-center">
-              Investing
+              投資建議
             </h2>
             <div className="flex flex-wrap gap-2 p-4 mb-4">
               {investing.map((msg, index) => (
