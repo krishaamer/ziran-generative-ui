@@ -108,7 +108,7 @@ export default function TabBar({
     <div>
       <Tabs defaultValue="shopping">
         <TabsList>
-          <TabsTrigger value="shopping">
+          <TabsTrigger value="shopping" className="hover:bg-white hover:shadow">
             <div className="p-1 font-bold text-2xl text-center">
               <Lottie
                 animationData={easy}
@@ -119,7 +119,7 @@ export default function TabBar({
               買東西
             </div>
           </TabsTrigger>
-          <TabsTrigger value="saving">
+          <TabsTrigger value="saving" className="hover:bg-white hover:shadow">
             <div className="p-1 font-bold text-2xl text-center">
               <Lottie
                 animationData={carrot}
@@ -130,7 +130,10 @@ export default function TabBar({
               學省錢
             </div>
           </TabsTrigger>
-          <TabsTrigger value="investing">
+          <TabsTrigger
+            value="investing"
+            className="hover:bg-white hover:shadow"
+          >
             <div className="p-1 font-bold text-2xl text-center">
               <Lottie
                 animationData={dragon}
