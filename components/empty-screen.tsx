@@ -70,8 +70,8 @@ export function EmptyScreen({
         <h2 className="font-bold px-4 pt-4 text-xl text-center">
           我持有的股票
         </h2>
-        <Polygon ticker="KO" />
-        <Polygon ticker="TSM" />
+        <Polygon submitMessage={submitMessage} ticker="KO" />
+        <Polygon submitMessage={submitMessage} ticker="TSM" />
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Brands submitMessage={submitMessage} brandsData={brandsData} />

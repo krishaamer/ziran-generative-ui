@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
+import { Button } from "@/components/ui/button";
 
 type ChartPoint = [number, number]; // Define the type for a data point in Highcharts
 
@@ -9,22 +10,24 @@ type StockData = {
   c: number; // closing price
 };
 
-type Props = {
+
+export default function Polygon({
+  submitMessage,
+  ticker,
+}: {
+  submitMessage: (message: string) => void;
   ticker: string;
-};
-
-export default function Polygon(props: Props) {
-
+}) {
   const [chartOptions, setChartOptions] = useState({
     title: {
-      text: `${props?.ticker} 股票價格`,
+      text: `${ticker} 股票價格`,
     },
     rangeSelector: {
       enabled: true,
     },
     series: [
       {
-        name: `${props?.ticker} 股票價格`,
+        name: `${ticker} 股票價格`,
         data: [] as ChartPoint[],
         tooltip: {
           valueDecimals: 2,
@@ -48,7 +51,7 @@ export default function Polygon(props: Props) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `/api/polygon?symbol=${props?.ticker}&from=${fromDate}&to=${toDate}`
+          `/api/polygon?symbol=${ticker}&from=${fromDate}&to=${toDate}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -76,10 +79,23 @@ export default function Polygon(props: Props) {
   }, [fromDate, toDate]); // Make sure useEffect reacts to changes in fromDate and toDate
 
   return (
-    <HighchartsReact
-      highcharts={Highcharts}
-      constructorType={"stockChart"}
-      options={chartOptions}
-    />
+    <div>
+      <HighchartsReact
+        highcharts={Highcharts}
+        constructorType={"stockChart"}
+        options={chartOptions}
+      />
+      <div className="flex flex-wrap gap-2 mt-4">
+        <Button
+          variant="ghost"
+          className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+          onClick={async () => {
+            submitMessage(`What's the history of the ${ticker} stock? How sustainable are their products?`);
+          }}
+        >
+          {`What's the history of the ${ticker} stock?`}
+        </Button>
+      </div>
+    </div>
   );
 }
