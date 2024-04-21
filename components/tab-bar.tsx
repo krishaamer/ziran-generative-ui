@@ -5,7 +5,12 @@ import easy from "../public/easy.json";
 import carrot from "../public/carrot.json";
 import dragon from "../public/dragon.json";
 
+
 const shopping = [
+  {
+    heading: "我之前買過哪些品牌？",
+    message: "我之前買過哪些品牌？它們在可持續性方面的比較如何？製作一個表格。",
+  },
   {
     heading:
       "How are shopping, saving, and investing related to sustainability?",
