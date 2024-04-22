@@ -143,7 +143,7 @@ export default function TabBar({
                 className="tinySvg"
                 role="img"
               />
-              買東西
+              環保購物
             </div>
           </TabsTrigger>
           <TabsTrigger value="saving" className="hover:bg-white hover:shadow">
@@ -154,7 +154,7 @@ export default function TabBar({
                 className="tinySvg"
                 role="img"
               />
-              學省錢
+              環保省錢
             </div>
           </TabsTrigger>
           <TabsTrigger
@@ -168,7 +168,7 @@ export default function TabBar({
                 className="tinySvg"
                 role="img"
               />
-              學投資
+              環保投資
             </div>
           </TabsTrigger>
         </TabsList>
@@ -182,12 +182,12 @@ export default function TabBar({
                 <Button
                   key={idx}
                   variant="ghost"
-                  className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+                  className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left"
                   onClick={async () => {
                     submitMessage(msg.message);
                   }}
                 >
-                  <Badge variant="outline" className="m-1">
+                  <Badge variant="outline" className="m-1 mr-2 bg-amber-200">
                     {idx + 1}
                   </Badge>
                   {msg.heading}
@@ -206,12 +206,12 @@ export default function TabBar({
                 <Button
                   key={idx}
                   variant="ghost"
-                  className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+                  className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left"
                   onClick={async () => {
                     submitMessage(msg.message);
                   }}
                 >
-                  <Badge variant="outline" className="m-1">
+                  <Badge variant="outline" className="m-1 mr-2 bg-amber-200">
                     {idx + 1}
                   </Badge>
                   {msg.heading}
@@ -230,12 +230,12 @@ export default function TabBar({
                 <Button
                   key={idx}
                   variant="ghost"
-                  className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
+                  className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left"
                   onClick={async () => {
                     submitMessage(msg.message);
                   }}
                 >
-                  <Badge variant="outline" className="m-1">
+                  <Badge variant="outline" className="m-1 mr-2 bg-amber-200">
                     {idx + 1}
                   </Badge>
                   {msg.heading}
