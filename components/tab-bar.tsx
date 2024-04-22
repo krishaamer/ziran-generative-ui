@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import Lottie from "lottie-react";
 import easy from "../public/easy.json";
 import carrot from "../public/carrot.json";
@@ -7,6 +8,10 @@ import dragon from "../public/dragon.json";
 
 
 const shopping = [
+  {
+    heading: "我怎麼減少亂買？",
+    message: "我怎麼減少亂買？",
+  },
   {
     heading: "我之前買過哪些品牌？",
     message: "我之前買過哪些品牌？它們在可持續性方面的比較如何？製作一個表格。",
@@ -38,6 +43,12 @@ const shopping = [
   {
     heading: "如何檢查一個產品的可持續性？",
     message: "如何檢查一個產品的可持續性？",
+  },
+  {
+    heading:
+      "我應該買這個品牌的產品嗎？ 這個品牌的產品是在哪些工廠製造的？這個品牌的可持續性評分是多少？ 與其他品牌比較一下～～",
+    message:
+      "我應該買這個品牌的產品嗎？ 這個品牌的產品是在哪些工廠製造的？這個品牌的可持續性評分是多少？ 與其他品牌比較一下～～",
   },
 ];
 
@@ -78,7 +89,15 @@ const saving = [
     heading: "投資前查看公司的環保認證和生態評分",
     message: "投資前查看公司的環保認證和生態評分",
   },
+  {
+    heading:
+      "What does it brand do to help the environment? What factories is this brand produced in? What is the sustainability score? Compare it to other brands.",
+    message:
+      "What does it brand do to help the environment? What factories is this brand produced in? What is the sustainability score? Compare it to other brands.",
+  },
 ];
+
+         
 
 const investing = [
   {
@@ -101,13 +120,21 @@ const investing = [
     heading: "如果我買環保的品牌成為永續投資者嗎？",
     message: "如果我買環保的品牌成為永續投資者嗎？",
   },
+  {
+    heading:
+      "Should I invest in this brand? Is this company a B Corporation? What credentials does it hold to prove sustainability?",
+    message:
+      "Should I invest in this brand? Is this company a B Corporation? What credentials does it hold to prove sustainability?",
+  },
 ];
+
 
 export default function TabBar({
   submitMessage,
 }: {
   submitMessage: (message: string) => void;
 }) {
+
   return (
     <div>
       <Tabs defaultValue="shopping">
@@ -155,15 +182,18 @@ export default function TabBar({
               購物建議
             </h2>
             <div className="flex flex-wrap gap-2 p-4 mb-4">
-              {shopping.map((msg, index) => (
+              {shopping.map((msg, idx) => (
                 <Button
-                  key={index}
+                  key={idx}
                   variant="ghost"
                   className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
                   onClick={async () => {
                     submitMessage(msg.message);
                   }}
                 >
+                  <Badge variant="outline" className="m-1">
+                    {idx + 1}
+                  </Badge>
                   {msg.heading}
                 </Button>
               ))}
@@ -176,15 +206,18 @@ export default function TabBar({
               儲蓄建議
             </h2>
             <div className="flex flex-wrap gap-2 p-4 mb-4">
-              {saving.map((msg, index) => (
+              {saving.map((msg, idx) => (
                 <Button
-                  key={index}
+                  key={idx}
                   variant="ghost"
                   className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
                   onClick={async () => {
                     submitMessage(msg.message);
                   }}
                 >
+                  <Badge variant="outline" className="m-1">
+                    {idx + 1}
+                  </Badge>
                   {msg.heading}
                 </Button>
               ))}
@@ -197,15 +230,18 @@ export default function TabBar({
               投資建議
             </h2>
             <div className="flex flex-wrap gap-2 p-4 mb-4">
-              {investing.map((msg, index) => (
+              {investing.map((msg, idx) => (
                 <Button
-                  key={index}
+                  key={idx}
                   variant="ghost"
                   className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
                   onClick={async () => {
                     submitMessage(msg.message);
                   }}
                 >
+                  <Badge variant="outline" className="m-1">
+                    {idx + 1}
+                  </Badge>
                   {msg.heading}
                 </Button>
               ))}

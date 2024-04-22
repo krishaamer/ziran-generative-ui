@@ -10,7 +10,6 @@ type StockData = {
   c: number; // closing price
 };
 
-
 export default function Polygon({
   submitMessage,
   ticker,
@@ -90,7 +89,9 @@ export default function Polygon({
           variant="ghost"
           className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
           onClick={async () => {
-            submitMessage(`What's the history of the ${ticker} stock? How sustainable are their products?`);
+            submitMessage(
+              `What's the history of the ${ticker} stock?`
+            );
           }}
         >
           {`What's the history of the ${ticker} stock?`}
