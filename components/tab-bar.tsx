@@ -97,9 +97,11 @@ const saving = [
   },
 ];
 
-         
-
 const investing = [
+  {
+    heading: "我如何避免衝動買股票？",
+    message: "我如何避免衝動買股票？",
+  },
   {
     heading: "什麼是一些可持續發展的股票？",
     message: "什麼是一些可持續發展的股票？",
@@ -182,7 +184,7 @@ export default function TabBar({
                 <Button
                   key={idx}
                   variant="ghost"
-                  className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left"
+                  className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left justify-start"
                   onClick={async () => {
                     submitMessage(msg.message);
                   }}
@@ -206,7 +208,7 @@ export default function TabBar({
                 <Button
                   key={idx}
                   variant="ghost"
-                  className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left"
+                  className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left justify-start"
                   onClick={async () => {
                     submitMessage(msg.message);
                   }}
@@ -230,7 +232,7 @@ export default function TabBar({
                 <Button
                   key={idx}
                   variant="ghost"
-                  className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left"
+                  className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left justify-start"
                   onClick={async () => {
                     submitMessage(msg.message);
                   }}
