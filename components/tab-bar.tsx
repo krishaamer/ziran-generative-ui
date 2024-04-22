@@ -54,16 +54,16 @@ const shopping = [
 
 const saving = [
   {
-    heading: "Where can I buy products in bulk in Tainan?",
-    message: "Where can I buy products in bulk in Tainan?",
+    heading: "我在台南哪裡可以批量購買產品？",
+    message: "我在台南哪裡可以批量購買產品？",
   },
   {
     heading: "買東西先查看產品的運輸距離（是不是當地食品）",
     message: "買東西先查看產品的運輸距離（是不是當地食品）",
   },
   {
-    heading: "How can I increase my savings?",
-    message: "How can I increase my savings?",
+    heading: "我怎麼能增加我的儲蓄？",
+    message: "我怎麼能增加我的儲蓄？",
   },
   {
     heading: "買東西先查看公司生產過程多環保",
@@ -91,9 +91,9 @@ const saving = [
   },
   {
     heading:
-      "What does it brand do to help the environment? What factories is this brand produced in? What is the sustainability score? Compare it to other brands.",
+      "這個品牌為了環境做了什麼？ 這個品牌是在哪些工廠生產的？ 可持續性評分是多少？與其他品牌比較一下",
     message:
-      "What does it brand do to help the environment? What factories is this brand produced in? What is the sustainability score? Compare it to other brands.",
+      "這個品牌為了環境做了什麼？ 這個品牌是在哪些工廠生產的？ 可持續性評分是多少？與其他品牌比較一下",
   },
 ];
 
@@ -101,20 +101,16 @@ const saving = [
 
 const investing = [
   {
-    heading: "What are some sustainable stocks?",
-    message: "What are some sustainable stocks?",
+    heading: "什麼是一些可持續發展的股票？",
+    message: "什麼是一些可持續發展的股票？",
   },
   {
-    heading: "Are stocks or cryptocurrencies more sustainable?",
-    message: "Are stocks or cryptocurrencies more sustainable?",
+    heading: "股票或加密貨幣哪個更可持續？",
+    message: "股票或加密貨幣哪個更可持續？",
   },
   {
-    heading: "How sustainable is Coca Cola?",
-    message: "How sustainable is Coca Cola?",
-  },
-  {
-    heading: "How to read a candle chart?",
-    message: "How to read a candle chart?",
+    heading: "如何閱讀蠟燭圖？",
+    message: "如何閱讀蠟燭圖？",
   },
   {
     heading: "如果我買環保的品牌成為永續投資者嗎？",
@@ -122,9 +118,9 @@ const investing = [
   },
   {
     heading:
-      "Should I invest in this brand? Is this company a B Corporation? What credentials does it hold to prove sustainability?",
+      "我應該投資這個品牌嗎？這家公司是B型企業嗎？它有什麼證書證明其可持續性？",
     message:
-      "Should I invest in this brand? Is this company a B Corporation? What credentials does it hold to prove sustainability?",
+      "我應該投資這個品牌嗎？這家公司是B型企業嗎？它有什麼證書證明其可持續性？",
   },
 ];
 
