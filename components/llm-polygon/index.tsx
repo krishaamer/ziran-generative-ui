@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 type ChartPoint = [number, number]; // Define the type for a data point in Highcharts
 
@@ -17,6 +18,7 @@ export default function Polygon({
   submitMessage: (message: string) => void;
   ticker: string;
 }) {
+
   const [chartOptions, setChartOptions] = useState({
     title: {
       text: `${ticker} 股票價格`,
@@ -77,6 +79,19 @@ export default function Polygon({
     fetchData();
   }, [fromDate, toDate]); // Make sure useEffect reacts to changes in fromDate and toDate
 
+  const getStockQuestions = (ticker: string) => {
+    return [
+      {
+        heading: `你之前買過哪些品牌，以及它們在${ticker}的可持續性方面如何比較？`,
+        message: `你之前買過哪些品牌，以及它們在${ticker}的可持續性方面如何比較？請製作一個表格`,
+      },
+      {
+        heading: `${ticker} 股票的歷史是什麼？`,
+        message: `${ticker} 股票的歷史是什麼？`,
+      },
+    ];
+  };
+
   return (
     <div>
       <HighchartsReact
@@ -85,17 +100,21 @@ export default function Polygon({
         options={chartOptions}
       />
       <div className="flex flex-wrap gap-2 mt-4">
-        <Button
-          variant="ghost"
-          className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
-          onClick={async () => {
-            submitMessage(
-              `What's the history of the ${ticker} stock?`
-            );
-          }}
-        >
-          {`What's the history of the ${ticker} stock?`}
-        </Button>
+        {getStockQuestions(ticker)?.map((msg, idx) => (
+          <Button
+            key={idx}
+            variant="ghost"
+            className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left justify-start"
+            onClick={async () => {
+              submitMessage(msg.message);
+            }}
+          >
+            <Badge variant="outline" className="m-1 mr-2 bg-amber-200">
+              {idx + 1}
+            </Badge>
+            {msg.heading}
+          </Button>
+        ))}
       </div>
     </div>
   );
