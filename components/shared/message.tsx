@@ -32,10 +32,7 @@ export function UserMessage({ children }: { children: React.ReactNode }) {
       <Tooltip>
         <TooltipTrigger asChild>
           <Avatar className="ring-1 ring-amber-950 ring-offset-2 cursor-pointer">
-            <AvatarImage
-              src="https://github.com/krishaamer.png"
-              alt="@krishaamer"
-            />
+            <AvatarImage src="/images/cat-1.jpg" alt="我" />
             <AvatarFallback>我</AvatarFallback>
           </Avatar>
         </TooltipTrigger>
