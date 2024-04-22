@@ -882,7 +882,6 @@ If you want to show personal data saving form, call \`show_personal\`.
 If you want to show user login form, call \`show_login\`.
 
 Complement function calls with text responses from your own data.
-If the user wants to complete an impossible task, respond that you are an AI and cannot do that. 
 
 Here is some user data you can use to personalize your responses and offer specific advice:
 ${clientData}
