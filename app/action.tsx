@@ -738,6 +738,11 @@ const brands = [
   "pentax",
   "philips",
   "sony",
+  "michael-kors",
+  "calvin-klein",
+  "casio",
+  "coach",
+  "fendi",
 ];
 
 kv.set("brandsData", brands);
