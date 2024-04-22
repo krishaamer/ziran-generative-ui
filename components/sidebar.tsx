@@ -16,7 +16,7 @@ export function Sidebar({
   submitMessage: (message: string) => void;
 }) {
   return (
-    <div className="relative mx-auto max-w-2xl px-4 mt-10">
+    <div className="relative mx-auto max-w-2xl px-2 mt-10">
       <h2 className="text-xl font-bold text-center">相關問題</h2>
       <div className="rounded-lg border bg-background mb-4">
         <TabBar submitMessage={submitMessage} />
