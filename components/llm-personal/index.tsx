@@ -11,8 +11,9 @@ import { Button } from "@/components/ui/button";
 
 export default function Personal() {
   const [clientData, setClientData] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [isLoading, setIsLoading] = useState(false); 
 
+  setIsLoading(true);
   useEffect(() => {
     fetch("/api/personal")
       .then((response) => response.json())

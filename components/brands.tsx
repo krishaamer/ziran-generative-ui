@@ -31,6 +31,7 @@ export default function Brands({
   const [brandsData, setBrandsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false); // Loading state
 
+  setIsLoading(true);
   useEffect(() => {
     setIsLoading(true); // Start loading
     fetch("/api/brands")
