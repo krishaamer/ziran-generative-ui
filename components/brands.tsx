@@ -29,9 +29,8 @@ export default function Brands({
   submitMessage: (message: string) => void;
 }) {
   const [brandsData, setBrandsData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [isLoading, setIsLoading] = useState(true);
 
-  setIsLoading(true);
   useEffect(() => {
     setIsLoading(true); // Start loading
     fetch("/api/brands")
