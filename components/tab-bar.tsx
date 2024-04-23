@@ -139,7 +139,7 @@ export default function TabBar({
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 400);
 
     return () => clearTimeout(timer);
   }, []);
