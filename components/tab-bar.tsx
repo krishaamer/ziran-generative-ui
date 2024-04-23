@@ -1,6 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 import Lottie from "lottie-react";
 import easy from "../public/easy.json";
 import carrot from "../public/carrot.json";
@@ -132,6 +134,29 @@ export default function TabBar({
 }: {
   submitMessage: (message: string) => void;
 }) {
+
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="mx-auto max-w-2xl px-4 p-10">
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[200px] w-full rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-[300px]" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>

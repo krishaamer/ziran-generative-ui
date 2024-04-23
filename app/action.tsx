@@ -221,6 +221,7 @@ If you want to show the product materials, call \`show_product_materials\`.
 If you want to show factories, call \`show_factories\`.
 If you want to show personal data saving form, call \`show_personal\`.
 If you want to show user login form, call \`show_login\`.
+The user requests for these functions may be in Chinese.
 
 Complement function calls with text responses from your own data.
 
@@ -275,7 +276,9 @@ The user currently owns investments in the following companies: ${investingData}
       {
         name: "stock_history",
         description: "Stock history",
-        parameters: z.object({}),
+        parameters: z.object({
+          ticker: z.string().describe("The symbol of the stock"),
+        }),
       },
       {
         name: "show_personal",
@@ -324,36 +327,26 @@ The user currently owns investments in the following companies: ${investingData}
     ]);
   });
 
-  completion.onFunctionCall("stock_history", async () => {
-    reply.update("Loading stock history...");
+  completion.onFunctionCall("stock_history", async ({ ticker }) => {
+    reply.update(<BotMessage>Loading stock history...</BotMessage>);
 
-    try {
-      const stockData = await fetchStockData("TSM");
-      content = JSON.stringify(stockData);
-      reply.update(
-        <BotMessage>
-          {"Analyse the following stock data: " + content}
-        </BotMessage>
-      );
+    const stockData = await fetchStockData(ticker);
+    const content = JSON.stringify(stockData);
 
-      aiState.update([
-        ...aiState.get(),
-        {
-          role: "function",
-          name: "stock_history",
-          content: content,
-        },
-      ]);
+    reply.done(<Analyst stockData={stockData} ticker={ticker} />);
 
-      aiState.done([...aiState.get(), { role: "assistant", content }]);
-    } catch (error) {
-      // Handle errors, for example, by informing the user
-      console.error("Error fetching stock data:", error);
-    }
+    aiState.done([
+      ...aiState.get(),
+      {
+        role: "function",
+        name: "stock_history",
+        content,
+      },
+    ]);
   });
 
   completion.onFunctionCall("show_personal", async () => {
-    reply.update("Loading personal data..");
+    reply.update(<BotMessage>Loading personal data..</BotMessage>);
 
     await sleep(500);
 
