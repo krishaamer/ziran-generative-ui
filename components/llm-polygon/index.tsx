@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import { Button } from "@/components/ui/button";
@@ -18,7 +19,7 @@ export default function Polygon({
   submitMessage: (message: string) => void;
   ticker: string;
 }) {
-
+  const [isLoading, setIsLoading] = useState(true);
   const [chartOptions, setChartOptions] = useState({
     title: {
       text: `${ticker} 股票價格`,
@@ -69,11 +70,13 @@ export default function Polygon({
             ...prevOptions,
             series: [{ ...prevOptions.series[0], data: chartData }],
           }));
+          setIsLoading(false); // Stop loading after data is received
         } else {
           console.error("Error fetching stock data:", json);
         }
       } catch (error) {
         console.error("Error fetching stock data:", error);
+        setIsLoading(false); // Stop loading on error
       }
     };
     fetchData();
@@ -91,6 +94,20 @@ export default function Polygon({
       },
     ];
   };
+
+  if (isLoading) {
+    return (
+      <div className="mx-auto max-w-2xl px-4 pb-10">
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[100px] w-full rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-[300px]" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
