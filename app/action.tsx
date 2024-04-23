@@ -42,7 +42,7 @@ const fetchStockData = async (ticker: string) => {
 
   try {
     const response = await fetch(
-      `https://www.ziran.tw/api/polygon?symbol=${ticker}&from=${fromDate}&to=${toDate}`
+      `/api/polygon?symbol=${ticker}&from=${fromDate}&to=${toDate}`
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
