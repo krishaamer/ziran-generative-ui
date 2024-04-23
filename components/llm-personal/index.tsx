@@ -44,7 +44,7 @@ export default function Personal() {
       <div className="mx-auto max-w-2xl px-4">
         <div className="flex flex-col space-y-3">
           <h2>加載中...</h2>
-          <Skeleton className="h-[125px] w-full rounded-xl" />
+          <Skeleton className="h-[50px] w-full rounded-xl" />
           <div className="space-y-2">
             <Skeleton className="h-4 w-full" />
             <Skeleton className="h-4 w-[300px]" />
