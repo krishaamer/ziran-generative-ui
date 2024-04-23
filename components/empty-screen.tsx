@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Skeleton } from "@/components/ui/skeleton";
 import Polygon from "@/components/llm-polygon";
 import Personal from "@/components/llm-personal";
 import {
@@ -17,38 +14,6 @@ export function EmptyScreen({
 }: {
   submitMessage: (message: string) => void;
 }) {
-  const [brandsData, setBrandsData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // Loading state
-
-  useEffect(() => {
-    setIsLoading(true); // Start loading
-    fetch("/api/brands")
-      .then((response) => response.json())
-      .then((data) => {
-        setBrandsData(Array.isArray(data.brandsData) ? data.brandsData : []);
-        setIsLoading(false); // Stop loading after data is received
-      })
-      .catch((error) => {
-        console.error("Failed to fetch brands", error);
-        setIsLoading(false); // Stop loading on error
-      });
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="mx-auto max-w-2xl px-4">
-        <div className="flex flex-col space-y-3">
-          <h2>加載中...</h2>
-          <Skeleton className="h-[125px] w-full rounded-xl" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-[300px]" />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="mx-auto max-w-2xl px-4">
       <Tooltip>
@@ -74,7 +39,7 @@ export function EmptyScreen({
         <Polygon submitMessage={submitMessage} ticker="TSM" />
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
-        <Brands submitMessage={submitMessage} brandsData={brandsData} />
+        <Brands submitMessage={submitMessage} />
       </div>
     </div>
   );
