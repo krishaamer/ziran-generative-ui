@@ -12,9 +12,12 @@ export default function Analyst({ stockData, ticker }: { stockData: any, ticker:
 
   const content = JSON.stringify(stockData);
 
+  console.log(ticker);
+
   return (
     <>
-      <BotMessage>從Polygon.io收到原始股市數據：{ticker}</BotMessage>
+      <h1>Ticker: {ticker}</h1>
+      <BotMessage>從Polygon.io收到原始股市數據</BotMessage>
       <ScrollArea className="h-[500px] w-full rounded-xl border text-card-foreground shadow py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200 dark:bg-amber-950">
         {content}
       </ScrollArea>
