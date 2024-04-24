@@ -5,7 +5,20 @@ import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/toaster";
 import { AI } from "./action";
 import { Providers } from "@/components/providers";
+import Hotjar from "@hotjar/browser";
+import { init as initFullStory, FullStory } from "@fullstory/browser";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 import "./globals.css";
+
+
+const siteId = 4956812;
+const hotjarVersion = 6;
+
+Hotjar.init(siteId, hotjarVersion);
+Hotjar.init(siteId, hotjarVersion, {
+  debug: true,
+});
+initFullStory({ orgId: "o-1XVGW4-na1" });
 
 const meta = {
   title: "綠濾",
@@ -58,8 +71,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  FullStory("trackEvent", {
+    name: "Ziran Init",
+    properties: {
+      myprop: "somedata",
+    },
+  });
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <GoogleAnalytics trackPageViews />
       <body
         className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable}`}
       >
