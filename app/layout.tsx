@@ -10,7 +10,6 @@ import { init as initFullStory, FullStory } from "@fullstory/browser";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import "./globals.css";
 
-
 const siteId = 4956812;
 const hotjarVersion = 6;
 
