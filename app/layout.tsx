@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { AI } from "./action";
 import { Providers } from "@/components/providers";
 import { Hotjar } from "nextjs-hotjar";
-import { init as initFullStory, FullStory } from "@fullstory/browser";
+//import { init as initFullStory, FullStory } from "@fullstory/browser";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import "./globals.css";
 
@@ -62,6 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
+  /*
   initFullStory({ orgId: "o-1XVGW4-na1" });
 
   FullStory("trackEvent", {
@@ -70,6 +71,7 @@ export default function RootLayout({
       myprop: "somedata",
     },
   });
+  */
 
   return (
     <html lang="en" suppressHydrationWarning>
