@@ -11,9 +11,6 @@ importers:
       '@fullstory/browser':
         specifier: ^2.0.4
         version: 2.0.4
-      '@hotjar/browser':
-        specifier: ^1.0.9
-        version: 1.0.9
       '@pinecone-database/pinecone':
         specifier: ^2.2.0
         version: 2.2.0
@@ -116,6 +113,9 @@ importers:
       nextjs-google-analytics:
         specifier: ^2.3.3
         version: 2.3.3(next@14.2.3(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(react@18.2.0)
+      nextjs-hotjar:
+        specifier: ^1.2.0
+        version: 1.2.0(next@14.2.3(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(react@18.2.0)
       openai:
         specifier: ^4.38.5
         version: 4.38.5(encoding@0.1.13)
@@ -386,9 +386,6 @@ packages:
 
   '@fullstory/snippet@2.0.3':
     resolution: {integrity: sha512-EaCuTQSLv5FvnjHLbTxErn3sS1+nLqf1p6sA/c4PV49stBtkUakA0eLhJJdaw0WLdXyEzZXf86lRNsjEzrgGPw==}
-
-  '@hotjar/browser@1.0.9':
-    resolution: {integrity: sha512-n9akDMod8BLGpYEQCrHwlYWWd63c1HlhUSXNIDfClZtKYXbUjIUOFlNZNNcUxgHTCsi4l2i+SWKsGsO0t93S8w==}
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
@@ -2727,6 +2724,12 @@ packages:
       next: '>=11.0.0'
       react: '>=17.0.0'
 
+  nextjs-hotjar@1.2.0:
+    resolution: {integrity: sha512-T0vBmModSXxAgv9e22T5aFbE1fhwuuAnq17ok+ZwnjnUePGL/p760Abag6NUhLLsJLE0wR7yASoRauFsi0AL0Q==}
+    peerDependencies:
+      next: '>=11.0.0'
+      react: '>=17.0.0'
+
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
@@ -3787,8 +3790,6 @@ snapshots:
       '@fullstory/snippet': 2.0.3
 
   '@fullstory/snippet@2.0.3': {}
-
-  '@hotjar/browser@1.0.9': {}
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
@@ -6572,6 +6573,11 @@ snapshots:
       react: 18.2.0
     optionalDependencies:
       fsevents: 2.3.3
+
+  nextjs-hotjar@1.2.0(next@14.2.3(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0))(react@18.2.0):
+    dependencies:
+      next: 14.2.3(@babel/core@7.24.4)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.75.0)
+      react: 18.2.0
 
   node-domexception@1.0.0: {}
 
