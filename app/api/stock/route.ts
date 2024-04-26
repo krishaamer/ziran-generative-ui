@@ -29,7 +29,7 @@ interface ApiResponse {
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const symbol = searchParams.get("symbol");
-  const api_key = "NOQ41DSYXDIUNRN0"; // Replace with your actual API key
+  const api_key = "NOQ41DSYXDIUNRN0";
 
   const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${api_key}`;
 
