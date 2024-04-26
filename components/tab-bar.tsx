@@ -11,8 +11,16 @@ import dragon from "../public/dragon.json";
 
 const shopping = [
   {
+    heading: "我怎麼可以更環保？",
+    message: "我怎麼可以更環保？",
+  },
+  {
     heading: "我怎麼減少亂買？",
     message: "我怎麼減少亂買？",
+  },
+  {
+    heading: "我如何影響公司變得更環保？",
+    message: "我如何影響公司變得更環保？",
   },
   {
     heading: "我之前買過哪些品牌？",
@@ -21,6 +29,10 @@ const shopping = [
   {
     heading: "購物、儲蓄和投資與可持續性有什麼關聯？",
     message: "購物、儲蓄和投資與可持續性有什麼關聯？製作一個表格。",
+  },
+  {
+    heading: "我買的產品裡有沒有對我身體有害的化學物質？",
+    message: "我買的產品裡有沒有對我身體有害的化學物質？",
   },
   {
     heading: "我在台南哪裡可以修理我的衣服？",
@@ -35,8 +47,8 @@ const shopping = [
     message: "我在台灣吃的動物的生活條件如何？",
   },
   {
-    heading: "我的Nike運動鞋來自哪裡？",
-    message: "我的Nike運動鞋來自哪裡？",
+    heading: "我之前買的東西來自哪裡？",
+    message: "我之前買的東西來自哪裡？",
   },
   {
     heading: "什麼是數位產品護照？",
