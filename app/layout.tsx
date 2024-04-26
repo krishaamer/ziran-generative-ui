@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics as NextAnalytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/toaster";
 import { AI } from "./action";
 import { Providers } from "@/components/providers";
-import { Hotjar } from "nextjs-hotjar";
+//import { Hotjar } from "nextjs-hotjar";
 //import { init as initFullStory, FullStory } from "@fullstory/browser";
-import { GoogleAnalytics } from "nextjs-google-analytics";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const meta = {
@@ -61,7 +61,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   /*
   initFullStory({ orgId: "o-1XVGW4-na1" });
 
@@ -71,12 +70,12 @@ export default function RootLayout({
       myprop: "somedata",
     },
   });
+        <Hotjar id="4956812" sv={6} />;
+        <GoogleAnalytics trackPageViews />
   */
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <GoogleAnalytics trackPageViews />
-      <Hotjar id="4956812" sv={6} />;
       <body
         className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable}`}
       >
@@ -91,8 +90,9 @@ export default function RootLayout({
             {children}
           </Providers>
         </AI>
-        <Analytics />
       </body>
+      <NextAnalytics />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
     </html>
   );
 }

@@ -11,6 +11,9 @@ importers:
       '@fullstory/browser':
         specifier: ^2.0.4
         version: 2.0.4
+      '@next/third-parties':
+        specifier: ^14.2.3
+        version: 14.2.3(next@14.2.3(@babel/core@7.24.4)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(sass@1.75.0))(react@18.3.0)
       '@pinecone-database/pinecone':
         specifier: ^2.2.0
         version: 2.2.0
@@ -110,9 +113,6 @@ importers:
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
-      nextjs-google-analytics:
-        specifier: ^2.3.3
-        version: 2.3.3(next@14.2.3(@babel/core@7.24.4)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(sass@1.75.0))(react@18.3.0)
       nextjs-hotjar:
         specifier: ^1.2.0
         version: 1.2.0(next@14.2.3(@babel/core@7.24.4)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(sass@1.75.0))(react@18.3.0)
@@ -486,6 +486,12 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
+
+  '@next/third-parties@14.2.3':
+    resolution: {integrity: sha512-j4E2xBSsEZq4VX2pVm3LpGltSwCxETic6glJWfHyYQvpoMdplCAYrQKpF+E9Gg3jfsrfmRAIdTE11m+biBCx1Q==}
+    peerDependencies:
+      next: ^13.0.0 || ^14.0.0
+      react: ^18.2.0
 
   '@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.3':
     resolution: {integrity: sha512-s88O1aVtXftvp5bCPB7WnmXc5IwOZZ7YPuwNPt+GtOOXpPvad1LfbmjYv+qII7zP6RU2QGnqve27dnLycEnyEQ==}
@@ -2718,12 +2724,6 @@ packages:
       sass:
         optional: true
 
-  nextjs-google-analytics@2.3.3:
-    resolution: {integrity: sha512-Y6sI6A7wt5dji8hYBnVkOh9LTyImSLFZXx3FpyQgVW7W4b4qEFHjH2u3fhDJsrRZeLlUGM8/RuHD/mhHc2Axfg==}
-    peerDependencies:
-      next: '>=11.0.0'
-      react: '>=17.0.0'
-
   nextjs-hotjar@1.2.0:
     resolution: {integrity: sha512-T0vBmModSXxAgv9e22T5aFbE1fhwuuAnq17ok+ZwnjnUePGL/p760Abag6NUhLLsJLE0wR7yASoRauFsi0AL0Q==}
     peerDependencies:
@@ -3327,6 +3327,9 @@ packages:
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
 
+  third-party-capital@1.0.20:
+    resolution: {integrity: sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==}
+
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
@@ -3865,6 +3868,12 @@ snapshots:
 
   '@next/swc-win32-x64-msvc@14.2.3':
     optional: true
+
+  '@next/third-parties@14.2.3(next@14.2.3(@babel/core@7.24.4)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(sass@1.75.0))(react@18.3.0)':
+    dependencies:
+      next: 14.2.3(@babel/core@7.24.4)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(sass@1.75.0)
+      react: 18.3.0
+      third-party-capital: 1.0.20
 
   '@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.3':
     optional: true
@@ -6567,13 +6576,6 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextjs-google-analytics@2.3.3(next@14.2.3(@babel/core@7.24.4)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(sass@1.75.0))(react@18.3.0):
-    dependencies:
-      next: 14.2.3(@babel/core@7.24.4)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(sass@1.75.0)
-      react: 18.3.0
-    optionalDependencies:
-      fsevents: 2.3.3
-
   nextjs-hotjar@1.2.0(next@14.2.3(@babel/core@7.24.4)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(sass@1.75.0))(react@18.3.0):
     dependencies:
       next: 14.2.3(@babel/core@7.24.4)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(sass@1.75.0)
@@ -7268,6 +7270,8 @@ snapshots:
   thenify@3.3.1:
     dependencies:
       any-promise: 1.3.0
+
+  third-party-capital@1.0.20: {}
 
   to-fast-properties@2.0.0: {}
 
