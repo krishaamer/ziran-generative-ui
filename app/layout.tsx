@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
-import { Analytics as NextAnalytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/toaster";
 import { AI } from "./action";
 import { Providers } from "@/components/providers";
-//import { Hotjar } from "nextjs-hotjar";
-//import { init as initFullStory, FullStory } from "@fullstory/browser";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics as NextAnalytics } from "@vercel/analytics/react";
+import ClientAnalytics from "@/components/shared/analytics";
 import "./globals.css";
 
 const meta = {
@@ -61,19 +60,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  /*
-  initFullStory({ orgId: "o-1XVGW4-na1" });
-
-  FullStory("trackEvent", {
-    name: "Ziran Init",
-    properties: {
-      myprop: "somedata",
-    },
-  });
-        <Hotjar id="4956812" sv={6} />;
-        <GoogleAnalytics trackPageViews />
-  */
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -92,6 +78,7 @@ export default function RootLayout({
         </AI>
       </body>
       <NextAnalytics />
+      <ClientAnalytics />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
     </html>
   );
