@@ -3,9 +3,8 @@ import "server-only";
 import { createAI, createStreamableUI, getMutableAIState } from "ai/rsc";
 import { kv } from "@vercel/kv";
 import OpenAI from "openai";
-
-import { BotMessage, SystemMessage } from "@/components/shared/message";
-
+import { Skeleton } from "@/components/ui/skeleton";
+import { BotMessage } from "@/components/shared/message";
 import { sleep, runOpenAICompletion } from "@/lib/utils";
 import { z } from "zod";
 import SimpleMap from "@/components/llm-map";
@@ -75,7 +74,9 @@ async function submitUserMessage(content: string) {
   "use server";
 
   const reply = createStreamableUI(
-    <BotMessage className="items-center">{spinner}</BotMessage>
+    <BotMessage className="items-center">
+      <Skeleton className="h-[25px] w-full rounded-xl" />
+    </BotMessage>
   );
 
   const ip = headers().get("x-real-ip") ?? "local";
