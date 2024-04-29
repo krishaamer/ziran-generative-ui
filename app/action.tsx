@@ -4,22 +4,10 @@ import { createAI, createStreamableUI, getMutableAIState } from "ai/rsc";
 import { kv } from "@vercel/kv";
 import OpenAI from "openai";
 
-import {
-  spinner,
-  BotCard,
-  BotMessage,
-  SystemMessage,
-  Stocks,
-} from "@/components/llm-stocks";
+import { BotMessage, SystemMessage } from "@/components/shared/message";
 
-import {
-  runAsyncFnWithoutBlocking,
-  sleep,
-  formatNumber,
-  runOpenAICompletion,
-} from "@/lib/utils";
+import { sleep, runOpenAICompletion } from "@/lib/utils";
 import { z } from "zod";
-import { StocksSkeleton } from "@/components/llm-stocks/stocks-skeleton";
 import SimpleMap from "@/components/llm-map";
 import Personal from "@/components/llm-personal";
 import LoginScreen from "@/components/llm-login";
@@ -82,73 +70,6 @@ const brands = [
   "coach",
   "fendi",
 ];
-
-async function confirmPurchase(symbol: string, price: number, amount: number) {
-  "use server";
-
-  const aiState = getMutableAIState<typeof AI>();
-
-  const purchasing = createStreamableUI(
-    <div className="inline-flex items-start gap-1 md:items-center">
-      {spinner}
-      <p className="mb-2">
-        Purchasing {amount} ${symbol}...
-      </p>
-    </div>
-  );
-
-  const systemMessage = createStreamableUI(null);
-
-  runAsyncFnWithoutBlocking(async () => {
-    // You can update the UI at any point.
-    await sleep(1000);
-
-    purchasing.update(
-      <div className="inline-flex items-start gap-1 md:items-center">
-        {spinner}
-        <p className="mb-2">
-          Purchasing {amount} ${symbol}... working on it...
-        </p>
-      </div>
-    );
-
-    await sleep(1000);
-
-    purchasing.done(
-      <div>
-        <p className="mb-2">
-          You have successfully purchased {amount} ${symbol}. Total cost:{" "}
-          {formatNumber(amount * price)}
-        </p>
-      </div>
-    );
-
-    systemMessage.done(
-      <SystemMessage>
-        You have purchased {amount} shares of {symbol} at ${price}. Total cost ={" "}
-        {formatNumber(amount * price)}.
-      </SystemMessage>
-    );
-
-    aiState.done([
-      ...aiState.get(),
-      {
-        role: "system",
-        content: `[User has purchased ${amount} shares of ${symbol} at ${price}. Total cost = ${
-          amount * price
-        }]`,
-      },
-    ]);
-  });
-
-  return {
-    purchasingUI: purchasing.value,
-    newMessage: {
-      id: Date.now(),
-      display: systemMessage.value,
-    },
-  };
-}
 
 async function submitUserMessage(content: string) {
   "use server";
@@ -214,7 +135,6 @@ Messages inside [] means that it's a UI element or a user event. For example:
 - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
 - "[User has changed the amount of AAPL to 10]" means that the user has changed the amount of AAPL to 10 in the UI.
 
-If you want to show sustainable stocks, call \`list_stocks\`.
 If you want to show stock history for a particular stock, call \`stock_history\`.
 If you want to show a map, call \`show_map\`.
 If you want to show the product origin, call \`show_product_origin\`.
@@ -241,19 +161,6 @@ The user currently owns investments in the following companies: ${investingData}
       })),
     ],
     functions: [
-      {
-        name: "list_stocks",
-        description: "List three sustainable stocks that are trending.",
-        parameters: z.object({
-          stocks: z.array(
-            z.object({
-              symbol: z.string().describe("The symbol of the stock"),
-              price: z.number().describe("The price of the stock"),
-              delta: z.number().describe("The change in price of the stock"),
-            })
-          ),
-        }),
-      },
       {
         name: "show_map",
         description: "Show map with results",
@@ -301,31 +208,6 @@ The user currently owns investments in the following companies: ${investingData}
       reply.done();
       aiState.done([...aiState.get(), { role: "assistant", content }]);
     }
-  });
-
-  completion.onFunctionCall("list_stocks", async ({ stocks }) => {
-    reply.update(
-      <BotCard>
-        <StocksSkeleton />
-      </BotCard>
-    );
-
-    await sleep(1000);
-
-    reply.done(
-      <BotCard>
-        <Stocks stocks={stocks} />
-      </BotCard>
-    );
-
-    aiState.done([
-      ...aiState.get(),
-      {
-        role: "function",
-        name: "list_stocks",
-        content: JSON.stringify(stocks),
-      },
-    ]);
   });
 
   completion.onFunctionCall("stock_history", async ({ ticker }) => {
@@ -452,7 +334,6 @@ The user currently owns investments in the following companies: ${investingData}
 }
 
 // Define necessary types and create the AI.
-
 const initialAIState: {
   role: "user" | "assistant" | "system" | "function";
   content: string;
@@ -468,7 +349,6 @@ const initialUIState: {
 export const AI = createAI({
   actions: {
     submitUserMessage,
-    confirmPurchase,
   },
   initialUIState,
   initialAIState,
