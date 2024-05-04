@@ -23,5 +23,16 @@ export default function Origin() {
     }
   }, [searchParams]);
 
-  return <div>{origin ? <span>{`資料來源： ${origin?.url}`}</span> : ""}</div>;
+  return (
+    <div>
+      {origin ? (
+        <span>
+          資料來源：
+          <a href={origin?.url} target="_blank" className="link font-bold">{getDomainFromURL(origin?.url)}</a>
+        </span>
+      ) : (
+        ""
+      )}
+    </div>
+  );
 }
