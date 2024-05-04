@@ -148,3 +148,13 @@ export function getStockPrice(name: string) {
   }
   return total / 100;
 }
+
+export async function getDomainFromURL(url: string) {
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.hostname;
+  } catch (error) {
+    console.error("Invalid URL:", error);
+    return null;
+  }
+}

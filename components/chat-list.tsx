@@ -1,3 +1,5 @@
+import Origin from "@/components/origin";
+
 export function ChatList({ messages }: { messages: any[] }) {
   if (!messages.length) {
     return null;
@@ -5,10 +7,11 @@ export function ChatList({ messages }: { messages: any[] }) {
 
   return (
     <div className="relative mx-auto max-w-2xl px-4">
+      <div>
+        <Origin />
+      </div>
       {messages.map((message, index) => (
-        <div key={index}>
-          {message.display}
-        </div>
+        <div key={index}>{message.display}</div>
       ))}
     </div>
   );
