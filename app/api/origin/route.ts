@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
   const originData = await kv.get(key);
 
   return new Response(
-    JSON.stringify({ origin: originData || "No data found" }),
+    JSON.stringify({ origin: originData || "No origin data found" }),
     {
       status: 200,
       headers: {

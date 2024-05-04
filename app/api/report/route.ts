@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
   const reportData = await kv.get(reportID);
 
   return new Response(
-    JSON.stringify({ reportData: reportData || "No data found" }),
+    JSON.stringify({ reportData: reportData || "No report data found" }),
     {
       status: 200,
       headers: {
