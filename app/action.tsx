@@ -50,7 +50,7 @@ const fetchStockData = async (ticker: string) => {
   return false;
 };
 
-const brands = [
+const myPreviouslyBoughtBrands = [
   "3m",
   "canon",
   "csd",
@@ -150,7 +150,7 @@ Complement function calls with text responses from your own data.
 Here is some user data you can use to personalize your responses and offer specific advice:
 ${clientData}
 
-The user has previously bought products from the following brands: ${brands.join(",")}
+The user has previously bought products from the following brands: ${myPreviouslyBoughtBrands.join(",")}
 
 The user currently owns investments in the following companies: ${investingData}
 `,
