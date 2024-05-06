@@ -79,6 +79,11 @@
     width: auto;
   }
 
+  .swiper {
+    width: 600px;
+    height: 300px;
+  }
+
   * {
     @apply border-border;
   }
