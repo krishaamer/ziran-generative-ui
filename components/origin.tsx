@@ -24,21 +24,20 @@ export default function Origin() {
   }, [searchParams]);
 
   return (
-    <div>
-      {reportID &&
-        origin.url && (
-          <span>
-            資料來源：
-            <a
-              href={origin.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link font-bold"
-            >
-              {getDomainFromURL(origin.url)}
-            </a>
-          </span>
-        )}
+    <div className="rounded-xl text-card-foreground border p-2 mt-2 mb-6">
+      {reportID && origin.url && (
+        <span>
+          資料來源：
+          <a
+            href={origin.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link font-bold"
+          >
+            {getDomainFromURL(origin.url)}
+          </a>
+        </span>
+      )}
     </div>
   );
 }
