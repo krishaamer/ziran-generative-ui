@@ -105,7 +105,7 @@ async function submitUserMessage(content: string) {
   const investingData = await kv.get("investingData");
 
   const completion = runOpenAICompletion(openai, {
-    model: "gpt-4-turbo",
+    model: "gpt-4o",
     response_format: { type: "text" },
     stream: true,
     messages: [
