@@ -20,8 +20,16 @@ export default function Page() {
 
   useEffect(() => {
     const ask = searchParams.get("ask");
-    const goal = searchParams.get("d");
-    const query = goal ? ask + " very important: think carefully and compare this product to other products and make a table with more sustainable product options" : ask;
+    const task = searchParams.get("task");
+
+    const query =
+      task == "compare"
+        ? ask +
+          " very important: think carefully and compare this product to other products and make a table with more sustainable product options"
+        : task == "explain"
+          ? ask +
+            " very important: think carefully and explain this product and make a table with possible sustainability questions one could ask about this product"
+          : ask;
 
     if (query) {
       const submit = async () => {
