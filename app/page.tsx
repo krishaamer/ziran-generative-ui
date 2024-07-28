@@ -14,12 +14,14 @@ import { useSearchParams } from "next/navigation";
 
 export default function Page() {
   const [messages, setMessages] = useUIState<typeof AI>();
-  const { submitUserMessage } = useActions();
+  const { submitUserMessage } = useActions<typeof AI>();
 
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const query = searchParams.get("ask");
+    const ask = searchParams.get("ask");
+    const goal = searchParams.get("d");
+    const query = goal ? ask + " very important: think carefully and compare this product to other products and make a table with more sustainable product options" : ask;
 
     if (query) {
       const submit = async () => {
@@ -28,7 +30,7 @@ export default function Page() {
           ...currentMessages,
           {
             id: Date.now(),
-            display: <UserMessage>{query}</UserMessage>,
+            display: <UserMessage>{ask}</UserMessage>,
           },
         ]);
 
