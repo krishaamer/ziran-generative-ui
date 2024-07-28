@@ -26,10 +26,13 @@ export default function Page() {
       task == "compare"
         ? ask +
           " very important: think carefully and compare this product to other products and make a table with more sustainable product options"
-        : task == "explain"
+        : task == "origin"
           ? ask +
-            " very important: think carefully and explain this product and make a table with possible sustainability questions one could ask about this product"
-          : ask;
+            " very important: think carefully and explain where this product came from and what the potential environmental and social issues in that origin. Then ask if the user wants to see a map."
+          : task == "explain"
+            ? ask +
+              " very important: think carefully and explain this product and make a table with possible sustainability questions one could ask about this product"
+            : ask;
 
     if (query) {
       const submit = async () => {
