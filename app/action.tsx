@@ -129,6 +129,7 @@ You can show the user digital product passports with made up information.
 You can allow the user log in.
 You can calculate the likely distance a product has traveled to reach the user.
 You can tell the user about the history of a stock and how it's performed over the years. Include info abuout their product lines and how sustainable are their products. Make a table.
+You can compare the product to other similar products and provide more sustainable alternatives.
 Address the user in a friendly tone and in Chinese use more informal words.
 The user is from generation-z in the their early 20s.
 
@@ -152,7 +153,7 @@ ${clientData}
 
 The user has previously bought products from the following brands: ${myPreviouslyBoughtBrands.join(",")}
 
-The user currently owns investments in the following companies: ${investingData}
+The user has previously invested in the following companies: ${investingData}
 `,
       },
       ...aiState.get().map((info: any) => ({
