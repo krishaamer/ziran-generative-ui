@@ -61,9 +61,10 @@ export default function Brands({
 
   return (
     <div>
-      <h2 className="font-bold pb-4 pt-2 text-xl text-center">
-        上個月你購買了這些品牌的產品
-      </h2>
+      <h2 className="font-bold pb-1 pt-2 text-xl text-center">我的購物記錄</h2>
+      <p className="font-normal pb-5 text-base text-center">
+        一年裡買了這些品牌的產品
+      </p>
       <div className="flex flex-wrap gap-2">
         {brandsData.map((brand, idx) => (
           <Button
