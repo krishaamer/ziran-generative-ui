@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { Toaster } from "@/components/ui/toaster";
 import { AI } from "./action";
 import { Providers } from "@/components/providers";
+import { SessionProvider } from "next-auth/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics as NextAnalytics } from "@vercel/analytics/react";
 import ClientAnalytics from "@/components/shared/analytics";
@@ -73,7 +74,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <SessionProvider>{children}</SessionProvider>
           </Providers>
         </AI>
       </body>
