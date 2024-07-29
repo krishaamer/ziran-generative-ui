@@ -14,7 +14,7 @@ export default function Header() {
       <div className="flex space-x-4">
         <div>
           {session?.data?.user?.name ? (
-            <p>`歡迎 ${session?.data?.user?.name}`</p>
+            <p>歡迎 {session?.data?.user?.name}！</p>
           ) : (
             <SignIn />
           )}
