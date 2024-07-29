@@ -1,7 +1,7 @@
 "use client";
 
 import ThemeSwitcher from "@/components/shared/theme";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import SignIn from "../llm-login";
 import {
   DropdownMenu,
@@ -30,7 +30,9 @@ export default function Header() {
               <DropdownMenuContent>
                 <DropdownMenuLabel>我的帳戶</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>登出</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <button onClick={() => signOut()}>登出</button>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
