@@ -3,6 +3,15 @@
 import ThemeSwitcher from "@/components/shared/theme";
 import { useSession } from "next-auth/react";
 import SignIn from "../llm-login";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 
 export default function Header() {
   const session = useSession();
@@ -14,7 +23,16 @@ export default function Header() {
       <div className="flex space-x-4">
         <div>
           {session?.data?.user?.name ? (
-            <p>歡迎 {session?.data?.user?.name}！</p>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                {session?.data?.user?.name}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>我的帳戶</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>登出</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
             <SignIn />
           )}
