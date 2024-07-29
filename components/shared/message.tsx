@@ -5,8 +5,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Lottie from "lottie-react";
 import easy from "@/public/easy.json";
-import carrot from "@/public/carrot.json";
-import dragon from "@/public/dragon.json";
 import {
   Tooltip,
   TooltipContent,

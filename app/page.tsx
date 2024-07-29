@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useUIState, useActions, useAIState } from "ai/rsc";
+import React, { useEffect } from "react";
+import { useUIState, useActions } from "ai/rsc";
 import { UserMessage } from "@/components/shared/message";
 import Header from "@/components/shared/header";
 import { type AI } from "./action";
@@ -30,7 +30,7 @@ export default function Page() {
             " very important: think carefully and explain where this product came from and what the potential environmental and social issues in that origin. Then ask if the user wants to see a map."
           : task == "explain"
             ? ask +
-              " very important: think carefully and explain this product and make a table with possible sustainability questions one could ask about this product"
+              ' very important: think carefully and explain this product and make a table with possible sustainability questions one could ask about this product. Format the questions as links in markdown referring locally to "?ask=" with the question URL-enconced'
             : ask;
 
     if (query) {
