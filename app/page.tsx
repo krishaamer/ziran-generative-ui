@@ -11,12 +11,10 @@ import { EmptyScreen } from "@/components/empty-screen";
 import { Sidebar } from "@/components/sidebar";
 import { Search } from "@/components/search";
 import { useSearchParams } from "next/navigation";
-import { auth } from "@/auth"
 
-export default async function Page() {
+export default function Page() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions<typeof AI>();
-  const session = await auth() || { user: { name: ""}};
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -57,9 +55,6 @@ export default async function Page() {
   return (
     <>
       <Header />
-      <div>
-        <p>Welcome {session?.user?.name}!</p>
-      </div>
       <div className="flex flex-col min-h-screen">
         <main className="flex flex-col flex-1 bg-muted/50">
           <div className="pb-[200px] mt-4">
