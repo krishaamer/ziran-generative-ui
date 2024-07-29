@@ -279,7 +279,7 @@ The user has previously invested in the following companies: ${investingData}
   });
 
   completion.onFunctionCall("show_factories", async () => {
-    reply.update("Finding factories...");
+    reply.update("尋找工廠...");
 
     await sleep(500);
 
