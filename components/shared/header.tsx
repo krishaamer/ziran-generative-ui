@@ -4,8 +4,8 @@ import ThemeSwitcher from "@/components/shared/theme";
 import { useSession, SessionProvider } from "next-auth/react";
 
 export default function Header() {
-  const session = useSession();
-  const username = session.data?.user?.name || "anon";
+  const { data: session, status } = useSession();
+  const username = status === "authenticated" ? session?.user?.name : "anon";
 
   return (
     <div className="sticky top-0 z-50 flex items-center justify-between w-full px-4 border-b h-8 shrink-0 text-white bg-gradient-to-br from-pink-500 to-orange-400 font-medium text-sm text-center">
