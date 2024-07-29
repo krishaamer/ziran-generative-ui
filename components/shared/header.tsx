@@ -13,7 +13,7 @@ export default function Header() {
       <a href="/">怎麼知道自己的錢花去支持了啥物呢？</a>
       <div className="flex space-x-4">
         <div>
-          <p>{session?.user?.name ? `Welcome ${session?.user?.name}` : ""}</p>
+          <p>{session?.data?.user?.name ? `Welcome ${session?.data?.user?.name}` : ""}</p>
         </div>
         <ThemeSwitcher />
       </div>
