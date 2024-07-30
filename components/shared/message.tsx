@@ -43,15 +43,24 @@ export function UserMessage({ children }: { children: React.ReactNode }) {
 export function BotMessage({
   children,
   className,
+  animated = true,
 }: {
   children: React.ReactNode;
   className?: string;
+  animated?: boolean
 }) {
   const content = typeof children === "string" ? children : "";
 
   return (
     <>
-      <Lottie animationData={easy} loop={true} className="tinySvg" role="img" />
+      {animated ?? (
+        <Lottie
+          animationData={easy}
+          loop={true}
+          className="tinySvg"
+          role="img"
+        />
+      )}
       <div
         className={cn("group relative flex items-start md:-ml-12", className)}
       >

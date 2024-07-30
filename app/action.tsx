@@ -88,7 +88,7 @@ async function submitUserMessage(content: string) {
 
   if (!rl.success) {
     reply.done(
-      <BotMessage>Rate limit exceeded. Try again in 1 minute.</BotMessage>
+      <BotMessage animated={false}>Rate limit exceeded. Try again in 1 minute.</BotMessage>
     );
     return {
       id: Date.now(),
