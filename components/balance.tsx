@@ -17,9 +17,14 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
+import { SVGProps } from "react";
 import { Badge } from "@/components/ui/badge"
 import { ChartTooltipContent, ChartTooltip, ChartContainer } from "@/components/ui/chart"
 import { Pie, PieChart, CartesianGrid, XAxis, Line, LineChart } from "recharts"
+
+interface Ratings {
+  [key: string]: number;
+}
 
 export function Balance() {
   const transactions = [
@@ -67,15 +72,15 @@ export function Balance() {
   const income = transactions.filter((tx) => tx.amount > 0).reduce((total, tx) => total + tx.amount, 0)
   const expenses = transactions.filter((tx) => tx.amount < 0).reduce((total, tx) => total + tx.amount, 0)
   const balance = income + expenses
-  const esgRatings = transactions.reduce((ratings, tx) => {
+  const esgRatings = transactions.reduce<Ratings>((ratings, tx) => {
     if (tx.esgRating !== "N/A") {
       if (!ratings[tx.esgRating]) {
-        ratings[tx.esgRating] = 0
+        ratings[tx.esgRating] = 0;
       }
-      ratings[tx.esgRating]++
+      ratings[tx.esgRating]++;
     }
-    return ratings
-  }, {})
+    return ratings;
+  }, {});
   const savings = balance - expenses
   return (
     <div className="grid min-h-screen w-full bg-muted/40 p-4 sm:p-6 md:grid-cols-[280px_1fr] md:gap-6">
@@ -177,7 +182,7 @@ export function Balance() {
   )
 }
 
-function CircleIcon(props) {
+function CircleIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -193,11 +198,11 @@ function CircleIcon(props) {
     >
       <circle cx="12" cy="12" r="10" />
     </svg>
-  )
+  );
 }
 
 
-function CircleXIcon(props) {
+function CircleXIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -215,11 +220,11 @@ function CircleXIcon(props) {
       <path d="m15 9-6 6" />
       <path d="m9 9 6 6" />
     </svg>
-  )
+  );
 }
 
 
-function LinechartChart(props) {
+function LinechartChart(props: any) {
   return (
     <div {...props}>
       <ChartContainer
@@ -253,16 +258,25 @@ function LinechartChart(props) {
             tickMargin={8}
             tickFormatter={(value) => value.slice(0, 3)}
           />
-          <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-          <Line dataKey="desktop" type="natural" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
+          <ChartTooltip
+            cursor={false}
+            content={<ChartTooltipContent hideLabel />}
+          />
+          <Line
+            dataKey="desktop"
+            type="natural"
+            stroke="var(--color-desktop)"
+            strokeWidth={2}
+            dot={false}
+          />
         </LineChart>
       </ChartContainer>
     </div>
-  )
+  );
 }
 
 
-function PiechartcustomChart(props) {
+function PiechartcustomChart(props: any) {
   return (
     <div {...props}>
       <ChartContainer
@@ -293,12 +307,19 @@ function PiechartcustomChart(props) {
         }}
       >
         <PieChart>
-          <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+          <ChartTooltip
+            cursor={false}
+            content={<ChartTooltipContent hideLabel />}
+          />
           <Pie
             data={[
               { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
               { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-              { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
+              {
+                browser: "firefox",
+                visitors: 187,
+                fill: "var(--color-firefox)",
+              },
               { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
               { browser: "other", visitors: 90, fill: "var(--color-other)" },
             ]}
@@ -308,11 +329,11 @@ function PiechartcustomChart(props) {
         </PieChart>
       </ChartContainer>
     </div>
-  )
+  );
 }
 
 
-function TriangleIcon(props) {
+function TriangleIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -328,11 +349,11 @@ function TriangleIcon(props) {
     >
       <path d="M13.73 4a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
     </svg>
-  )
+  );
 }
 
 
-function XIcon(props) {
+function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -349,5 +370,5 @@ function XIcon(props) {
       <path d="M18 6 6 18" />
       <path d="m6 6 12 12" />
     </svg>
-  )
+  );
 }
