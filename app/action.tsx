@@ -47,8 +47,11 @@ const fetchStockData = async (ticker: string) => {
     console.error("Error fetching stock data:", error);
   }
 
-  return false;
+  return false; 
 };
+
+
+const invest = kv.set("investingData", "apple, nvidia, microsoft");
 
 const myPreviouslyBoughtBrands = [
   "3m",
@@ -112,7 +115,7 @@ async function submitUserMessage(content: string) {
       {
         role: "system",
         content: `\
-You are a friendly sustainability assistant for college students in Taiwan and you can help students with sustainable shopping, saving and investing, step by step. Your goal is to help students better understand how using their money supports companies.
+You are a friendly sustainability assistant for college students in Taiwan and you can help students with sustainable shopping, saving and investing, step by step. Your goal is to help students better understand how using their money supports companies. Think very carefully.
 
 Your should respond to the user briefly in Chinese using traditional characters. Even if the question is in English, provide an answer in Chinese.
 You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
@@ -130,12 +133,6 @@ You can allow the user log in.
 You can calculate the likely distance a product has traveled to reach the user.
 You can tell the user about the history of a stock and how it's performed over the years. Include info abuout their product lines and how sustainable are their products. Make a table.
 You can compare the product to other similar products and provide more sustainable alternatives.
-Address the user in a friendly tone and in Chinese use more informal words.
-The user is from generation-z in the their early 20s.
-
-Messages inside [] means that it's a UI element or a user event. For example:
-- "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
-- "[User has changed the amount of AAPL to 10]" means that the user has changed the amount of AAPL to 10 in the UI.
 
 If you want to show stock history for a particular stock, call \`stock_history\`.
 If you want to show a map, call \`show_map\`.
@@ -144,8 +141,10 @@ If you want to show the product materials, call \`show_product_materials\`.
 If you want to show factories, call \`show_factories\`.
 If you want to show personal data saving form, call \`show_personal\`.
 If you want to show user login form, call \`show_login\`.
-The user requests for these functions may be in Chinese.
 
+The user requests for these functions may be in Chinese.
+Address the user in a friendly tone and in Chinese and use more informal words.
+The user is from generation-z in the their early 20s.
 Complement function calls with text responses from your own data.
 
 Here is some user data you can use to personalize your responses and offer specific advice:
@@ -213,7 +212,7 @@ The user has previously invested in the following companies: ${investingData}
   });
 
   completion.onFunctionCall("stock_history", async ({ ticker }) => {
-    reply.update(<BotMessage>Loading stock history...</BotMessage>);
+    reply.update(<BotMessage>加載股票歷史數據中...</BotMessage>);
 
     const stockData = await fetchStockData(ticker);
     const content = JSON.stringify(stockData);

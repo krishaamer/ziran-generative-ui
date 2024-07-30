@@ -27,8 +27,7 @@ const components: { title: string; href: string; description: string }[] = [
   {
     title: "工廠",
     href: "?ask=%E5%8F%B0%E7%81%A3%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B7%A5%E5%BB%A0%EF%BC%8C%E5%AE%83%E5%80%91%E4%BD%8D%E6%96%BC%E4%BD%95%E8%99%95%EF%BC%9F",
-    description:
-      "台灣有哪些工廠，它們位於何處？",
+    description: "台灣有哪些工廠，它們位於何處？",
   },
   {
     title: "空氣污染",
@@ -49,6 +48,11 @@ const components: { title: string; href: string; description: string }[] = [
     title: "氣候改變",
     href: "?ask=%E6%88%91%E4%BD%BF%E7%94%A8%E9%87%91%E9%8C%A2%E8%B3%BC%E7%89%A9%E3%80%81%E5%84%B2%E8%93%84%E5%92%8C%E6%8A%95%E8%B3%87%E7%9A%84%E6%96%B9%E5%BC%8F%E5%A6%82%E4%BD%95%E5%BD%B1%E9%9F%BF%E7%92%B0%E5%A2%83%E5%92%8C%E6%B0%A3%E5%80%99%E8%AE%8A%E9%81%B7%EF%BC%9F",
     description: "我使用金錢購物、儲蓄和投資的方式如何影響環境和氣候變遷？",
+  },
+  {
+    title: "分析股票歷史",
+    href: "?ask=%E5%88%86%E6%9E%90%E8%82%A1%E7%A5%A8%E6%AD%B7%E5%8F%B2%EF%BC%8C%E6%88%91%E7%9A%84%E8%82%A1%E7%A5%A8%E7%9A%84%E8%B2%A1%E5%8B%99%E5%92%8C%E5%8F%AF%E6%8C%81%E7%BA%8C%E8%A1%A8%E7%8F%BE%E5%A6%82%E4%BD%95%EF%BC%9F",
+    description: "我的股票的財務和可持續表現如何？",
   },
 ];
 
@@ -99,7 +103,7 @@ export default function Header() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>錢花去支持了啥物呢？</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[500px] ">
                 {components.map((component) => (
                   <ListItem
                     key={component.title}
