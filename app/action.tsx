@@ -8,6 +8,7 @@ import { BotMessage } from "@/components/shared/message";
 import { sleep, runOpenAICompletion } from "@/lib/utils";
 import { z } from "zod";
 import SimpleMap from "@/components/llm-map";
+import Balance from "@/components/llm-balance";
 import Personal from "@/components/llm-personal";
 import LoginScreen from "@/components/llm-login";
 import Factories from "@/components/llm-factories";
@@ -130,6 +131,7 @@ You can invent ESG scores for companies based on fictional sustainability report
 You can save personal user data to be later used.
 You can show the user digital product passports with made up information.
 You can allow the user log in.
+You can show the user their account balance.
 You can calculate the likely distance a product has traveled to reach the user.
 You can tell the user about the history of a stock and how it's performed over the years. Include info abuout their product lines and how sustainable are their products. Make a table.
 You can compare the product to other similar products and provide more sustainable alternatives.
@@ -141,6 +143,7 @@ If you want to show the product materials, call \`show_product_materials\`.
 If you want to show factories, call \`show_factories\`.
 If you want to show personal data saving form, call \`show_personal\`.
 If you want to show user login form, call \`show_login\`.
+If you want to show user their account balance, call \`show_balance\`.
 
 The user requests for these functions may be in Chinese.
 Address the user in a friendly tone and in Chinese and use more informal words.
@@ -197,6 +200,11 @@ The user has previously invested in the following companies: ${investingData}
       {
         name: "show_login",
         description: "Show login",
+        parameters: z.object({}),
+      },
+      {
+        name: "show_balance",
+        description: "Show balance",
         parameters: z.object({}),
       },
     ],
@@ -272,6 +280,23 @@ The user has previously invested in the following companies: ${investingData}
       {
         role: "function",
         name: "show_map",
+        content: "",
+      },
+    ]);
+  });
+
+  completion.onFunctionCall("show_balance", async () => {
+    reply.update("Getting your account balance...");
+
+    await sleep(500);
+
+    reply.done(<Balance />);
+
+    aiState.done([
+      ...aiState.get(),
+      {
+        role: "function",
+        name: "show_balance",
         content: "",
       },
     ]);

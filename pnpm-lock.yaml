@@ -60,8 +60,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1
       '@upstash/redis':
-        specifier: ^1.33.0
-        version: 1.33.0
+        specifier: ^1.34.0
+        version: 1.34.0
       '@vercel/analytics':
         specifier: ^1.3.1
         version: 1.3.1(next@15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704)(sass@1.77.8))(react@19.0.0-rc-f38c22b244-20240704)
@@ -97,7 +97,7 @@ importers:
         version: 3.6.0
       dewy-ts:
         specifier: ^0.4.0
-        version: 0.4.0(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13))
+        version: 0.4.0(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13))
       finnhub:
         specifier: ^1.2.18
         version: 1.2.18(@babel/core@7.25.2)
@@ -113,6 +113,9 @@ importers:
       lottie-react:
         specifier: ^2.4.0
         version: 2.4.0(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704)
+      lucide-react:
+        specifier: ^0.417.0
+        version: 0.417.0(react@19.0.0-rc-f38c22b244-20240704)
       next:
         specifier: 15.0.0-rc.0
         version: 15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704)(sass@1.77.8)
@@ -152,6 +155,9 @@ importers:
       react-textarea-autosize:
         specifier: ^8.5.3
         version: 8.5.3(@types/react@18.3.3)(react@19.0.0-rc-f38c22b244-20240704)
+      recharts:
+        specifier: 2.13.0-alpha.4
+        version: 2.13.0-alpha.4(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704)
       remark-gfm:
         specifier: ^4.0.0
         version: 4.0.0
@@ -1657,8 +1663,8 @@ packages:
   '@upstash/ratelimit@2.0.1':
     resolution: {integrity: sha512-J+0hlkvWUjlVrjcBQhWx7gbaUGsvFF59i+GAx7YQk8L0E0MQ93xzCPu02uaXhGDJGkxiar7nRRPqj3hs+CdAJg==}
 
-  '@upstash/redis@1.33.0':
-    resolution: {integrity: sha512-5WOilc7AE0ITAdE3NCyMwgOq1n3RHcqW0OfmbotiAyfA+QAEe1R7kXin8L/Yladgdc5lkA0GcYyewqKfAw53jQ==}
+  '@upstash/redis@1.34.0':
+    resolution: {integrity: sha512-TrXNoJLkysIl8SBc4u9bNnyoFYoILpCcFJcLyWCccb/QSUmaVKdvY0m5diZqc3btExsapcMbaw/s/wh9Sf1pJw==}
 
   '@vercel/analytics@1.3.1':
     resolution: {integrity: sha512-xhSlYgAuJ6Q4WQGkzYTLmXwhYl39sWjoMA3nHxfkvG+WdBT25c563a7QhwwKivEOZtPJXifYHR1m2ihoisbWyA==}
@@ -2288,6 +2294,9 @@ packages:
     resolution: {integrity: sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==}
     engines: {node: '>=0.10.0'}
 
+  decimal.js-light@2.5.1:
+    resolution: {integrity: sha512-qIMFpTMZmny+MMIitAB6D7iVPEorVw6YQRWkvarTkT4tBeSLLiHzcwj6q0MmYSFCiVpiqPJTJEYIrpcPzVEIvg==}
+
   decode-named-character-reference@1.0.2:
     resolution: {integrity: sha512-O8x12RzrUF8xyVcY0KJowWsmaJxQbmy0/EtnNtHRpsOcT7dFk5W598coHqBVpmWo1oQQfsCqfCmkZN5DJrZVdg==}
 
@@ -2353,6 +2362,9 @@ packages:
   doctrine@2.1.0:
     resolution: {integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==}
     engines: {node: '>=0.10.0'}
+
+  dom-helpers@5.2.1:
+    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -2581,6 +2593,10 @@ packages:
 
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+
+  fast-equals@5.0.1:
+    resolution: {integrity: sha512-WF1Wi8PwwSY7/6Kx0vKXtw8RwuSGoM1bvDaJbu7MxDlR1vovZjIAKrnzyrThgAjm6JDTu0fVgWXDlMGspodfoQ==}
+    engines: {node: '>=6.0.0'}
 
   fast-glob@3.3.2:
     resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
@@ -3289,6 +3305,9 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
+  lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
 
@@ -3310,6 +3329,11 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
+
+  lucide-react@0.417.0:
+    resolution: {integrity: sha512-F/MDUHDter8YMZ7JKQpW/5/+v38tdaoShKX3e+opYsqfCnaHwn+5zz3+lBrMDFMNtSsvxtNpchLIaMpEfsi/4w==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   magic-string@0.30.11:
     resolution: {integrity: sha512-+Wri9p0QHMy+545hKww7YAu5NyzF8iomPL/RQazugQ9+Ez4Ic3mERMd8ZTX5rfK944j+560ZJi8iAwgak1Ac7A==}
@@ -3884,6 +3908,9 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
+  react-is@18.3.1:
+    resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
   react-markdown@9.0.1:
     resolution: {integrity: sha512-186Gw/vF1uRkydbsOIkcGXw7aHq0sZOCRFFjGrr7b9+nVZg4UfA4enXCaxm4fUzecU38sWfrNDitGhshuU7rdg==}
     peerDependencies:
@@ -3910,6 +3937,12 @@ packages:
       '@types/react':
         optional: true
 
+  react-smooth@4.0.1:
+    resolution: {integrity: sha512-OE4hm7XqR0jNOq3Qmk9mFLyd6p2+j6bvbPJ7qlB7+oo0eNcL2l7WQzG6MBnT3EXY6xzkLMUBec3AfewJdA0J8w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+
   react-style-singleton@2.2.1:
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
     engines: {node: '>=10'}
@@ -3931,6 +3964,12 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
+  react-transition-group@4.4.5:
+    resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
+    peerDependencies:
+      react: '>=16.6.0'
+      react-dom: '>=16.6.0'
+
   react-virtualized-auto-sizer@1.0.24:
     resolution: {integrity: sha512-3kCn7N9NEb3FlvJrSHWGQ4iVl+ydQObq2fHMn12i5wbtm74zHOPhz/i64OL3c1S1vi9i2GXtZqNqUJTQ+BnNfg==}
     peerDependencies:
@@ -3951,6 +3990,16 @@ packages:
   readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
+
+  recharts-scale@0.4.5:
+    resolution: {integrity: sha512-kivNFO+0OcUNu7jQquLXAxz1FIwZj8nrj+YkOKc5694NbjCvcT6aSZiIzNzd2Kul4o4rTto8QVR9lMNtxD4G1w==}
+
+  recharts@2.13.0-alpha.4:
+    resolution: {integrity: sha512-K9naL6F7pEcDYJE6yFQASSCQecSLPP0JagnvQ9hPtA/aHgsxsnIOjouLP5yrFZehxzfCkV5TEORr7/uNtSr7Qw==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
 
   reflect.getprototypeof@1.0.6:
     resolution: {integrity: sha512-fmfw4XgoDke3kdI6h4xcUz1dG8uaiv5q9gcEwLS4Pnth2kxT+GZ7YehS1JTMGBQmtV7Y4GFGbs2re2NqhdozUg==}
@@ -4272,6 +4321,9 @@ packages:
   third-party-capital@1.0.20:
     resolution: {integrity: sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==}
 
+  tiny-invariant@1.3.3:
+    resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
+
   to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
@@ -4448,6 +4500,9 @@ packages:
 
   vfile@6.0.2:
     resolution: {integrity: sha512-zND7NlS8rJYb/sPqkb13ZvbbUoExdbi4w3SfRrMq6R3FvnLQmmfpajJNITuuYm6AZ5uao9vy4BAos3EXBPf2rg==}
+
+  victory-vendor@36.9.2:
+    resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
 
   vue@3.4.34:
     resolution: {integrity: sha512-VZze05HWlA3ItreQ/ka7Sx7PoD0/3St8FEiSlSTVgb6l4hL+RjtP2/8g5WQBzZgyf8WG2f+g1bXzC7zggLhAJA==}
@@ -4934,32 +4989,33 @@ snapshots:
 
   '@kurkle/color@0.3.2': {}
 
-  '@langchain/community@0.0.57(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))':
+  '@langchain/community@0.0.57(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13))':
     dependencies:
-      '@langchain/core': 0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
-      '@langchain/openai': 0.0.34(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))
+      '@langchain/core': 0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      '@langchain/openai': 0.0.34(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))
       expr-eval: 2.0.2
       flat: 5.0.2
-      langsmith: 0.1.39(@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      langsmith: 0.1.39(@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
       uuid: 9.0.1
       zod: 3.23.8
       zod-to-json-schema: 3.23.2(zod@3.23.8)
     optionalDependencies:
       '@pinecone-database/pinecone': 3.0.0
-      '@upstash/redis': 1.33.0
+      '@upstash/redis': 1.34.0
       '@vercel/kv': 2.0.0
+      lodash: 4.17.21
     transitivePeerDependencies:
       - encoding
       - langchain
       - openai
 
-  '@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))':
+  '@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))':
     dependencies:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.12
-      langsmith: 0.1.39(@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      langsmith: 0.1.39(@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
       ml-distance: 4.0.1
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -4971,13 +5027,13 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/core@0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))':
+  '@langchain/core@0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))':
     dependencies:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.12
-      langsmith: 0.1.39(@langchain/core@0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      langsmith: 0.1.39(@langchain/core@0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
       ml-distance: 4.0.1
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -4989,9 +5045,9 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/openai@0.0.34(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))':
+  '@langchain/openai@0.0.34(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))':
     dependencies:
-      '@langchain/core': 0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      '@langchain/core': 0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
       js-tiktoken: 1.0.12
       openai: 4.53.2(encoding@0.1.13)
       zod: 3.23.8
@@ -5000,9 +5056,9 @@ snapshots:
       - encoding
       - langchain
 
-  '@langchain/textsplitters@0.0.3(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))':
+  '@langchain/textsplitters@0.0.3(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))':
     dependencies:
-      '@langchain/core': 0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      '@langchain/core': 0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
       js-tiktoken: 1.0.12
     transitivePeerDependencies:
       - langchain
@@ -5791,13 +5847,13 @@ snapshots:
 
   '@upstash/core-analytics@0.0.10':
     dependencies:
-      '@upstash/redis': 1.33.0
+      '@upstash/redis': 1.34.0
 
   '@upstash/ratelimit@2.0.1':
     dependencies:
       '@upstash/core-analytics': 0.0.10
 
-  '@upstash/redis@1.33.0':
+  '@upstash/redis@1.34.0':
     dependencies:
       crypto-js: 4.2.0
 
@@ -5810,7 +5866,7 @@ snapshots:
 
   '@vercel/kv@2.0.0':
     dependencies:
-      '@upstash/redis': 1.33.0
+      '@upstash/redis': 1.34.0
 
   '@vis.gl/react-google-maps@1.1.0(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704)':
     dependencies:
@@ -6484,6 +6540,8 @@ snapshots:
 
   decamelize@1.2.0: {}
 
+  decimal.js-light@2.5.1: {}
+
   decode-named-character-reference@1.0.2:
     dependencies:
       character-entities: 2.0.2
@@ -6542,11 +6600,11 @@ snapshots:
     dependencies:
       dequal: 2.0.3
 
-  dewy-ts@0.4.0(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)):
+  dewy-ts@0.4.0(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)):
     dependencies:
       '@scarf/scarf': 1.3.0
       form-data: 4.0.0
-      langchain: 0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13))
+      langchain: 0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13))
       node-fetch: 3.3.2
       pnpm: 8.15.9
     transitivePeerDependencies:
@@ -6692,6 +6750,11 @@ snapshots:
   doctrine@2.1.0:
     dependencies:
       esutils: 2.0.3
+
+  dom-helpers@5.2.1:
+    dependencies:
+      '@babel/runtime': 7.25.0
+      csstype: 3.1.3
 
   eastasianwidth@0.2.0: {}
 
@@ -7070,6 +7133,8 @@ snapshots:
   extend@3.0.2: {}
 
   fast-deep-equal@3.1.3: {}
+
+  fast-equals@5.0.1: {}
 
   fast-glob@3.3.2:
     dependencies:
@@ -7565,19 +7630,19 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)):
+  langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)):
     dependencies:
       '@anthropic-ai/sdk': 0.9.1(encoding@0.1.13)
-      '@langchain/community': 0.0.57(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
-      '@langchain/core': 0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
-      '@langchain/openai': 0.0.34(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))
-      '@langchain/textsplitters': 0.0.3(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      '@langchain/community': 0.0.57(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13))
+      '@langchain/core': 0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      '@langchain/openai': 0.0.34(encoding@0.1.13)(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))
+      '@langchain/textsplitters': 0.0.3(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
       binary-extensions: 2.3.0
       js-tiktoken: 1.0.12
       js-yaml: 4.1.0
       jsonpointer: 5.0.1
       langchainhub: 0.0.11
-      langsmith: 0.1.39(@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      langsmith: 0.1.39(@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
       ml-distance: 4.0.1
       openapi-types: 12.1.3
       p-retry: 4.6.2
@@ -7663,7 +7728,7 @@ snapshots:
 
   langchainhub@0.0.11: {}
 
-  langsmith@0.1.39(@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)):
+  langsmith@0.1.39(@langchain/core@0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)):
     dependencies:
       '@types/uuid': 9.0.8
       commander: 10.0.1
@@ -7671,11 +7736,11 @@ snapshots:
       p-retry: 4.6.2
       uuid: 9.0.1
     optionalDependencies:
-      '@langchain/core': 0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
-      langchain: 0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13))
+      '@langchain/core': 0.1.63(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      langchain: 0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13))
       openai: 4.53.2(encoding@0.1.13)
 
-  langsmith@0.1.39(@langchain/core@0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)):
+  langsmith@0.1.39(@langchain/core@0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)))(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13)):
     dependencies:
       '@types/uuid': 9.0.8
       commander: 10.0.1
@@ -7683,8 +7748,8 @@ snapshots:
       p-retry: 4.6.2
       uuid: 9.0.1
     optionalDependencies:
-      '@langchain/core': 0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
-      langchain: 0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.33.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(openai@4.53.2(encoding@0.1.13))
+      '@langchain/core': 0.2.18(langchain@0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13)))(openai@4.53.2(encoding@0.1.13))
+      langchain: 0.1.37(@pinecone-database/pinecone@3.0.0)(@upstash/redis@1.34.0)(@vercel/kv@2.0.0)(encoding@0.1.13)(ignore@5.3.1)(lodash@4.17.21)(openai@4.53.2(encoding@0.1.13))
       openai: 4.53.2(encoding@0.1.13)
 
   language-subtag-registry@0.3.23: {}
@@ -7716,6 +7781,8 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
+  lodash@4.17.21: {}
+
   longest-streak@3.1.0: {}
 
   loose-envify@1.4.0:
@@ -7735,6 +7802,10 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
+
+  lucide-react@0.417.0(react@19.0.0-rc-f38c22b244-20240704):
+    dependencies:
+      react: 19.0.0-rc-f38c22b244-20240704
 
   magic-string@0.30.11:
     dependencies:
@@ -8500,6 +8571,8 @@ snapshots:
 
   react-is@16.13.1: {}
 
+  react-is@18.3.1: {}
+
   react-markdown@9.0.1(@types/react@18.3.3)(react@19.0.0-rc-f38c22b244-20240704):
     dependencies:
       '@types/hast': 3.0.4
@@ -8536,6 +8609,14 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.3
 
+  react-smooth@4.0.1(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704):
+    dependencies:
+      fast-equals: 5.0.1
+      prop-types: 15.8.1
+      react: 19.0.0-rc-f38c22b244-20240704
+      react-dom: 19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704)
+      react-transition-group: 4.4.5(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704)
+
   react-style-singleton@2.2.1(@types/react@18.3.3)(react@19.0.0-rc-f38c22b244-20240704):
     dependencies:
       get-nonce: 1.0.1
@@ -8558,6 +8639,15 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
+  react-transition-group@4.4.5(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704):
+    dependencies:
+      '@babel/runtime': 7.25.0
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 19.0.0-rc-f38c22b244-20240704
+      react-dom: 19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704)
+
   react-virtualized-auto-sizer@1.0.24(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704):
     dependencies:
       react: 19.0.0-rc-f38c22b244-20240704
@@ -8578,6 +8668,23 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
+
+  recharts-scale@0.4.5:
+    dependencies:
+      decimal.js-light: 2.5.1
+
+  recharts@2.13.0-alpha.4(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704):
+    dependencies:
+      clsx: 2.1.1
+      eventemitter3: 4.0.7
+      lodash: 4.17.21
+      react: 19.0.0-rc-f38c22b244-20240704
+      react-dom: 19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704)
+      react-is: 18.3.1
+      react-smooth: 4.0.1(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704)
+      recharts-scale: 0.4.5
+      tiny-invariant: 1.3.3
+      victory-vendor: 36.9.2
 
   reflect.getprototypeof@1.0.6:
     dependencies:
@@ -9000,6 +9107,8 @@ snapshots:
 
   third-party-capital@1.0.20: {}
 
+  tiny-invariant@1.3.3: {}
+
   to-fast-properties@2.0.0: {}
 
   to-regex-range@5.0.1:
@@ -9191,6 +9300,23 @@ snapshots:
       '@types/unist': 3.0.2
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
+
+  victory-vendor@36.9.2:
+    dependencies:
+      '@types/d3-array': 3.2.1
+      '@types/d3-ease': 3.0.2
+      '@types/d3-interpolate': 3.0.4
+      '@types/d3-scale': 4.0.8
+      '@types/d3-shape': 3.1.6
+      '@types/d3-time': 3.0.3
+      '@types/d3-timer': 3.0.2
+      d3-array: 3.2.4
+      d3-ease: 3.0.1
+      d3-interpolate: 3.0.1
+      d3-scale: 4.0.2
+      d3-shape: 3.2.0
+      d3-time: 3.1.0
+      d3-timer: 3.0.1
 
   vue@3.4.34(typescript@5.5.4):
     dependencies:

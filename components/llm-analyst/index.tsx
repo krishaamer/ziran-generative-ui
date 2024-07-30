@@ -73,7 +73,7 @@ export default function Analyst({
         className="mt-2 inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white hover:text-white bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg shadow-md transition ease-in-out duration-150 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200"
         onClick={async () => {
           const response = await submitUserMessage( 
-            `Please analyze the following stock data, think carefully and explain what it could mean for this particular company. Explain your thinking. Format the date in a human-readable format %Y-%m-%d and focus on the last 3 months in 2024 if available. Extrapolate how the stock is related to the environmental sustainabiltity of the company. Use your own data about the historical ESG performance of the company and how it could relate to the stock data. Also make a chart with the company name and stock prices. This is the stock data: ${content}`
+            `Please analyze the following stock data, think carefully and explain what it could mean for this particular company. Explain your thinking. Format the date in a human-readable format %Y-%m-%d and focus on the last 3 months in 2024 if available. Extrapolate how the stock is related to the environmental sustainabiltity of the company. Use your own data about the historical ESG performance of the company and how it could relate to the stock data. This is the stock data: ${content}`
           );
           setMessages((currentMessages) => [...currentMessages, response]);
         }}
