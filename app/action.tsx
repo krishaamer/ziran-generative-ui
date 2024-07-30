@@ -9,6 +9,7 @@ import { sleep, runOpenAICompletion } from "@/lib/utils";
 import { z } from "zod";
 import SimpleMap from "@/components/llm-map";
 import Balance from "@/components/llm-balance";
+import Passport from "@/components/llm-passport";
 import Personal from "@/components/llm-personal";
 import LoginScreen from "@/components/llm-login";
 import Factories from "@/components/llm-factories";
@@ -135,6 +136,7 @@ You can show the user their account balance.
 You can calculate the likely distance a product has traveled to reach the user.
 You can tell the user about the history of a stock and how it's performed over the years. Include info abuout their product lines and how sustainable are their products. Make a table.
 You can compare the product to other similar products and provide more sustainable alternatives.
+You can show a digital product passport that details the ESG data of this product.
 
 If you want to show stock history for a particular stock, call \`stock_history\`.
 If you want to show a map, call \`show_map\`.
@@ -144,6 +146,7 @@ If you want to show factories, call \`show_factories\`.
 If you want to show personal data saving form, call \`show_personal\`.
 If you want to show user login form, call \`show_login\`.
 If you want to show user their account balance, call \`show_balance\`.
+If you want to show user the digital product passport which shows product ESG, call \`show_passport\`.
 
 The user requests for these functions may be in Chinese.
 Address the user in a friendly tone and in Chinese and use more informal words.
@@ -205,6 +208,11 @@ The user has previously invested in the following companies: ${investingData}
       {
         name: "show_balance",
         description: "Show balance",
+        parameters: z.object({}),
+      },
+      {
+        name: "show_passport",
+        description: "Show passport",
         parameters: z.object({}),
       },
     ],
@@ -297,6 +305,23 @@ The user has previously invested in the following companies: ${investingData}
       {
         role: "function",
         name: "show_balance",
+        content: "",
+      },
+    ]);
+  });
+
+  completion.onFunctionCall("show_passport", async () => {
+    reply.update("Getting your digital product passport..");
+
+    await sleep(500);
+
+    reply.done(<Passport />);
+
+    aiState.done([
+      ...aiState.get(),
+      {
+        role: "function",
+        name: "show_passport",
         content: "",
       },
     ]);
