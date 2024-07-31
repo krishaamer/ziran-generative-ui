@@ -58,7 +58,7 @@ export default function Personal() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-end">
       <Textarea
-        className="w-full resize-none bg-transparent p-3 focus-within:outline-none"
+        className="w-full resize-none bg-transparent focus-within:outline-none"
         value={clientData}
         onChange={(e) => setClientData(e.target.value)}
         placeholder="我的基本個人財務資訊"

@@ -24,7 +24,9 @@ export default function Factories() {
 
   return (
     <>
-      <BotMessage>工廠範例圖片</BotMessage>
+      <BotMessage>
+        這邊有一些工廠範例圖片 創用CC授權的圖片，拍攝於尼加拉瓜的一家台灣公司擁有的紡織廠。這些照片是在台灣總統正式訪問期間拍攝的。原始圖片可以在下載：[下載連結](https://www.flickr.com/photos/presidentialoffice/albums/72157678740079556)。
+      </BotMessage>
       <Swiper
         spaceBetween={0}
         autoHeight={true}
@@ -62,20 +64,8 @@ export default function Factories() {
           />
         </SwiperSlide>
       </Swiper>
-      <BotMessage className="pb-2">
-        創用CC授權的圖片，拍攝於尼加拉瓜的一家台灣公司擁有的紡織廠。這些照片是在台灣總統正式訪問期間拍攝的。原始圖片可以在下載：{" "}
-        <strong>
-          <a
-            href="https://www.flickr.com/photos/presidentialoffice/albums/72157678740079556"
-            target="_blank"
-          >
-            下載連結
-          </a>
-        </strong>
-        。
-      </BotMessage>
 
-      <BotMessage>工廠範例地圖</BotMessage>
+      <BotMessage>這裡附近有一些紡織廠 這些都是工廠範例地圖</BotMessage>
       <div
         style={{ height: "500px", width: "100%" }}
         className="rounded-lg shadow-lg ring overflow-hidden"
@@ -110,9 +100,6 @@ export default function Factories() {
             <TooltipContent>綠濾助手</TooltipContent>
           </Tooltip>
         </div>
-        <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200	">
-          <CardContent>這裡附近有一些紡織廠</CardContent>
-        </Card>
       </div>
     </>
   );
