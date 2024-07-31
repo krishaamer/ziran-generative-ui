@@ -18,7 +18,8 @@ export default function Factories() {
   return (
     <>
       <BotMessage>
-        這邊有一些工廠範例圖片 創用CC授權的圖片，拍攝於尼加拉瓜的一家台灣公司擁有的紡織廠。這些照片是在台灣總統正式訪問期間拍攝的。原始圖片可以在下載：*[下載連結](https://www.flickr.com/photos/presidentialoffice/albums/72157678740079556)*。
+        這邊有一些工廠範例圖片
+        創用CC授權的圖片，拍攝於尼加拉瓜的一家台灣公司擁有的紡織廠。這些照片是在台灣總統正式訪問期間拍攝的。原始圖片可以在下載：*[下載連結](https://www.flickr.com/photos/presidentialoffice/albums/72157678740079556)*。
       </BotMessage>
       <Swiper
         spaceBetween={0}
@@ -38,6 +39,7 @@ export default function Factories() {
             width={600}
             height={500}
             alt="Factory"
+            className="rounded-lg ring-1 ring-offset-2 ring-amber-950"
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -46,6 +48,7 @@ export default function Factories() {
             width={600}
             height={500}
             alt="Factory"
+            className="rounded-lg ring-1 ring-offset-2 ring-amber-950"
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -54,6 +57,7 @@ export default function Factories() {
             width={600}
             height={500}
             alt="Factory"
+            className="rounded-lg ring-1 ring-offset-2 ring-amber-950"
           />
         </SwiperSlide>
       </Swiper>
