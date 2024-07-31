@@ -59,6 +59,30 @@ interface ApiResponse {
   }>;
 }
 
+interface CustomTooltipProps {
+  currentItem?: {
+    bullPower: number;
+    bearPower: number;
+  };
+  pricesDisplayFormat: (value: number) => string;
+}
+
+const CustomTooltip: React.FC<CustomTooltipProps> = ({
+  currentItem,
+  pricesDisplayFormat,
+}) => {
+  if (!currentItem) return null;
+
+  const { bullPower, bearPower } = currentItem;
+
+  return (
+    <div>
+      <div>Bull Power: {pricesDisplayFormat(bullPower)}</div>
+      <div>Bear Power: {pricesDisplayFormat(bearPower)}</div>
+    </div>
+  );
+};
+
 const Financial: React.FC<FinancialProps> = ({ submitMessage, tickers }) => {
   const [data, setData] = useState<StockData[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -295,10 +319,7 @@ const Financial: React.FC<FinancialProps> = ({ submitMessage, tickers }) => {
           <SingleValueTooltip
             yAccessor={elder.accessor()}
             yLabel="Elder Ray"
-            yDisplayFormat={(d: { bullPower: number; bearPower: number }) =>
-              `${pricesDisplayFormat(d.bullPower)}, ${pricesDisplayFormat(d.bearPower)}`
-            }
-            origin={[8, 16]}
+            yDisplayFormat={(value) => pricesDisplayFormat(value)}
           />
         </Chart>
         <CrossHairCursor />
