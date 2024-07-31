@@ -4,6 +4,7 @@ import Personal from "@/components/llm-personal";
 import Investing from "@/components/llm-investing";
 import TabBar from "./tab-bar";
 import Brands from "./brands";
+import Financial from "@/components/llm-financial";
 
 export function EmptyScreen({
   submitMessage,
@@ -27,6 +28,12 @@ export function EmptyScreen({
           tickers={["KO", "TSM", "NVDA"]}
         />
       </div>
+      <div className="rounded-lg border bg-background p-4 mb-4">
+        <Financial
+          submitMessage={submitMessage}
+          tickers={["KO", "TSM", "NVDA"]}
+        />
+      </div>
       <UserMessage>你有關於儲蓄、投資和永續發展的課程嗎？</UserMessage>
       <BotMessage>這邊你也可以在這裡找到常見問題</BotMessage>
       <div className="rounded-lg border bg-background mb-4">
@@ -38,7 +45,8 @@ export function EmptyScreen({
         <Brands submitMessage={submitMessage} />
       </div>
       <BotMessage>
-        請使用下方的搜索欄來提問任何關於永續購物、儲蓄和投資的問題！我在這裡幫助你開始環保的財務生活方式 😊～～
+        請使用下方的搜索欄來提問任何關於永續購物、儲蓄和投資的問題！我在這裡幫助你開始環保的財務生活方式
+        😊～～
       </BotMessage>
     </div>
   );
