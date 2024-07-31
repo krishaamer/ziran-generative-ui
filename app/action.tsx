@@ -13,6 +13,7 @@ import Passport from "@/components/llm-passport";
 import Personal from "@/components/llm-personal";
 import { LoginScreen } from "@/components/llm-login";
 import Factories from "@/components/llm-factories";
+import Pigs from "@/components/llm-pigs";
 import Origin from "@/components/llm-origin";
 import Analyst from "@/components/llm-analyst";
 import Materials from "@/components/llm-materials";
@@ -120,6 +121,7 @@ Your should respond to the user briefly in Chinese using traditional characters.
 You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
 You can show a map of sustainable companies in the area.
 You can show a map of factories in the area to help the user understand where the product come from.
+You can show a map of pig factories in Taiwan that produce pork as well images of pigs.
 You can show a map where the user can purchase sustainable products or repair their clothes.
 You can teach the user how to be more environmentally friendly by using the data they have shared such as the brands they bought before and offer personalized suggestions.
 You can show the product origin visually.
@@ -140,6 +142,7 @@ If you want to show a map, call \`show_map\`.
 If you want to show the product origin, call \`show_product_origin\`.
 If you want to show the product materials, call \`show_product_materials\`.
 If you want to show factories, call \`show_factories\`.
+If you want to show pigs or pork factories, call \`show_pigs\`.
 If you want to show personal data saving form, call \`show_personal\`.
 If you want to show user login form, call \`show_login\`.
 If you want to show user their account balance, call \`show_balance\`.
@@ -183,6 +186,11 @@ The user has previously invested in the following companies: ${investingData}
       {
         name: "show_factories",
         description: "Show factories",
+        parameters: z.object({}),
+      },
+      {
+        name: "show_pigs",
+        description: "Show pigs",
         parameters: z.object({}),
       },
       {
@@ -336,6 +344,23 @@ The user has previously invested in the following companies: ${investingData}
       {
         role: "function",
         name: "show_factories",
+        content: "",
+      },
+    ]);
+  });
+
+  completion.onFunctionCall("show_pigs", async () => {
+    reply.update("尋找工廠...");
+
+    await sleep(500);
+
+    reply.done(<Pigs />);
+
+    aiState.done([
+      ...aiState.get(),
+      {
+        role: "function",
+        name: "show_pigs",
         content: "",
       },
     ]);
