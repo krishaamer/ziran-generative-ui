@@ -26,7 +26,7 @@ export default function Origin() {
   return (
     <>
       {reportID && origin.url && (
-        <div className="rounded-xl text-card-foreground border p-2 mt-2 mb-6">
+        <div className="rounded-lg text-card-foreground border p-2 mt-2 mb-6">
           <span>
             資料來源：
             <a

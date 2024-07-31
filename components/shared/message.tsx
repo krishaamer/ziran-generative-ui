@@ -26,7 +26,7 @@ export function UserMessage({
     <div className="flex justify-end">
       <div
         className={cn(
-          "group relative flex items-start ml-auto md:-mr-12",
+          "group relative flex items-start z-10 max-w-[60%] ml-auto md:-mr-12",
           className
         )}
       >
@@ -75,7 +75,10 @@ export function BotMessage({
         />
       )}
       <div
-        className={cn("group relative flex items-start md:-ml-12", className)}
+        className={cn(
+          "group relative flex items-start z-10 max-w-[60%] md:-ml-12",
+          className
+        )}
       >
         <Tooltip>
           <TooltipTrigger asChild>
@@ -113,7 +116,7 @@ export function BotCard({
       <div className="group relative flex items-start md:-ml-12">
         <div
           className={cn(
-            "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border bg-primary text-primary-foreground",
+            "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-xl border bg-primary text-primary-foreground",
             !showAvatar && "invisible"
           )}
         >

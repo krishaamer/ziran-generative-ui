@@ -48,7 +48,7 @@ export function Search({
       className={`sticky bottom-0 z-50 flex items-center justify-between w-full px-4 border-b h-20 shrink-0 ${isFocused ? "bg-pink-50" : "bg-background"} backdrop-blur-xl docu-shadow`}
     >
       <div className="relative inset-x-0 bottom-0 w-full">
-        <div className="mx-auto sm:max-w-2xl sm:px-4">
+        <div className="mx-auto sm:max-w-2xl">
           <div>
             <form
               ref={formRef}
@@ -63,15 +63,15 @@ export function Search({
                 submitMessage(value);
               }}
             >
-              <div className="relative flex flex-col w-full px-4 overflow-hidden max-h-60 grow shadow-sm bg-background rounded-xl border">
+              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow shadow-sm bg-background rounded-lg border">
                 <Textarea
                   ref={inputRef}
                   tabIndex={0}
                   onKeyDown={onKeyDown}
-                  onFocus={() => setIsFocused(true)} // Update focus state to true
-                  onBlur={() => setIsFocused(false)} // Update focus state to false
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
                   placeholder="我的問題～～"
-                  className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
+                  className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] pr-28 focus-within:outline-none"
                   autoFocus
                   spellCheck={false}
                   autoComplete="off"
@@ -81,7 +81,7 @@ export function Search({
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
-                <div className="absolute right-2 top-2 sm:right-2">
+                <div className="absolute right-2 top-2">
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button

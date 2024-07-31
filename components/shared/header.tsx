@@ -123,6 +123,9 @@ export default function Header() {
                 >
                   Install the 綠濾 Green Filter Chrome Extension
                 </ListItem>
+                <li>
+                  <ThemeSwitcher />
+                </li>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
@@ -146,26 +149,31 @@ export default function Header() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="flex space-x-4">
-        <div>
+      <div className="flex space-x-4 mr-6">
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            {session?.data?.user?.name ?? (
+              <>
+                登入
+              </>
+            )}
+          </DropdownMenuTrigger>
           {session?.data?.user?.name ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                {session?.data?.user?.name}
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuLabel>我的帳戶</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Button onClick={() => signOut()}>登出</Button>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <DropdownMenuContent className="mr-6">
+              <DropdownMenuLabel>我的帳戶</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Button onClick={() => signOut()}>登出</Button>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
           ) : (
-            <SignIn />
+            <DropdownMenuContent className="mr-6">
+              <DropdownMenuItem>
+                <SignIn />
+              </DropdownMenuItem>
+            </DropdownMenuContent>
           )}
-        </div>
-        <ThemeSwitcher />
+        </DropdownMenu>
       </div>
     </div>
   );

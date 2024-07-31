@@ -80,7 +80,7 @@ async function submitUserMessage(content: string) {
 
   const reply = createStreamableUI(
     <BotMessage className="items-center">
-      <Skeleton className="h-[25px] w-full rounded-xl" />
+      <Skeleton className="h-[25px] w-full rounded-lg" />
     </BotMessage>
   );
 

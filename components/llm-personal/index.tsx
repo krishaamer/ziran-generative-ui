@@ -8,6 +8,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
+import Textarea from "react-textarea-autosize";
 
 export default function Personal() {
   const [clientData, setClientData] = useState("");
@@ -44,8 +45,8 @@ export default function Personal() {
       <div className="mx-auto max-w-2xl px-4">
         <div className="flex flex-col space-y-3">
           <h2>加載中...</h2>
-          <Skeleton className="h-[50px] w-full rounded-xl" />
-          <div className="space-y-2">
+          <Skeleton className="h-[50px] w-full rounded-lg" />
+          <div className="space-y-2 pb-4">
             <Skeleton className="h-4 w-full" />
             <Skeleton className="h-4 w-[300px]" />
           </div>
@@ -56,8 +57,8 @@ export default function Personal() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-end">
-      <textarea
-        className="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 mb-2"
+      <Textarea
+        className="w-full resize-none bg-transparent p-3 focus-within:outline-none"
         value={clientData}
         onChange={(e) => setClientData(e.target.value)}
         placeholder="我的基本個人財務資訊"
@@ -67,8 +68,8 @@ export default function Personal() {
         <TooltipTrigger asChild>
           <Button
             type="submit"
-            size={"sm"}
-            className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg shadow-md transition ease-in-out duration-150 ${
+            size="sm"
+            className={`px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg shadow-md transition ease-in-out duration-150 ${
               clientData.trim()
                 ? "hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200"
                 : "cursor-not-allowed opacity-50"
