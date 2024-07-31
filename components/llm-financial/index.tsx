@@ -141,14 +141,14 @@ const Financial: React.FC<FinancialProps> = ({ submitMessage, tickers }) => {
   }
 
   const ScaleProvider =
-    discontinuousTimeScaleProviderBuilder<StockData>().inputDateAccessor(
+    discontinuousTimeScaleProviderBuilder().inputDateAccessor(
       (d: StockData) => new Date(d.date)
     );
   const height = 600;
   const width = 600;
   const margin = { left: 0, right: 48, top: 0, bottom: 24 };
 
-  const ema12 = ema<StockData>()
+  const ema12 = ema()
     .id(1)
     .options({ windowSize: 12 })
     .merge((d: StockData, c: number) => {
@@ -156,7 +156,7 @@ const Financial: React.FC<FinancialProps> = ({ submitMessage, tickers }) => {
     })
     .accessor((d: StockData) => d.ema12);
 
-  const ema26 = ema<StockData>()
+  const ema26 = ema()
     .id(2)
     .options({ windowSize: 26 })
     .merge((d: StockData, c: number) => {
@@ -164,7 +164,7 @@ const Financial: React.FC<FinancialProps> = ({ submitMessage, tickers }) => {
     })
     .accessor((d: StockData) => d.ema26);
 
-  const elder = elderRay<StockData>();
+  const elder = elderRay();
 
   const calculatedData = elder(ema26(ema12(data)));
   const {
