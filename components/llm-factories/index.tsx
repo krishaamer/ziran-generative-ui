@@ -4,12 +4,7 @@ import Image from "next/image";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination } from "swiper/modules";
-import { BotMessage, UserMessage } from "@/components/shared/message";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { BotMessage } from "@/components/shared/message";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/pagination";
@@ -23,7 +18,7 @@ export default function Factories() {
   return (
     <>
       <BotMessage>
-        這邊有一些工廠範例圖片 創用CC授權的圖片，拍攝於尼加拉瓜的一家台灣公司擁有的紡織廠。這些照片是在台灣總統正式訪問期間拍攝的。原始圖片可以在下載：[下載連結](https://www.flickr.com/photos/presidentialoffice/albums/72157678740079556)。
+        這邊有一些工廠範例圖片 創用CC授權的圖片，拍攝於尼加拉瓜的一家台灣公司擁有的紡織廠。這些照片是在台灣總統正式訪問期間拍攝的。原始圖片可以在下載：*[下載連結](https://www.flickr.com/photos/presidentialoffice/albums/72157678740079556)*。
       </BotMessage>
       <Swiper
         spaceBetween={0}
@@ -35,7 +30,7 @@ export default function Factories() {
         effect={"cards"}
         grabCursor={true}
         modules={[EffectCards, Pagination]}
-        className="mb-2"
+        className="mb-6"
       >
         <SwiperSlide>
           <Image
