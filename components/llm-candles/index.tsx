@@ -51,6 +51,6 @@ export const data = {
   ],
 };
 
-export default function Line() {
+export default function Candles() {
   return <Bar options={options} data={data} />;
 }

@@ -134,14 +134,11 @@ const Financial: React.FC<FinancialProps> = ({ submitMessage, tickers }) => {
 
   const getStockQuestions = (tickers: string[]) => {
     const tickerList = tickers.join(", ");
+    const dataString = data ? "Here is the data: " + JSON.stringify(data) : "";
     return [
       {
-        heading: `你如何比較這些股票 (${tickerList}) 的表現？`,
-        message: `請比較這些股票 (${tickerList}) 的表現。請製作一個表格`,
-      },
-      {
-        heading: `這些股票 (${tickerList}) 的市場趨勢是什麼？`,
-        message: `分析這些股票 (${tickerList}) 的市場趨勢`,
+        heading: `你如何比較這些股票 (${tickerList}) 的Elder Ray？`,
+        message: `你如何比較這些股票 (${tickerList}) 的Elder Ray？`,
       },
     ];
   };

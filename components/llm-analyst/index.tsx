@@ -24,7 +24,7 @@ export default function Analyst({
   const [, setMessages] = useUIState<typeof AI>();
   const { submitUserMessage } = useActions();
 
-  const chartData: ChartPoint[] = stockData.map((item: StockData) => [
+  const chartData: ChartPoint[] = stockData?.map((item: StockData) => [
     new Date(item.t).getTime(),
     item.c,
   ]);
