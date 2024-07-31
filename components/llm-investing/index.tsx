@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
 import {
   Tooltip,
   TooltipContent,
@@ -11,33 +10,33 @@ import {
 import { Button } from "@/components/ui/button";
 import Textarea from "react-textarea-autosize";
 
-export default function Personal({ className }: { className?: string }) {
-  const [clientData, setClientData] = useState("");
+export default function Investing() {
+  const [investingData, setInvestingData] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/personal")
+    fetch("/api/investing")
       .then((response) => response.json())
       .then((data) => {
-        setClientData(
-          typeof data.clientData === "string" ? data.clientData : ""
+        setInvestingData(
+          typeof data.investingData === "string" ? data.investingData : ""
         );
-        setIsLoading(false); // Stop loading after data is received
+        setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Failed to fetch personal data", error);
-        setIsLoading(false); // Stop loading on error
+        console.error("Failed to fetch investing data", error);
+        setIsLoading(false);
       });
   }, []);
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    await fetch("/api/personal", {
+    await fetch("/api/investing", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ clientData }),
+      body: JSON.stringify({ investingData }),
     });
   };
 
@@ -57,16 +56,16 @@ export default function Personal({ className }: { className?: string }) {
   }
 
   return (
-    <div className={cn("flex flex-col items-end", className)}>
+    <div className="flex flex-col items-end">
       <form
         onSubmit={handleSubmit}
         className="rounded-lg border bg-background p-4"
       >
         <Textarea
           className="w-full resize-none bg-transparent focus-within:outline-none"
-          value={clientData}
-          onChange={(e) => setClientData(e.target.value)}
-          placeholder="我的基本個人財務資訊"
+          value={investingData}
+          onChange={(e) => setInvestingData(e.target.value)}
+          placeholder="我的投資經驗"
           required
         />
         <Tooltip>
@@ -75,13 +74,13 @@ export default function Personal({ className }: { className?: string }) {
               type="submit"
               size="sm"
               className={`px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg shadow-md transition ease-in-out duration-150 ${
-                clientData.trim()
+                investingData.trim()
                   ? "hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200"
                   : "cursor-not-allowed opacity-50"
               }`}
-              disabled={!clientData.trim()}
+              disabled={!investingData.trim()}
             >
-              儲存財務目標
+              儲存
             </Button>
           </TooltipTrigger>
           <TooltipContent>儲存個人資料</TooltipContent>
