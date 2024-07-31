@@ -10,25 +10,27 @@ export function EmptyScreen({
   submitMessage: (message: string) => void;
 }) {
   return (
-    <div className="mx-auto max-w-2xl px-4">
-      <BotMessage>Have you been good today?</BotMessage>
-      <UserMessage>我的個人資料和財務目標</UserMessage>
-      <div className="rounded-lg border bg-background p-4 mb-4">
+    <div className="mx-auto max-w-2xl">
+      <BotMessage className="mb-2">歡迎 我是綠濾 👋</BotMessage>
+      <BotMessage className="mb-2">
+        你可以幫我理解更多關於你的財務目標嗎？
+      </BotMessage>
+      <div className="rounded-lg border bg-background p-4">
         <Personal />
       </div>
-      <BotMessage>You can ask more questions here</BotMessage>
+      <UserMessage className="mb-4">
+        好啊～我的個人財務目標是大概這樣！
+      </UserMessage>
+      <BotMessage>這邊你也可以在這裡找到常見問題</BotMessage>
       <div className="rounded-lg border bg-background mb-4">
         <TabBar submitMessage={submitMessage} />
       </div>
-      <BotMessage>Here are your investments</BotMessage>
+      <BotMessage>這邊是你的投資</BotMessage>
       <div className="rounded-lg border bg-background p-4 mb-4">
-        <h2 className="font-bold px-4 pt-4 text-xl text-center">
-          我持有的股票
-        </h2>
         <Polygon submitMessage={submitMessage} ticker="KO" />
         <Polygon submitMessage={submitMessage} ticker="TSM" />
       </div>
-      <BotMessage>These are the brands you bought</BotMessage>
+      <BotMessage>這些是你過去一年購買的品牌</BotMessage>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Brands submitMessage={submitMessage} />
       </div>

@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Personal() {
   const [clientData, setClientData] = useState("");
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/personal")
@@ -25,7 +25,7 @@ export default function Personal() {
       .catch((error) => {
         console.error("Failed to fetch personal data", error);
         setIsLoading(false); // Stop loading on error
-      });;
+      });
   }, []);
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
@@ -55,33 +55,31 @@ export default function Personal() {
   }
 
   return (
-    <>
-      <h2 className="text-sm font-medium">我的個人資料和財務目標</h2>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          className="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 mb-2"
-          value={clientData}
-          onChange={(e) => setClientData(e.target.value)}
-          placeholder="我的基本個人財務資訊"
-          required
-        />
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              type="submit"
-              className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg shadow-md transition ease-in-out duration-150 ${
-                clientData.trim()
-                  ? "hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200"
-                  : "cursor-not-allowed opacity-50"
-              }`}
-              disabled={!clientData.trim()}
-            >
-              儲存
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>儲存個人資料</TooltipContent>
-        </Tooltip>
-      </form>
-    </>
+    <form onSubmit={handleSubmit} className="flex flex-col items-end">
+      <textarea
+        className="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 mb-2"
+        value={clientData}
+        onChange={(e) => setClientData(e.target.value)}
+        placeholder="我的基本個人財務資訊"
+        required
+      />
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            type="submit"
+            size={"sm"}
+            className={`inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg shadow-md transition ease-in-out duration-150 ${
+              clientData.trim()
+                ? "hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200"
+                : "cursor-not-allowed opacity-50"
+            }`}
+            disabled={!clientData.trim()}
+          >
+            儲存財務目標
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>儲存個人資料</TooltipContent>
+      </Tooltip>
+    </form>
   );
 }

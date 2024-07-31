@@ -14,28 +14,41 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 // Different types of message bubbles.
-export function UserMessage({ children }: { children: React.ReactNode }) {
-
+export function UserMessage({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const content = typeof children === "string" ? children : "";
-
   return (
-    <div className="group relative flex items-start md:ml-12">
-      <Card className="mb-4 py-2 ring-1 ring-orange-950 ring-offset-2 bg-green-200 dark:bg-green-900">
-        <CardContent>
-          <div className="flex-1 space-y-2 overflow-hidden px-1">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
-          </div>
-        </CardContent>
-      </Card>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Avatar className="ring-1 ring-amber-950 ring-offset-2 cursor-pointer">
-            <AvatarImage src="/images/cat-1.jpg" alt="我" />
-            <AvatarFallback>我</AvatarFallback>
-          </Avatar>
-        </TooltipTrigger>
-        <TooltipContent>我自己</TooltipContent>
-      </Tooltip>
+    <div className="flex justify-end">
+      <div
+        className={cn(
+          "group relative flex items-start ml-auto md:-mr-12",
+          className
+        )}
+      >
+        <Card className="py-2 ring-1 ring-orange-950 ring-offset-2 bg-green-200 dark:bg-green-900">
+          <CardContent>
+            <div className="flex-1 space-y-2 overflow-hidden px-1">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {content}
+              </ReactMarkdown>
+            </div>
+          </CardContent>
+        </Card>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Avatar className="ring-1 ring-amber-950 ring-offset-2 cursor-pointer">
+              <AvatarImage src="/images/cat-1.jpg" alt="我" />
+              <AvatarFallback>我</AvatarFallback>
+            </Avatar>
+          </TooltipTrigger>
+          <TooltipContent>我自己</TooltipContent>
+        </Tooltip>
+      </div>
     </div>
   );
 }
@@ -47,7 +60,7 @@ export function BotMessage({
 }: {
   children: React.ReactNode;
   className?: string;
-  animated?: boolean
+  animated?: boolean;
 }) {
   const content = typeof children === "string" ? children : "";
 
@@ -134,4 +147,4 @@ export function SystemMessage({ children }: { children: React.ReactNode }) {
       <div className={"max-w-[600px] flex-initial px-2 py-2"}>{children}</div>
     </div>
   );
-}
+}2
