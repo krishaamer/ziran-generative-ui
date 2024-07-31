@@ -8,7 +8,7 @@ export function Sidebar({
 }) {
   return (
     <div className="relative mx-auto max-w-2xl px-2 mt-10">
-      <BotMessage>相關問題</BotMessage>
+      <BotMessage>這邊有一些相關問題</BotMessage>
       <div className="rounded-lg border bg-background mb-4">
         <TabBar submitMessage={submitMessage} />
       </div>

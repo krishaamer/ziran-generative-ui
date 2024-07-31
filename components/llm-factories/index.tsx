@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination } from "swiper/modules";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import { BotMessage, UserMessage } from "@/components/shared/message";
 import {
   Tooltip,
   TooltipContent,
@@ -23,7 +24,7 @@ export default function Factories() {
 
   return (
     <>
-      <h2 className="text-xl font-bold text-center mb-2">工廠範例圖片</h2>
+      <BotMessage>工廠範例圖片</BotMessage>
       <Swiper
         spaceBetween={0}
         autoHeight={true}
@@ -61,35 +62,20 @@ export default function Factories() {
           />
         </SwiperSlide>
       </Swiper>
-      <div className="group relative flex items-start md:-ml-12">
-        <div className="flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border bg-primary text-primary-foreground">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Avatar className="ring-1 ring-offset-2 ring-amber-950 cursor-pointer">
-                <AvatarImage src="/images/avatar-2.jpg" alt="助手" />
-                <AvatarFallback>助手</AvatarFallback>
-              </Avatar>
-            </TooltipTrigger>
-            <TooltipContent>綠濾助手</TooltipContent>
-          </Tooltip>
-        </div>
-        <Card className="py-2 ring-1 ring-offset-2 ring-orange-950 bg-amber-200	">
-          <CardContent>
-            創用CC授權的圖片，拍攝於尼加拉瓜的一家台灣公司擁有的紡織廠。這些照片是在台灣總統正式訪問期間拍攝的。原始圖片可以在下載：{" "}
-            <strong>
-              <a
-                href="https://www.flickr.com/photos/presidentialoffice/albums/72157678740079556"
-                target="_blank"
-              >
-                下載連結
-              </a>
-            </strong>
-            。
-          </CardContent>
-        </Card>
-      </div>
+      <BotMessage className="pb-2">
+        創用CC授權的圖片，拍攝於尼加拉瓜的一家台灣公司擁有的紡織廠。這些照片是在台灣總統正式訪問期間拍攝的。原始圖片可以在下載：{" "}
+        <strong>
+          <a
+            href="https://www.flickr.com/photos/presidentialoffice/albums/72157678740079556"
+            target="_blank"
+          >
+            下載連結
+          </a>
+        </strong>
+        。
+      </BotMessage>
 
-      <h2 className="text-xl font-bold text-center mb-2 mt-4">工廠範例地圖</h2>
+      <BotMessage>工廠範例地圖</BotMessage>
       <div
         style={{ height: "500px", width: "100%" }}
         className="rounded-lg shadow-lg ring overflow-hidden"
