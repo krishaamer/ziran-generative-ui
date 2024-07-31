@@ -27,8 +27,10 @@ export function EmptyScreen({
       </div>
       <BotMessage>這邊是你的投資</BotMessage>
       <div className="rounded-lg border bg-background p-4 mb-4">
-        <Polygon submitMessage={submitMessage} ticker="KO" />
-        <Polygon submitMessage={submitMessage} ticker="TSM" />
+        <Polygon
+          submitMessage={submitMessage}
+          tickers={["KO", "TSM", "NVDA"]}
+        />
       </div>
       <BotMessage>這些是你過去一年購買的品牌</BotMessage>
       <div className="rounded-lg border bg-background p-4 mb-4">

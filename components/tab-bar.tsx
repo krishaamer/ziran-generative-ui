@@ -213,9 +213,6 @@ export default function TabBar({
         </TabsList>
         <TabsContent value="shopping">
           <div>
-            <h2 className="font-bold px-4 pt-4 text-xl text-center">
-              購物建議
-            </h2>
             <div className="flex flex-wrap gap-2 p-4 mb-4">
               {shopping.map((msg, idx) => (
                 <Button
@@ -237,9 +234,6 @@ export default function TabBar({
         </TabsContent>
         <TabsContent value="saving">
           <div>
-            <h2 className="font-bold px-4 pt-4 text-xl text-center">
-              儲蓄建議
-            </h2>
             <div className="flex flex-wrap gap-2 p-4 mb-4">
               {saving.map((msg, idx) => (
                 <Button
@@ -261,9 +255,6 @@ export default function TabBar({
         </TabsContent>
         <TabsContent value="investing">
           <div>
-            <h2 className="font-bold px-4 pt-4 text-xl text-center">
-              投資建議
-            </h2>
             <div className="flex flex-wrap gap-2 p-4 mb-4">
               {investing.map((msg, idx) => (
                 <Button

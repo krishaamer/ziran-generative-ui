@@ -5,7 +5,7 @@ import HighchartsReact from "highcharts-react-official";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
-type ChartPoint = [number, number]; // Define the type for a data point in Highcharts
+type ChartPoint = [number, number];
 
 type StockData = {
   t: number; // timestamp
@@ -14,28 +14,20 @@ type StockData = {
 
 export default function Polygon({
   submitMessage,
-  ticker,
+  tickers,
 }: {
   submitMessage: (message: string) => void;
-  ticker: string;
+  tickers: string[];
 }) {
   const [isLoading, setIsLoading] = useState(true);
   const [chartOptions, setChartOptions] = useState({
     title: {
-      text: `${ticker} 股票價格`,
+      text: "股票價格",
     },
     rangeSelector: {
       enabled: true,
     },
-    series: [
-      {
-        name: `${ticker} 股票價格`,
-        data: [] as ChartPoint[],
-        tooltip: {
-          valueDecimals: 2,
-        },
-      },
-    ],
+    series: [] as Highcharts.SeriesOptionsType[],
     credits: {
       enabled: false,
     },
@@ -44,53 +36,64 @@ export default function Polygon({
   // Calculate 3 months back date from today
   const threeMonthsAgo = new Date();
   threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
-
-  // Convert date to YYYY-MM-DD format
   const fromDate = threeMonthsAgo.toISOString().split("T")[0];
   const toDate = new Date().toISOString().split("T")[0]; // Today's date
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `/api/polygon?symbol=${ticker}&from=${fromDate}&to=${toDate}`
+        const fetchPromises = tickers.map((ticker) =>
+          fetch(`/api/polygon?symbol=${ticker}&from=${fromDate}&to=${toDate}`)
+            .then((response) => response.json())
+            .then((json) => {
+              if (
+                (json.status === "OK" || json.status === "DELAYED") &&
+                Array.isArray(json.results)
+              ) {
+                const chartData: ChartPoint[] = json.results.map(
+                  (item: StockData) => [new Date(item.t).getTime(), item.c]
+                );
+                return { ticker, data: chartData };
+              } else {
+                console.error(`Error fetching stock data for ${ticker}:`, json);
+                return { ticker, data: [] };
+              }
+            })
         );
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const json = await response.json();
-        if (
-          (json.status === "OK" || json.status === "DELAYED") &&
-          Array.isArray(json.results)
-        ) {
-          const chartData: ChartPoint[] = json.results.map(
-            (item: StockData) => [new Date(item.t).getTime(), item.c]
-          );
-          setChartOptions((prevOptions) => ({
-            ...prevOptions,
-            series: [{ ...prevOptions.series[0], data: chartData }],
-          }));
-          setIsLoading(false); // Stop loading after data is received
-        } else {
-          console.error("Error fetching stock data:", json);
-        }
+
+        const results = await Promise.all(fetchPromises);
+
+        const series = results.map(({ ticker, data }) => ({
+          name: `${ticker} 股票價格`,
+          data,
+          tooltip: {
+            valueDecimals: 2,
+          },
+        })) as Highcharts.SeriesOptionsType[];
+
+        setChartOptions((prevOptions) => ({
+          ...prevOptions,
+          series,
+        }));
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching stock data:", error);
-        setIsLoading(false); // Stop loading on error
+        setIsLoading(false); 
       }
     };
     fetchData();
-  }, [fromDate, toDate]); // Make sure useEffect reacts to changes in fromDate and toDate
+  }, [tickers, fromDate, toDate]);
 
-  const getStockQuestions = (ticker: string) => {
+  const getStockQuestions = (tickers: string[]) => {
+    const tickerList = tickers.join(", ");
     return [
       {
-        heading: `你之前買過哪些品牌，以及它們在${ticker}的可持續性方面如何比較？`,
-        message: `你之前買過哪些品牌，以及它們在${ticker}的可持續性方面如何比較？請製作一個表格`,
+        heading: `你如何比較這些股票 (${tickerList}) 的表現？`,
+        message: `請比較這些股票 (${tickerList}) 的表現。請製作一個表格`,
       },
       {
-        heading: `${ticker} 股票的歷史是什麼？`,
-        message: `${ticker} 股票的歷史是什麼？`,
+        heading: `這些股票 (${tickerList}) 的市場趨勢是什麼？`,
+        message: `分析這些股票 (${tickerList}) 的市場趨勢`,
       },
     ];
   };
@@ -117,7 +120,7 @@ export default function Polygon({
         options={chartOptions}
       />
       <div className="flex flex-wrap gap-2 mt-4">
-        {getStockQuestions(ticker)?.map((msg, idx) => (
+        {getStockQuestions(tickers)?.map((msg, idx) => (
           <Button
             key={idx}
             variant="ghost"
