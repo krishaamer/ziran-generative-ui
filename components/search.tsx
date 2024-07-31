@@ -63,7 +63,7 @@ export function Search({
                 submitMessage(value);
               }}
             >
-              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow shadow-sm bg-background rounded-lg border">
+              <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow shadow-sm bg-background rounded-xl border">
                 <Textarea
                   ref={inputRef}
                   tabIndex={0}
@@ -86,7 +86,7 @@ export function Search({
                     <TooltipTrigger asChild>
                       <Button
                         type="submit"
-                        className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-2xl text-sm px-5 py-2.5 text-center me-2 mb-2"
+                        className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                         size="lg"
                       >
                         <span>問綠濾</span>

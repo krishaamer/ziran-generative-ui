@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import ThemeSwitcher from "@/components/shared/theme";
 import { useSession, signOut } from "next-auth/react";
-import SignIn from "../llm-login";
+import { SignIn } from "../llm-login";
 import {
   DropdownMenu,
   DropdownMenuContent,

@@ -11,7 +11,7 @@ import SimpleMap from "@/components/llm-map";
 import Balance from "@/components/llm-balance";
 import Passport from "@/components/llm-passport";
 import Personal from "@/components/llm-personal";
-import LoginScreen from "@/components/llm-login";
+import { LoginScreen } from "@/components/llm-login";
 import Factories from "@/components/llm-factories";
 import Origin from "@/components/llm-origin";
 import Analyst from "@/components/llm-analyst";

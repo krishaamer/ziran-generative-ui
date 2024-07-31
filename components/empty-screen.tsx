@@ -15,7 +15,7 @@ export function EmptyScreen({
       <BotMessage className="mb-2">
         你可以幫我理解更多關於你的財務目標嗎？
       </BotMessage>
-      <div className="rounded-lg border bg-background p-4">
+      <div className="mt-4 p-4">
         <Personal />
       </div>
       <UserMessage className="mb-4">

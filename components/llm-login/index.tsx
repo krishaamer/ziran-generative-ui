@@ -2,9 +2,10 @@
 
 import { signInWithGoogle } from "./authActions";
 import { Button } from "@/components/ui/button";
+import { BotMessage } from "@/components/shared/message";
 import Image from "next/image";
 
-export default function SignIn() {
+export function SignIn() {
   return (
     <>
       <form
@@ -27,3 +28,15 @@ export default function SignIn() {
     </>
   );
 }
+
+export function LoginScreen() {
+  return (
+    <>
+      <BotMessage>請登入以儲存結果：</BotMessage>
+      <div className="rounded-lg shadow-lg ring overflow-hidden">
+        <SignIn />
+      </div>
+    </>
+  );
+}
+

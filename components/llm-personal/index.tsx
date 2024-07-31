@@ -56,31 +56,33 @@ export default function Personal() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-end">
-      <Textarea
-        className="w-full resize-none bg-transparent focus-within:outline-none"
-        value={clientData}
-        onChange={(e) => setClientData(e.target.value)}
-        placeholder="我的基本個人財務資訊"
-        required
-      />
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            type="submit"
-            size="sm"
-            className={`px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg shadow-md transition ease-in-out duration-150 ${
-              clientData.trim()
-                ? "hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200"
-                : "cursor-not-allowed opacity-50"
-            }`}
-            disabled={!clientData.trim()}
-          >
-            儲存財務目標
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>儲存個人資料</TooltipContent>
-      </Tooltip>
-    </form>
+    <div className="flex flex-col items-end">
+      <form onSubmit={handleSubmit} className="rounded-lg border bg-background p-4">
+        <Textarea
+          className="w-full resize-none bg-transparent focus-within:outline-none"
+          value={clientData}
+          onChange={(e) => setClientData(e.target.value)}
+          placeholder="我的基本個人財務資訊"
+          required
+        />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              type="submit"
+              size="sm"
+              className={`px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg shadow-md transition ease-in-out duration-150 ${
+                clientData.trim()
+                  ? "hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200"
+                  : "cursor-not-allowed opacity-50"
+              }`}
+              disabled={!clientData.trim()}
+            >
+              儲存財務目標
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>儲存個人資料</TooltipContent>
+        </Tooltip>
+      </form>
+    </div>
   );
 }
