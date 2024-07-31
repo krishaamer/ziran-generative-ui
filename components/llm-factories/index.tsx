@@ -88,19 +88,6 @@ export default function Factories() {
           </Map>
         </APIProvider>
       </div>
-      <div className="group relative flex items-start md:-ml-12">
-        <div className="flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border bg-primary text-primary-foreground">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Avatar className="ring-1 ring-offset-2 ring-amber-950 cursor-pointer">
-                <AvatarImage src="/images/avatar-2.jpg" alt="助手" />
-                <AvatarFallback>助手</AvatarFallback>
-              </Avatar>
-            </TooltipTrigger>
-            <TooltipContent>綠濾助手</TooltipContent>
-          </Tooltip>
-        </div>
-      </div>
     </>
   );
 }
