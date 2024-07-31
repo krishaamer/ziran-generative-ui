@@ -52,9 +52,6 @@ const fetchStockData = async (ticker: string) => {
   return false; 
 };
 
-
-const invest = kv.set("investingData", "apple, nvidia, microsoft");
-
 const myPreviouslyBoughtBrands = [
   "3m",
   "canon",
