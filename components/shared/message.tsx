@@ -26,7 +26,7 @@ export function UserMessage({
     <div className="flex justify-end">
       <div
         className={cn(
-          "group relative flex items-start z-10 max-w-[70%] ml-auto md:-mr-12",
+          "group relative flex items-start z-10 max-w-[80%] ml-auto md:-mr-12",
           className
         )}
       >
@@ -76,7 +76,7 @@ export function BotMessage({
       )}
       <div
         className={cn(
-          "group relative flex items-start z-10 max-w-[70%] md:-ml-12",
+          "group relative flex items-start z-10 max-w-[80%] md:-ml-12",
           className
         )}
       >

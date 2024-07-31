@@ -4,8 +4,6 @@ import Image from "next/image";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Pagination } from "swiper/modules";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
 import { BotMessage, UserMessage } from "@/components/shared/message";
 import {
   Tooltip,
@@ -17,7 +15,7 @@ import "swiper/css/effect-cards";
 import "swiper/css/pagination";
 
 export default function Factories() {
-  const position = { lat: 23.0124433, lng: 120.212851 };
+  const position = { lat: 23.0124433, lng: 120.312851 };
   const marker1 = { lat: 23.0124433, lng: 120.312851 };
   const marker2 = { lat: 23.0185, lng: 120.312751 };
   const marker3 = { lat: 23.0124222, lng: 120.318951 };
@@ -68,7 +66,7 @@ export default function Factories() {
       <BotMessage>這裡附近有一些紡織廠 這些都是工廠範例地圖</BotMessage>
       <div
         style={{ height: "500px", width: "100%" }}
-        className="rounded-lg shadow-lg ring overflow-hidden"
+        className="rounded-lg shadow-lg ring overflow-hidden mb-4"
       >
         <APIProvider
           apiKey={
