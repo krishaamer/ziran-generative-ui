@@ -35,12 +35,6 @@ export function EmptyScreen({
           tickers={["KO", "TSM", "NVDA"]}
         />
       </div>
-      <div className="rounded-lg border bg-background p-4 mb-4">
-        <Candles
-          submitMessage={submitMessage}
-          tickers={["KO", "TSM", "NVDA"]}
-        />
-      </div>
       <UserMessage>你有關於儲蓄、投資和永續發展的課程嗎？</UserMessage>
       <BotMessage>這邊你也可以在這裡找到常見問題</BotMessage>
       <div className="rounded-lg border bg-background mb-4">

@@ -9,7 +9,6 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -79,12 +78,26 @@ export default function Candles({
         const labels = Array.from(
           new Set(results.flat().map((item) => item.x))
         ).sort();
+
+        // Static color function
+        const getColor = (index) => {
+          const colors = [
+            "rgba(255, 99, 132, 0.5)",
+            "rgba(54, 162, 235, 0.5)",
+            "rgba(255, 206, 86, 0.5)",
+            "rgba(75, 192, 192, 0.5)",
+            "rgba(153, 102, 255, 0.5)",
+            "rgba(255, 159, 64, 0.5)",
+          ];
+          return colors[index % colors.length];
+        };
+
         const datasets = results.map((data, index) => ({
           label: `${tickers[index]} Stock Price`,
           data: labels.map(
             (label) => data.find((item) => item.x === label)?.y || 0
           ),
-          backgroundColor: `rgba(${faker.datatype.number({ min: 0, max: 255 })}, ${faker.datatype.number({ min: 0, max: 255 })}, ${faker.datatype.number({ min: 0, max: 255 })}, 0.5)`,
+          backgroundColor: getColor(index),
         }));
 
         setChartData({ labels, datasets });
