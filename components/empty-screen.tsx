@@ -5,6 +5,7 @@ import Investing from "@/components/llm-investing";
 import TabBar from "./tab-bar";
 import Brands from "./brands";
 import Financial from "@/components/llm-financial";
+import Candles from "@/components/llm-candles";
 
 export function EmptyScreen({
   submitMessage,
@@ -30,6 +31,12 @@ export function EmptyScreen({
       </div>
       <div className="rounded-lg border bg-background p-4 mb-4">
         <Financial
+          submitMessage={submitMessage}
+          tickers={["KO", "TSM", "NVDA"]}
+        />
+      </div>
+      <div className="rounded-lg border bg-background p-4 mb-4">
+        <Candles
           submitMessage={submitMessage}
           tickers={["KO", "TSM", "NVDA"]}
         />
