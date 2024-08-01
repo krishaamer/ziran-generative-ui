@@ -71,6 +71,12 @@ const myPreviouslyBoughtBrands = [
   "casio",
   "coach",
   "fendi",
+  "adidas",
+  "allsaints",
+  "gap",
+  "levis",
+  "muji",
+  "north-face",
 ];
 
 async function submitUserMessage(content: string) {
