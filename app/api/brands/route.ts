@@ -15,3 +15,15 @@ export async function GET(req: NextRequest) {
     }
   );
 }
+
+export async function POST(req: NextRequest) {
+  const { brandsData } = await req.json();
+  await kv.set(key, JSON.stringify(brandsData));
+
+  return new Response(JSON.stringify({ message: "Updated successfully" }), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}

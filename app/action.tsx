@@ -53,32 +53,6 @@ const fetchStockData = async (ticker: string) => {
   return false; 
 };
 
-const myPreviouslyBoughtBrands = [
-  "3m",
-  "canon",
-  "csd",
-  "debuyer",
-  "lanew",
-  "loreal",
-  "nikon",
-  "olympus",
-  "panasonic",
-  "pentax",
-  "philips",
-  "sony",
-  "michael-kors",
-  "calvin-klein",
-  "casio",
-  "coach",
-  "fendi",
-  "adidas",
-  "allsaints",
-  "gap",
-  "levis",
-  "muji",
-  "north-face",
-];
-
 async function submitUserMessage(content: string) {
   "use server";
 
@@ -112,6 +86,7 @@ async function submitUserMessage(content: string) {
 
   const clientData = await kv.get("userData");
   const investingData = await kv.get("investingData");
+  const brandsData = await kv.get("brandsData");
 
   const completion = runOpenAICompletion(openai, {
     model: "gpt-4o",
@@ -162,7 +137,7 @@ Complement function calls with text responses from your own data.
 Here is some user data you can use to personalize your responses and offer specific advice:
 ${clientData}
 
-The user has previously bought products from the following brands: ${myPreviouslyBoughtBrands.join(",")}
+The user has previously bought products from the following brands: ${brandsData}
 
 The user has previously invested in the following companies: ${investingData}
 `,

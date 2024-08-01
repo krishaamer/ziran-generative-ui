@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import Textarea from "react-textarea-autosize";
 
 const brandQuestions = [
   {
@@ -28,22 +29,53 @@ export default function Brands({
 }: {
   submitMessage: (message: string) => void;
 }) {
-  const [brandsData, setBrandsData] = useState([]);
+  const [brandsData, setBrandsData] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [newBrand, setNewBrand] = useState("");
 
   useEffect(() => {
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
     fetch("/api/brands")
       .then((response) => response.json())
       .then((data) => {
-        setBrandsData(Array.isArray(data.brandsData) ? data.brandsData : []);
-        setIsLoading(false); // Stop loading after data is received
+        if (Array.isArray(data.brandsData)) {
+          setBrandsData(data.brandsData);
+        } else {
+          console.error("Unexpected data format:", data);
+        }
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Failed to fetch brands", error);
-        setIsLoading(false); // Stop loading on error
+        setIsLoading(false);
       });
   }, []);
+
+  const handleAddBrand = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (newBrand.trim()) {
+      const updatedBrands = [...brandsData, newBrand.trim()];
+
+      try {
+        const response = await fetch("/api/brands", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ brandsData: updatedBrands }),
+        });
+
+        if (response.ok) {
+          setBrandsData(updatedBrands);
+          setNewBrand(""); // Clear input after submission
+        } else {
+          console.error("Failed to update brands");
+        }
+      } catch (error) {
+        console.error("Failed to add brand", error);
+      }
+    }
+  };
 
   if (isLoading) {
     return (
@@ -94,6 +126,31 @@ export default function Brands({
           </Button>
         ))}
       </div>
+
+      <form
+        onSubmit={handleAddBrand}
+        className="mt-4 rounded-lg border bg-background p-4"
+      >
+        <Textarea
+          className="w-full resize-none bg-transparent focus-within:outline-none"
+          value={newBrand}
+          onChange={(e) => setNewBrand(e.target.value)}
+          placeholder="添加新的品牌"
+          required
+        />
+        <Button
+          type="submit"
+          size="sm"
+          className={`mt-2 px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-pink-500 to-orange-400 rounded-lg shadow-md transition ease-in-out duration-150 ${
+            newBrand.trim()
+              ? "hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200"
+              : "cursor-not-allowed opacity-50"
+          }`}
+          disabled={!newBrand.trim()}
+        >
+          添加品牌
+        </Button>
+      </form>
     </div>
   );
 }
