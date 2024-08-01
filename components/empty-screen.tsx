@@ -5,7 +5,6 @@ import Investing from "@/components/llm-investing";
 import TabBar from "./tab-bar";
 import Brands from "./brands";
 import Financial from "@/components/llm-financial";
-import Candles from "@/components/llm-candles";
 
 export function EmptyScreen({
   submitMessage,
