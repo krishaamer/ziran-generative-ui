@@ -40,7 +40,8 @@ export default function Brands({
       .then((data) => {
         if (Array.isArray(data.brandsData)) {
           setBrandsData(data.brandsData);
-          setBrandsInput(data.brandsData.join(" ")); // Initialize input with current brands separated by spaces
+          // Join brands with commas for the input
+          setBrandsInput(data.brandsData.join(", "));
         } else {
           console.error("Unexpected data format:", data);
         }
@@ -55,8 +56,8 @@ export default function Brands({
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const updatedBrands = brandsInput
-      .split(/\s+/) // Split by one or more spaces
-      .map((brand) => brand.trim())
+      .split(",") // Split by commas
+      .map((brand) => brand.trim().toLowerCase()) // Trim and convert to lowercase
       .filter((brand) => brand !== "");
 
     try {
@@ -76,6 +77,11 @@ export default function Brands({
     } catch (error) {
       console.error("Failed to update brands", error);
     }
+  };
+
+  // Function to convert brand name to Sentence case for display
+  const toSentenceCase = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   };
 
   if (isLoading) {
@@ -102,11 +108,14 @@ export default function Brands({
             className="h-auto p-1 text-base shadow-sm border border-slate-100 grow md:grow-0 text-center"
             onClick={async () => {
               submitMessage(
-                `${brand}品牌的可持續性如何？有什麼更可持續的替代選擇？`
+                `${toSentenceCase(brand)}品牌的可持續性如何？有什麼更可持續的替代選擇？`
               );
             }}
           >
-            <img src={`/brands/${brand}.jpg`} alt={`${brand} brand`} />
+            <img
+              src={`/brands/${brand}.jpg`}
+              alt={`${toSentenceCase(brand)} brand`}
+            />
           </Button>
         ))}
       </div>
@@ -136,7 +145,7 @@ export default function Brands({
           className="w-full resize-none bg-transparent focus-within:outline-none"
           value={brandsInput}
           onChange={(e) => setBrandsInput(e.target.value)}
-          placeholder="Enter brands separated by spaces"
+          placeholder="Enter brands separated by commas"
           required
         />
         <Button
