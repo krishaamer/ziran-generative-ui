@@ -208,7 +208,7 @@ export function compare() {
   )
 }
 
-function CheckIcon(props) {
+function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -224,11 +224,10 @@ function CheckIcon(props) {
     >
       <path d="M20 6 9 17l-5-5" />
     </svg>
-  )
+  );
 }
 
-
-function DoorClosedIcon(props) {
+function DoorClosedIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -246,5 +245,5 @@ function DoorClosedIcon(props) {
       <path d="M2 20h20" />
       <path d="M14 12v.01" />
     </svg>
-  )
+  );
 }
