@@ -86,3 +86,4 @@ export default function RootLayout({
 }
 
 export const runtime = "edge";
+export const preferredRegion = ["sin1", "kix1", "icn1", "hnd1", "iad1"];

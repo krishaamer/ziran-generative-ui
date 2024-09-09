@@ -39,3 +39,5 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Error fetching data" }, { status: 500 });
   }
 }
+
+export const preferredRegion = ["sin1", "kix1", "icn1", "hnd1", "iad1"];

@@ -76,3 +76,5 @@ export async function GET(req: NextRequest) {
     });
   }
 }
+
+export const preferredRegion = ["sin1", "kix1", "icn1", "hnd1", "iad1"];
