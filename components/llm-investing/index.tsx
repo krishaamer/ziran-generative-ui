@@ -24,7 +24,7 @@ export default function Investing() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Failed to fetch investing data", error);
+        console.log("Failed to fetch investing data", error);
         setIsLoading(false);
       });
   }, []);

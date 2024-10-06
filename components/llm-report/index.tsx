@@ -26,10 +26,10 @@ export default function Report({
 
           setIsLoading(false); // Stop loading after data is received
         } else {
-          console.error("Error fetching stock data:", json);
+          console.log("Error fetching stock data:", json);
         }
       } catch (error) {
-        console.error("Error fetching stock data:", error);
+        console.log("Error fetching stock data:", error);
         setIsLoading(false); // Stop loading on error
       }
     };

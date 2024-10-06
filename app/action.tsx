@@ -44,10 +44,10 @@ const fetchStockData = async (ticker: string) => {
     ) {
       return json.results;
     } else {
-      console.error("Error fetching stock data:", json);
+      console.log("Error fetching stock data:", json);
     }
   } catch (error) {
-    console.error("Error fetching stock data:", error);
+    console.log("Error fetching stock data:", error);
   }
 
   return false; 

@@ -25,7 +25,7 @@ export default function Personal({ className }: { className?: string }) {
         setIsLoading(false); // Stop loading after data is received
       })
       .catch((error) => {
-        console.error("Failed to fetch personal data", error);
+        console.log("Failed to fetch personal data", error);
         setIsLoading(false); // Stop loading on error
       });
   }, []);

@@ -79,7 +79,7 @@ function usePolyline(props: PolylineProps) {
   useEffect(() => {
     if (!map) {
       if (map === undefined)
-        console.error('<Polyline> has to be inside a Map component.');
+        console.log('<Polyline> has to be inside a Map component.');
 
       return;
     }

@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
   try {
     const response = await fetch(apiUrl);
     if (!response.ok) {
-      console.error("API response not OK:", response.statusText);
+      console.log("API response not OK:", response.statusText);
       return new NextResponse(
         JSON.stringify({ error: "Error fetching data from API" }),
         { status: 500 }
@@ -70,7 +70,7 @@ export async function GET(req: NextRequest) {
 
     return new NextResponse(JSON.stringify(dataArray), { status: 200 });
   } catch (error) {
-    console.error("Error fetching data from Alpha Vantage API:", error);
+    console.log("Error fetching data from Alpha Vantage API:", error);
     return new NextResponse(JSON.stringify({ error: "Server error" }), {
       status: 500,
     });

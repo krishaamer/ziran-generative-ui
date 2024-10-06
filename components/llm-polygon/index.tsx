@@ -55,7 +55,7 @@ export default function Polygon({
                 );
                 return { ticker, data: chartData };
               } else {
-                console.error(`Error fetching stock data for ${ticker}:`, json);
+                console.log(`Error fetching stock data for ${ticker}:`, json);
                 return { ticker, data: [] };
               }
             })
@@ -77,7 +77,7 @@ export default function Polygon({
         }));
         setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching stock data:", error);
+        console.log("Error fetching stock data:", error);
         setIsLoading(false); 
       }
     };

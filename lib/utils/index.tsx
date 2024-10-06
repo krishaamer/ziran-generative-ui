@@ -154,7 +154,7 @@ export function getDomainFromURL(url: string) {
     const parsedUrl = new URL(url);
     return parsedUrl.hostname;
   } catch (error) {
-    console.error("Invalid URL:", error);
+    console.log("Invalid URL:", error);
     return null;
   }
 }

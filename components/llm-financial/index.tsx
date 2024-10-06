@@ -114,7 +114,7 @@ const Financial: React.FC<FinancialProps> = ({ submitMessage, tickers }) => {
                   volume: item.v,
                 }));
               } else {
-                console.error(`Error fetching stock data for ${ticker}:`, json);
+                console.log(`Error fetching stock data for ${ticker}:`, json);
                 return [];
               }
             })
@@ -124,7 +124,7 @@ const Financial: React.FC<FinancialProps> = ({ submitMessage, tickers }) => {
         setData(results.flat());
         setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching stock data:", error);
+        console.log("Error fetching stock data:", error);
         setIsLoading(false);
       }
     };

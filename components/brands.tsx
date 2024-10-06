@@ -43,12 +43,12 @@ export default function Brands({
           // Join brands with commas for the input
           setBrandsInput(data.brandsData.join(", "));
         } else {
-          console.error("Unexpected data format:", data);
+          console.log("Unexpected data format:", data);
         }
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Failed to fetch brands", error);
+        console.log("Failed to fetch brands", error);
         setIsLoading(false);
       });
   }, []);
@@ -72,10 +72,10 @@ export default function Brands({
       if (response.ok) {
         setBrandsData(updatedBrands);
       } else {
-        console.error("Failed to update brands");
+        console.log("Failed to update brands");
       }
     } catch (error) {
-      console.error("Failed to update brands", error);
+      console.log("Failed to update brands", error);
     }
   };
 

@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Error fetching data from Polygon.io API:", error);
+    console.log("Error fetching data from Polygon.io API:", error);
     return NextResponse.json({ error: "Error fetching data" }, { status: 500 });
   }
 }

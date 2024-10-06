@@ -18,7 +18,7 @@ export default function Origin() {
           setOrigin({ url: data?.origin });
         })
         .catch((error) => {
-          console.error("Failed to fetch origin data", error);
+          console.log("Failed to fetch origin data", error);
         });
     }
   }, [searchParams]);
