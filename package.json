@@ -2,13 +2,18 @@
   "name": "ziran-generative-ui",
   "private": true,
   "version": "0.5.0",
+  "packageManager": "pnpm@10.19.0",
   "scripts": {
+    "preinstall": "corepack enable",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx}\" --cache"
+  },
+  "engines": {
+    "node": ">=18.18.0"
   },
   "dependencies": {
     "@fullstory/browser": "^2.0.5",
