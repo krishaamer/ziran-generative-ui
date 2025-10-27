@@ -20,6 +20,19 @@ import Materials from "@/components/llm-materials";
 import { messageRateLimit } from "@/lib/rate-limit";
 import { headers } from "next/headers";
 
+async function safeHeadersGet(name: string): Promise<string | null> {
+  try {
+    const h: any = await headers();
+    if (h && typeof h.get === "function") {
+      return h.get(name);
+    }
+    if (h && h[name]) {
+      return String(h[name]);
+    }
+  } catch (_) {}
+  return null;
+}
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || "",
 });
@@ -31,9 +44,9 @@ const fetchStockData = async (ticker: string) => {
   const toDate = new Date().toISOString().split("T")[0]; // Today's date
 
   try {
-    const h = headers();
-    const host = h.get("x-forwarded-host") || h.get("host");
-    const protocol = h.get("x-forwarded-proto") || "http";
+    const xfHost = await safeHeadersGet("x-forwarded-host");
+    const host = xfHost || (await safeHeadersGet("host"));
+    const protocol = (await safeHeadersGet("x-forwarded-proto")) || "http";
     const origin = host ? `${protocol}://${host}` : "";
 
     const url = origin
@@ -69,7 +82,9 @@ async function submitUserMessage(content: string) {
     </BotMessage>
   );
 
-  const ip = headers().get("x-real-ip") ?? "local";
+  const realIp = await safeHeadersGet("x-real-ip");
+  const xff = await safeHeadersGet("x-forwarded-for");
+  const ip = realIp || (xff ? xff.split(",")[0]?.trim() : null) || "local";
   const rl = await messageRateLimit.limit(ip);
 
   if (!rl.success) {
@@ -91,9 +106,22 @@ async function submitUserMessage(content: string) {
     },
   ]);
 
-  const clientData = await kv.get("userData");
-  const investingData = await kv.get("investingData");
-  const brandsData = await kv.get("brandsData");
+  const hasKV = Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+  const clientData = hasKV ? await kv.get("userData") : null;
+  const investingData = hasKV ? await kv.get("investingData") : null;
+  const brandsData = hasKV ? await kv.get("brandsData") : null;
+
+  if (!process.env.OPENAI_API_KEY) {
+    reply.done(
+      <BotMessage animated={false}>
+        AI 回應已停用（缺少 OPENAI_API_KEY）。請在 .env.local 設定後重整。
+      </BotMessage>
+    );
+    return {
+      id: Date.now(),
+      display: reply.value,
+    };
+  }
 
   const completion = runOpenAICompletion(openai, {
     model: "gpt-4o",
