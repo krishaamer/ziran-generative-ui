@@ -4,6 +4,16 @@ import { NextRequest } from "next/server";
 const key = "investingData";
 
 export async function GET(req: NextRequest) {
+  const hasKV = Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+  if (!hasKV) {
+    return new Response(
+      JSON.stringify({ investingData: "No data found" }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
   const investingData = await kv.get(key);
   return new Response(
     JSON.stringify({ investingData: investingData || "No data found" }),
@@ -18,6 +28,13 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const { investingData } = await req.json();
+  const hasKV = Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+  if (!hasKV) {
+    return new Response(JSON.stringify({ message: "KV not configured" }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
   await kv.set(key, JSON.stringify(investingData));
 
   return new Response(JSON.stringify({ message: "Updated successfully" }), {

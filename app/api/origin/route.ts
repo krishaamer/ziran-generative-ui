@@ -14,6 +14,16 @@ export async function GET(req: NextRequest) {
   }
 
   const key = reportID + "_origin";
+  const hasKV = Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+  if (!hasKV) {
+    return new Response(
+      JSON.stringify({ origin: "No origin data found" }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
   const originData = await kv.get(key);
 
   return new Response(
