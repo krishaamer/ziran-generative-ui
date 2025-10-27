@@ -64,12 +64,7 @@ export default function Factories() {
         style={{ height: "500px", width: "100%" }}
         className="rounded-lg shadow-lg ring overflow-hidden mb-4"
       >
-        <APIProvider
-          apiKey={
-            process.env.REACT_APP_GOOGLE_MAPS_API_KEY ||
-            "AIzaSyB6uP_GJFF4Ngfxdp3aftquS7cYp_tgw18"
-          }
-        >
+        <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}>
           <Map
             defaultCenter={position}
             defaultZoom={13}

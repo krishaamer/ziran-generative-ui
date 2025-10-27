@@ -25,11 +25,18 @@ export async function GET(req: NextRequest) {
     );
   }
 
+  if (!api_key) {
+    return NextResponse.json({ status: "OK", results: [] }, { status: 200 });
+  }
+
   const url = `https://api.polygon.io/v2/aggs/ticker/${symbol}/range/1/day/${from}/${to}?apiKey=${api_key}`;
 
   try {
     const response = await fetch(url);
     if (!response.ok) {
+      if (response.status === 401 || response.status === 403) {
+        return NextResponse.json({ status: "OK", results: [] }, { status: 200 });
+      }
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
