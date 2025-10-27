@@ -29,7 +29,14 @@ interface ApiResponse {
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const symbol = searchParams.get("symbol");
-  const api_key = "NOQ41DSYXDIUNRN0";
+  const api_key = process.env.ALPHA_VANTAGE_API_KEY;
+
+  if (!api_key) {
+    return new NextResponse(
+      JSON.stringify({ error: "ALPHA_VANTAGE_API_KEY is not configured" }),
+      { status: 500 }
+    );
+  }
 
   const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${api_key}`;
 

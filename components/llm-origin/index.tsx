@@ -21,10 +21,7 @@ export default function Origin() {
     <>
       <BotMessage>產品來源</BotMessage>
       <APIProvider
-        apiKey={
-          process.env.REACT_APP_GOOGLE_MAPS_API_KEY ||
-          "AIzaSyB6uP_GJFF4Ngfxdp3aftquS7cYp_tgw18"
-        }
+        apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
       >
         <div
           style={{ height: "500px", width: "100%" }}

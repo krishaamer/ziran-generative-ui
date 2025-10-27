@@ -14,10 +14,7 @@ export default function SimpleMap() {
       className="rounded-lg shadow-lg ring overflow-hidden"
     >
       <APIProvider
-        apiKey={
-          process.env.REACT_APP_GOOGLE_MAPS_API_KEY ||
-          "AIzaSyB6uP_GJFF4Ngfxdp3aftquS7cYp_tgw18"
-        }
+        apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
       >
         <Map
           defaultCenter={position}

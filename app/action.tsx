@@ -31,9 +31,16 @@ const fetchStockData = async (ticker: string) => {
   const toDate = new Date().toISOString().split("T")[0]; // Today's date
 
   try {
-    const response = await fetch(
-      `${process.env.ZIRAN_ROOT_URL}/api/polygon?symbol=${ticker}&from=${fromDate}&to=${toDate}`
-    );
+    const h = headers();
+    const host = h.get("x-forwarded-host") || h.get("host");
+    const protocol = h.get("x-forwarded-proto") || "http";
+    const origin = host ? `${protocol}://${host}` : "";
+
+    const url = origin
+      ? `${origin}/api/polygon?symbol=${ticker}&from=${fromDate}&to=${toDate}`
+      : `/api/polygon?symbol=${ticker}&from=${fromDate}&to=${toDate}`;
+
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

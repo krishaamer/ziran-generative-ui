@@ -77,10 +77,10 @@ export default function RootLayout({
             <SessionProvider>{children}</SessionProvider>
           </Providers>
         </AI>
+        <NextAnalytics />
+        <ClientAnalytics />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
       </body>
-      <NextAnalytics />
-      <ClientAnalytics />
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
     </html>
   );
 }
