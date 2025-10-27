@@ -1,6 +1,6 @@
 "use client";
 
-import { signInWithGoogle } from "./authActions";
+import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { BotMessage } from "@/components/shared/message";
 import Image from "next/image";
@@ -11,7 +11,7 @@ export function SignIn() {
       <form
         onSubmit={async (event) => {
           event.preventDefault();
-          await signInWithGoogle();
+          await signIn("google");
         }}
       >
         <Button type="submit" variant="ghost">
@@ -39,4 +39,3 @@ export function LoginScreen() {
     </>
   );
 }
-
