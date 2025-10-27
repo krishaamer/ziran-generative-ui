@@ -2,14 +2,18 @@
 
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { ThemeProviderProps } from "next-themes/dist/types";
 
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { LanguageProvider } from "@/components/shared/language";
 
-export function Providers({ children, ...props }: ThemeProviderProps) {
+type ThemeProps = React.ComponentProps<typeof NextThemesProvider>;
+
+export function Providers({ children, ...props }: ThemeProps) {
   return (
-    <NextThemesProvider {...props}>
-      <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
-    </NextThemesProvider>
+    <LanguageProvider>
+      <NextThemesProvider {...props}>
+        <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
+      </NextThemesProvider>
+    </LanguageProvider>
   );
 }

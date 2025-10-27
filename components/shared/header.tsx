@@ -12,6 +12,8 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import ThemeSwitcher from "@/components/shared/theme";
+import LanguageSwitcher from "@/components/shared/language-switcher";
+import { useLanguage } from "@/components/shared/language";
 import { useSession, signOut } from "next-auth/react";
 import { SignIn } from "../llm-login";
 import {
@@ -23,7 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const components: { title: string; href: string; description: string }[] = [
+const zhComponents: { title: string; href: string; description: string }[] = [
   {
     title: "工廠 🏭",
     href: "?ask=%E5%8F%B0%E7%81%A3%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B7%A5%E5%BB%A0%EF%BC%8C%E5%AE%83%E5%80%91%E4%BD%8D%E6%96%BC%E4%BD%95%E8%99%95%EF%BC%9F",
@@ -56,6 +58,42 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ];
 
+const enComponents: { title: string; href: string; description: string }[] = [
+  {
+    title: "Factories 🏭",
+    href: "?ask=What%20factories%20are%20in%20Taiwan%2C%20and%20where%20are%20they%3F",
+    description: "What factories are in Taiwan and where are they?",
+  },
+  {
+    title: "Air Pollution 🌬️",
+    href: "?ask=How%20do%20industrial%20production%20and%20factories%20affect%20air%20pollution%20across%20Taiwan%3F",
+    description:
+      "How do industrial production and factories affect air pollution across Taiwan?",
+  },
+  {
+    title: "Water Pollution 💦",
+    href: "?ask=How%20does%20industrial%20production%20affect%20water%20pollution%20across%20Taiwan%3F",
+    description: "How does industrial production affect water pollution in Taiwan?",
+  },
+  {
+    title: "Soil Pollution 🍂",
+    href: "?ask=How%20does%20industrial%20production%20affect%20soil%20pollution%20across%20Taiwan%3F",
+    description: "How does industrial production affect soil pollution in Taiwan?",
+  },
+  {
+    title: "Climate Change 🌏",
+    href: "?ask=How%20do%20my%20shopping%2C%20saving%2C%20and%20investing%20habits%20affect%20the%20environment%20and%20climate%20change%3F",
+    description:
+      "How do my shopping, saving and investing affect the environment and climate change?",
+  },
+  {
+    title: "Analyze Stock History 💰",
+    href: "?ask=Analyze%20stock%20history%3A%20What%20are%20the%20financial%20and%20sustainability%20performance%20of%20my%20stocks%3F",
+    description:
+      "What are the financial and sustainability performance of my stocks?",
+  },
+];
+
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
@@ -84,12 +122,16 @@ ListItem.displayName = "ListItem";
 
 export default function Header() {
   const session = useSession();
+  const { lang, t } = useLanguage();
+  const items = lang === "en" ? enComponents : zhComponents;
   return (
     <div className="sticky top-0 z-50 flex items-center justify-between w-full px-4 border-b h-8 shrink-0 text-white bg-gradient-to-br from-pink-500 to-orange-400 font-medium text-sm text-center">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>綠濾助手</NavigationMenuTrigger>
+            <NavigationMenuTrigger>
+              {t("Green Filter Assistant", "綠濾助手")}
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
@@ -99,7 +141,7 @@ export default function Header() {
                       href="/"
                     >
                       <div className="mb-2 mt-4 text-lg font-medium">
-                        綠濾助手
+                        {t("Green Filter Assistant", "綠濾助手")}
                       </div>
                       <p className="text-sm leading-tight text-muted-foreground">
                         Shop, save and invest with your mind at ease from
@@ -111,10 +153,13 @@ export default function Header() {
                 </li>
                 <ListItem
                   href="https://www.greenfilter.app/"
-                  title="論文"
+                  title={t("Thesis", "論文")}
                   target="_blank"
                 >
-                  從消費者到投資者的旅程：為年輕成人設計一個財務人工智慧夥伴，幫助他們進行可持續購物、儲蓄和投資
+                  {t(
+                    "From consumer to investor: designing a financial AI companion for young adults to help sustainable shopping, saving and investing",
+                    "從消費者到投資者的旅程：為年輕成人設計一個財務人工智慧夥伴，幫助他們進行可持續購物、儲蓄和投資"
+                  )}
                 </ListItem>
                 <ListItem
                   href="https://chromewebstore.google.com/detail/%E7%B6%A0%E6%BF%BE-green-filter/jmpnmeefjlcbpmoklhhljcigffdmmjeg"
@@ -131,11 +176,11 @@ export default function Header() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger>
-              我花錢去支持了啥物呢？
+              {t("What am I supporting with my spending?", "我花錢去支持了啥物呢？")}
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[500px] ">
-                {components.map((component) => (
+                {items.map((component) => (
                   <ListItem
                     key={component.title}
                     title={component.title}
@@ -149,21 +194,18 @@ export default function Header() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="flex space-x-4 mr-6">
+      <div className="flex space-x-4 mr-6 items-center">
+        <LanguageSwitcher />
         <DropdownMenu>
           <DropdownMenuTrigger>
-            {session?.data?.user?.name ?? (
-              <>
-                登入
-              </>
-            )}
+            {session?.data?.user?.name ?? t("Sign in", "登入")}
           </DropdownMenuTrigger>
           {session?.data?.user?.name ? (
             <DropdownMenuContent className="mr-6">
-              <DropdownMenuLabel>我的帳戶</DropdownMenuLabel>
+              <DropdownMenuLabel>{t("My account", "我的帳戶")}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <Button onClick={() => signOut()}>登出</Button>
+                <Button onClick={() => signOut()}>{t("Sign out", "登出")}</Button>
               </DropdownMenuItem>
             </DropdownMenuContent>
           ) : (

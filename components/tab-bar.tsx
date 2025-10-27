@@ -7,9 +7,10 @@ import Lottie from "lottie-react";
 import easy from "../public/easy.json";
 import carrot from "../public/carrot.json";
 import dragon from "../public/dragon.json";
+import { useLanguage } from "@/components/shared/language";
 
 
-const shopping = [
+const shopping_zh = [
   {
     heading: "我怎麼可以更環保？",
     message: "我怎麼可以更環保？",
@@ -66,7 +67,47 @@ const shopping = [
   },
 ];
 
-const saving = [
+const shopping_en = [
+  { heading: "How can I be more eco-friendly?", message: "How can I be more eco-friendly?" },
+  { heading: "How can I reduce impulse buying?", message: "How can I reduce impulse buying?" },
+  {
+    heading: "How can I influence companies to be more sustainable?",
+    message: "How can I influence companies to be more sustainable?",
+  },
+  {
+    heading: "Which brands have I bought before?",
+    message:
+      "Which brands have I bought before? How do they compare on sustainability? Create a table.",
+  },
+  {
+    heading: "How are shopping, saving and investing related to sustainability?",
+    message: "How are shopping, saving and investing related to sustainability? Create a table.",
+  },
+  {
+    heading: "Do the products I buy contain harmful chemicals?",
+    message: "Do the products I buy contain harmful chemicals?",
+  },
+  {
+    heading: "Where can I repair my clothes in Tainan?",
+    message: "Where can I repair my clothes in Tainan?",
+  },
+  { heading: "Is my current lifestyle sustainable?", message: "Is my current lifestyle sustainable?" },
+  {
+    heading: "What are the living conditions of animals I eat in Taiwan?",
+    message: "What are the living conditions of animals I eat in Taiwan?",
+  },
+  { heading: "Where did the things I bought come from?", message: "Where did the things I bought come from?" },
+  { heading: "What is a digital product passport?", message: "What is a digital product passport?" },
+  { heading: "How to check a product's sustainability?", message: "How to check a product's sustainability?" },
+  {
+    heading:
+      "Should I buy this brand? Which factories make this brand’s products? What is its sustainability score? Compare with other brands.",
+    message:
+      "Should I buy this brand? Which factories make this brand’s products? What is its sustainability score? Compare with other brands.",
+  },
+];
+
+const saving_zh = [
   {
     heading: "我在台南哪裡可以批量購買產品？",
     message: "我在台南哪裡可以批量購買產品？",
@@ -111,7 +152,46 @@ const saving = [
   },
 ];
 
-const investing = [
+const saving_en = [
+  {
+    heading: "Where can I buy in bulk in Tainan?",
+    message: "Where can I buy in bulk in Tainan?",
+  },
+  {
+    heading: "When buying, check product transport distance (is it local food)",
+    message: "When buying, check product transport distance (is it local food)",
+  },
+  { heading: "How can I increase my savings?", message: "How can I increase my savings?" },
+  {
+    heading: "When buying, review how sustainable the company's production is",
+    message: "When buying, review how good employee welfare is",
+  },
+  {
+    heading: "Learn which products pollute the most to avoid them",
+    message: "Learn which products pollute the most to avoid them",
+  },
+  {
+    heading: "Learn the living conditions of animals for the animal products I eat",
+    message: "Learn the living conditions of animals for the animal products I eat",
+  },
+  { heading: "Look for organic products first", message: "Look for organic products first" },
+  {
+    heading: "Before investing, check AI-summarized consumer reviews about company sustainability",
+    message: "Before investing, check AI-summarized consumer reviews about company sustainability",
+  },
+  {
+    heading: "Before investing, review the company's certifications and eco ratings",
+    message: "Before investing, review the company's certifications and eco ratings",
+  },
+  {
+    heading:
+      "What has this brand done for the environment? Which factories make its products? What is its sustainability score? Compare with other brands.",
+    message:
+      "What has this brand done for the environment? Which factories make its products? What is its sustainability score? Compare with other brands.",
+  },
+];
+
+const investing_zh = [
   {
     heading: "我如何避免衝動買股票？",
     message: "我如何避免衝動買股票？",
@@ -140,6 +220,27 @@ const investing = [
   },
 ];
 
+const investing_en = [
+  {
+    heading: "How can I avoid impulsive stock purchases?",
+    message: "How can I avoid impulsive stock purchases?",
+  },
+  { heading: "What are some sustainable stocks?", message: "What are some sustainable stocks?" },
+  {
+    heading: "Which is more sustainable, stocks or crypto?",
+    message: "Which is more sustainable, stocks or crypto?",
+  },
+  { heading: "How to read candlestick charts?", message: "How to read candlestick charts?" },
+  {
+    heading: "If I buy eco-friendly brands, am I a sustainable investor?",
+    message: "If I buy eco-friendly brands, am I a sustainable investor?",
+  },
+  {
+    heading: "Should I invest in this brand? Is it a B Corp? What certificates does it have for sustainability?",
+    message: "Should I invest in this brand? Is it a B Corp? What certificates does it have for sustainability?",
+  },
+];
+
 
 export default function TabBar({
   submitMessage,
@@ -148,6 +249,10 @@ export default function TabBar({
 }) {
 
   const [isLoading, setIsLoading] = useState(true);
+  const { lang, t } = useLanguage();
+  const shopping = lang === "en" ? shopping_en : shopping_zh;
+  const saving = lang === "en" ? saving_en : saving_zh;
+  const investing = lang === "en" ? investing_en : investing_zh;
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -182,7 +287,7 @@ export default function TabBar({
                 className="tinySvg"
                 role="img"
               />
-              環保購物
+              {t("Sustainable Shopping", "環保購物")}
             </div>
           </TabsTrigger>
           <TabsTrigger value="saving" className="hover:bg-white hover:shadow">
@@ -193,7 +298,7 @@ export default function TabBar({
                 className="tinySvg"
                 role="img"
               />
-              環保省錢
+              {t("Sustainable Saving", "環保省錢")}
             </div>
           </TabsTrigger>
           <TabsTrigger
@@ -207,7 +312,7 @@ export default function TabBar({
                 className="tinySvg"
                 role="img"
               />
-              環保投資
+              {t("Sustainable Investing", "環保投資")}
             </div>
           </TabsTrigger>
         </TabsList>
