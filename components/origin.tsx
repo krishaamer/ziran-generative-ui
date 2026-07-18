@@ -4,15 +4,12 @@ import { getDomainFromURL } from "@/lib/utils";
 
 export default function Origin() {
   const [origin, setOrigin] = useState({ url: "" });
-  const [reportID, setReportID] = useState<string | null>(null);
   const searchParams = useSearchParams();
+  const reportID = searchParams.get("id");
 
   useEffect(() => {
-    const id = searchParams.get("id");
-    setReportID(id);
-
-    if (id) {
-      fetch(`/api/origin?id=${id}`)
+    if (reportID) {
+      fetch(`/api/origin?id=${reportID}`)
         .then((response) => response.json())
         .then((data) => {
           setOrigin({ url: data?.origin });
@@ -21,7 +18,7 @@ export default function Origin() {
           console.log("Failed to fetch origin data", error);
         });
     }
-  }, [searchParams]);
+  }, [reportID]);
 
   return (
     <>

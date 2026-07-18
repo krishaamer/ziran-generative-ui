@@ -1,6 +1,7 @@
 import "server-only";
-import { kv } from "@vercel/kv";
 import { NextRequest, NextResponse } from "next/server";
+
+import { redis } from "@/lib/redis";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -12,14 +13,13 @@ export async function GET(req: NextRequest) {
       { status: 400 }
     );
   }
-  const hasKV = Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
-  if (!hasKV) {
+  if (!redis) {
     return new Response(
       JSON.stringify({ reportData: "No report data found" }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   }
-  const reportData = await kv.get(reportID);
+  const reportData = await redis.get(reportID);
 
   return new Response(
     JSON.stringify({ reportData: reportData || "No report data found" }),

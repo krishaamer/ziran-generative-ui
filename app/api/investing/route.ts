@@ -1,17 +1,17 @@
-import { kv } from "@vercel/kv";
 import { NextRequest } from "next/server";
+
+import { redis } from "@/lib/redis";
 
 const key = "investingData";
 
-export async function GET(req: NextRequest) {
-  const hasKV = Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
-  if (!hasKV) {
+export async function GET() {
+  if (!redis) {
     return new Response(
       JSON.stringify({ investingData: "No data found" }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   }
-  const investingData = await kv.get(key);
+  const investingData = await redis.get(key);
   return new Response(
     JSON.stringify({ investingData: investingData || "No data found" }),
     {
@@ -25,14 +25,13 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const { investingData } = await req.json();
-  const hasKV = Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
-  if (!hasKV) {
+  if (!redis) {
     return new Response(JSON.stringify({ message: "KV not configured" }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
   }
-  await kv.set(key, JSON.stringify(investingData));
+  await redis.set(key, JSON.stringify(investingData));
 
   return new Response(JSON.stringify({ message: "Updated successfully" }), {
     status: 200,

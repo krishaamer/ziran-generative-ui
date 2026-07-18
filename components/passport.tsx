@@ -24,6 +24,7 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image";
 import { SVGProps } from "react";
 
 export function Passport() {
@@ -32,7 +33,7 @@ export function Passport() {
       <div className="grid gap-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img src="/placeholder.svg" alt="Product Image" width={64} height={64} className="rounded-md" />
+            <Image src="/placeholder.svg" alt="Product Image" width={64} height={64} className="rounded-md" />
             <div>
               <h1 className="text-2xl font-bold">Organic Cotton T-Shirt</h1>
               <p className="text-muted-foreground">Product Passport</p>
@@ -421,27 +422,6 @@ function ScissorsIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M20 4 8.12 15.88" />
       <circle cx="6" cy="18" r="3" />
       <path d="M14.8 14.8 20 20" />
-    </svg>
-  );
-}
-
-
-function XIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
     </svg>
   );
 }

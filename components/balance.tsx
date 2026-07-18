@@ -22,10 +22,6 @@ import { Badge } from "@/components/ui/badge"
 import { ChartTooltipContent, ChartTooltip, ChartContainer } from "@/components/ui/chart"
 import { Pie, PieChart, CartesianGrid, XAxis, Line, LineChart } from "recharts"
 
-interface Ratings {
-  [key: string]: number;
-}
-
 export function Balance() {
   const transactions = [
     {
@@ -72,15 +68,6 @@ export function Balance() {
   const income = transactions.filter((tx) => tx.amount > 0).reduce((total, tx) => total + tx.amount, 0)
   const expenses = transactions.filter((tx) => tx.amount < 0).reduce((total, tx) => total + tx.amount, 0)
   const balance = income + expenses
-  const esgRatings = transactions.reduce<Ratings>((ratings, tx) => {
-    if (tx.esgRating !== "N/A") {
-      if (!ratings[tx.esgRating]) {
-        ratings[tx.esgRating] = 0;
-      }
-      ratings[tx.esgRating]++;
-    }
-    return ratings;
-  }, {});
   const savings = balance - expenses
   return (
     <div className="grid min-h-screen w-full bg-muted/40 p-4 sm:p-6 md:grid-cols-[280px_1fr] md:gap-6">
@@ -224,7 +211,7 @@ function CircleXIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 
-function LinechartChart(props: any) {
+function LinechartChart(props: React.ComponentProps<"div">) {
   return (
     <div {...props}>
       <ChartContainer
@@ -276,7 +263,7 @@ function LinechartChart(props: any) {
 }
 
 
-function PiechartcustomChart(props: any) {
+function PiechartcustomChart(props: React.ComponentProps<"div">) {
   return (
     <div {...props}>
       <ChartContainer

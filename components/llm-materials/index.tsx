@@ -1,14 +1,12 @@
 "use client";
 
-import { useActions, useUIState } from "ai/rsc";
 import { Button } from "@/components/ui/button";
-import type { AI } from "../../app/action";
 
-export default function Materials() {
-
-  const [, setMessages] = useUIState<typeof AI>();
-  const { submitUserMessage } = useActions();
- 
+export default function Materials({
+  onSubmit,
+}: {
+  onSubmit: (message: string) => void | Promise<void>;
+}) {
   return (
     <>
       <div
@@ -21,10 +19,7 @@ export default function Materials() {
         variant="outline"
         size="lg"
         className="p-2 rounded-lg flex flex-row gap-2 cursor-pointer mt-2 r-0"
-        onClick={async () => {
-          const response = await submitUserMessage(`tell me a joke`);
-          setMessages((currentMessages) => [...currentMessages, response]);
-        }}
+        onClick={() => onSubmit("請解釋這項產品使用的材質及其永續影響。")}
       >
         Explain
       </Button>

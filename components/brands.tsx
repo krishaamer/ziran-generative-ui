@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -34,7 +35,6 @@ export default function Brands({
   const [brandsInput, setBrandsInput] = useState("");
 
   useEffect(() => {
-    setIsLoading(true);
     fetch("/api/brands")
       .then((response) => response.json())
       .then((data) => {
@@ -112,9 +112,11 @@ export default function Brands({
               );
             }}
           >
-            <img
+            <Image
               src={`/brands/${brand}.jpg`}
               alt={`${toSentenceCase(brand)} brand`}
+              width={160}
+              height={90}
             />
           </Button>
         ))}

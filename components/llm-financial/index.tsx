@@ -1,345 +1,166 @@
-import React, { useEffect, useState } from "react";
-import { format, timeFormat } from "d3";
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
 import {
-  elderRay,
-  ema,
-  discontinuousTimeScaleProviderBuilder,
-  Chart,
-  ChartCanvas,
-  CurrentCoordinate,
-  BarSeries,
-  CandlestickSeries,
-  ElderRaySeries,
-  LineSeries,
-  MovingAverageTooltip,
-  OHLCTooltip,
-  SingleValueTooltip,
-  lastVisibleItemBasedZoomAnchor,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CrossHairCursor,
-  EdgeIndicator,
-  MouseCoordinateX,
-  MouseCoordinateY,
-  ZoomButtons,
-  withDeviceRatio,
-  withSize,
-} from "react-financial-charts";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
+} from "recharts";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface FinancialProps {
   submitMessage: (message: string) => void;
   tickers: string[];
 }
 
-interface StockData {
-  date: string;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  volume: number;
-  ema12?: number; // Optional properties for EMA values
-  ema26?: number; // Optional properties for EMA values
-  bullPower?: number; // Optional properties for Elder Ray values
-  bearPower?: number; // Optional properties for Elder Ray values
+interface PolygonResult {
+  t: number;
+  c: number;
 }
 
 interface ApiResponse {
-  status: string;
-  results: Array<{
-    t: number;
-    o: number;
-    h: number;
-    l: number;
-    c: number;
-    v: number;
-  }>;
+  status?: string;
+  results?: PolygonResult[];
 }
 
-interface CustomTooltipProps {
-  currentItem?: {
-    bullPower: number;
-    bearPower: number;
-  };
-  pricesDisplayFormat: (value: number) => string;
-}
-
-const CustomTooltip: React.FC<CustomTooltipProps> = ({
-  currentItem,
-  pricesDisplayFormat,
-}) => {
-  if (!currentItem) return null;
-
-  const { bullPower, bearPower } = currentItem;
-
-  return (
-    <div>
-      <div>Bull Power: {pricesDisplayFormat(bullPower)}</div>
-      <div>Bear Power: {pricesDisplayFormat(bearPower)}</div>
-    </div>
-  );
+type ChartPoint = {
+  date: string;
+  [ticker: string]: string | number;
 };
 
-const Financial: React.FC<FinancialProps> = ({ submitMessage, tickers }) => {
-  const [data, setData] = useState<StockData[] | null>(null);
+const COLORS = ["#16a34a", "#2563eb", "#f97316", "#9333ea"];
+
+export default function Financial({
+  submitMessage,
+  tickers,
+}: FinancialProps) {
+  const [data, setData] = useState<ChartPoint[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const fromDate = new Date();
-        fromDate.setMonth(fromDate.getMonth() - 3);
-        const fromDateString = fromDate.toISOString().split("T")[0];
-        const toDateString = new Date().toISOString().split("T")[0];
+  const tickerKey = tickers.join(",");
+  const stableTickers = useMemo(
+    () => tickerKey.split(",").filter(Boolean),
+    [tickerKey],
+  );
 
-        const fetchPromises = tickers.map((ticker) =>
-          fetch(
-            `/api/polygon?symbol=${ticker}&from=${fromDateString}&to=${toDateString}`
-          )
-            .then((response) => response.json())
-            .then((json: ApiResponse) => {
-              if (
-                (json.status === "OK" || json.status === "DELAYED") &&
-                Array.isArray(json.results)
-              ) {
-                return json.results.map((item) => ({
-                  date: new Date(item.t).toISOString().split("T")[0],
-                  open: item.o,
-                  high: item.h,
-                  low: item.l,
-                  close: item.c,
-                  volume: item.v,
-                }));
-              } else {
-                console.log(`Error fetching stock data for ${ticker}:`, json);
-                return [];
-              }
-            })
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function fetchData() {
+      setIsLoading(true);
+
+      const fromDate = new Date();
+      fromDate.setMonth(fromDate.getMonth() - 3);
+      const from = fromDate.toISOString().split("T")[0];
+      const to = new Date().toISOString().split("T")[0];
+
+      try {
+        const results = await Promise.all(
+          stableTickers.map(async (ticker) => {
+            const response = await fetch(
+              `/api/polygon?symbol=${encodeURIComponent(ticker)}&from=${from}&to=${to}`,
+              { signal: controller.signal },
+            );
+            const payload = (await response.json()) as ApiResponse;
+            return {
+              ticker,
+              points: Array.isArray(payload.results) ? payload.results : [],
+            };
+          }),
         );
 
-        const results = await Promise.all(fetchPromises);
-        setData(results.flat());
-        setIsLoading(false);
+        const pointsByDate = new Map<string, ChartPoint>();
+        for (const result of results) {
+          for (const point of result.points) {
+            const date = new Date(point.t).toISOString().split("T")[0];
+            const existing = pointsByDate.get(date) ?? { date };
+            existing[result.ticker] = point.c;
+            pointsByDate.set(date, existing);
+          }
+        }
+
+        setData(
+          [...pointsByDate.values()].sort((a, b) =>
+            a.date.localeCompare(b.date),
+          ),
+        );
       } catch (error) {
-        console.log("Error fetching stock data:", error);
-        setIsLoading(false);
+        if (!(error instanceof DOMException && error.name === "AbortError")) {
+          setData([]);
+        }
+      } finally {
+        if (!controller.signal.aborted) setIsLoading(false);
       }
-    };
+    }
 
-    fetchData();
-  }, [tickers]);
+    void fetchData();
+    return () => controller.abort();
+  }, [stableTickers]);
 
-  const getStockQuestions = (tickers: string[]) => {
-    const tickerList = tickers.join(", ");
-    const dataString = data ? "Here is the data: " + JSON.stringify(data) : "";
-    return [
-      {
-        heading: `你如何比較這些股票 (${tickerList}) 的Elder Ray？`,
-        message: `你如何比較這些股票 (${tickerList}) 的Elder Ray？`,
-      },
-    ];
-  };
+  const analysisPrompt = useMemo(
+    () =>
+      `請比較 ${stableTickers.join(", ")} 最近三個月的股價趨勢，並說明這些市場資料本身無法證明哪些 ESG 結論。資料：${JSON.stringify(data)}`,
+    [data, stableTickers],
+  );
 
   if (isLoading) {
     return (
-      <div className="mx-auto max-w-2xl px-4 py-10">
-        <div className="flex flex-col space-y-3">
-          <Skeleton className="h-[100px] w-full rounded-lg" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-[300px]" />
-          </div>
-        </div>
+      <div className="space-y-3 py-6">
+        <Skeleton className="h-72 w-full rounded-lg" />
+        <Skeleton className="h-10 w-72" />
       </div>
     );
   }
 
-  if (!data || data.length === 0) {
-    return <div>No data available</div>;
+  if (!data.length) {
+    return <div className="py-6 text-sm text-muted-foreground">暫時沒有可用的股票資料。</div>;
   }
-
-  const ScaleProvider =
-    discontinuousTimeScaleProviderBuilder().inputDateAccessor(
-      (d: StockData) => new Date(d.date)
-    );
-  const height = 600;
-  const width = 600;
-  const margin = { left: 0, right: 48, top: 0, bottom: 24 };
-
-  const ema12 = ema()
-    .id(1)
-    .options({ windowSize: 12 })
-    .merge((d: StockData, c: number) => {
-      d.ema12 = c;
-    })
-    .accessor((d: StockData) => d.ema12);
-
-  const ema26 = ema()
-    .id(2)
-    .options({ windowSize: 26 })
-    .merge((d: StockData, c: number) => {
-      d.ema26 = c;
-    })
-    .accessor((d: StockData) => d.ema26);
-
-  const elder = elderRay();
-
-  const calculatedData = elder(ema26(ema12(data)));
-  const {
-    data: finalData,
-    xScale,
-    xAccessor,
-    displayXAccessor,
-  } = ScaleProvider(calculatedData);
-  const pricesDisplayFormat = format(".2f");
-  const max = xAccessor(finalData[finalData.length - 1]);
-  const min = xAccessor(finalData[Math.max(0, finalData.length - 100)]);
-  const xExtents = [min, max + 5];
-
-  const gridHeight = height - margin.top - margin.bottom;
-  const elderRayHeight = 100;
-  const elderRayOrigin = (_: number, h: number) => [0, h - elderRayHeight];
-  const barChartHeight = gridHeight / 4;
-  const barChartOrigin = (_: number, h: number) => [
-    0,
-    h - barChartHeight - elderRayHeight,
-  ];
-  const chartHeight = gridHeight - elderRayHeight;
-
-  const yExtents = (data: StockData) => [data.high, data.low];
-  const dateTimeFormat = "%d %b";
-  const timeDisplayFormat = timeFormat(dateTimeFormat);
-  const barChartExtents = (data: StockData) => data.volume;
-  const candleChartExtents = (data: StockData) => [data.high, data.low];
-  const yEdgeIndicator = (data: StockData) => data.close;
-  const volumeColor = (data: StockData) =>
-    data.close > data.open
-      ? "rgba(38, 166, 154, 0.3)"
-      : "rgba(239, 83, 80, 0.3)";
-  const volumeSeries = (data: StockData) => data.volume;
-  const openCloseColor = (data: StockData) =>
-    data.close > data.open ? "#26a69a" : "#ef5350";
 
   return (
-    <div>
-      <ChartCanvas
-        height={height}
-        ratio={3}
-        width={width}
-        margin={margin}
-        data={finalData}
-        displayXAccessor={displayXAccessor}
-        seriesName="Data"
-        xScale={xScale}
-        xAccessor={xAccessor}
-        xExtents={xExtents}
-        zoomAnchor={lastVisibleItemBasedZoomAnchor}
-      >
-        <Chart
-          id={2}
-          height={barChartHeight}
-          origin={barChartOrigin}
-          yExtents={barChartExtents}
-        >
-          <BarSeries fillStyle={volumeColor} yAccessor={volumeSeries} />
-        </Chart>
-        <Chart id={3} height={chartHeight} yExtents={candleChartExtents}>
-          <XAxis showGridLines showTickLabel={false} />
-          <YAxis showGridLines tickFormat={pricesDisplayFormat} />
-          <CandlestickSeries />
-          <LineSeries
-            yAccessor={ema26.accessor()}
-            strokeStyle={ema26.stroke()}
-          />
-          <CurrentCoordinate
-            yAccessor={ema26.accessor()}
-            fillStyle={ema26.stroke()}
-          />
-          <LineSeries
-            yAccessor={ema12.accessor()}
-            strokeStyle={ema12.stroke()}
-          />
-          <CurrentCoordinate
-            yAccessor={ema12.accessor()}
-            fillStyle={ema12.stroke()}
-          />
-          <MouseCoordinateY
-            rectWidth={margin.right}
-            displayFormat={pricesDisplayFormat}
-          />
-          <EdgeIndicator
-            itemType="last"
-            rectWidth={margin.right}
-            fill={openCloseColor}
-            lineStroke={openCloseColor}
-            displayFormat={pricesDisplayFormat}
-            yAccessor={yEdgeIndicator}
-          />
-          <MovingAverageTooltip
-            origin={[8, 24]}
-            options={[
-              {
-                yAccessor: ema26.accessor(),
-                type: "EMA",
-                stroke: ema26.stroke(),
-                windowSize: ema26.options().windowSize,
-              },
-              {
-                yAccessor: ema12.accessor(),
-                type: "EMA",
-                stroke: ema12.stroke(),
-                windowSize: ema12.options().windowSize,
-              },
-            ]}
-          />
-          <ZoomButtons />
-          <OHLCTooltip origin={[8, 16]} />
-        </Chart>
-        <Chart
-          id={4}
-          height={elderRayHeight}
-          yExtents={[0, elder.accessor()]}
-          origin={elderRayOrigin}
-          padding={{ top: 8, bottom: 8 }}
-        >
-          <XAxis showGridLines gridLinesStrokeStyle="#e0e3eb" />
-          <YAxis ticks={4} tickFormat={pricesDisplayFormat} />
-          <MouseCoordinateX displayFormat={timeDisplayFormat} />
-          <MouseCoordinateY
-            rectWidth={margin.right}
-            displayFormat={pricesDisplayFormat}
-          />
-          <ElderRaySeries yAccessor={elder.accessor()} />
-          <SingleValueTooltip
-            yAccessor={elder.accessor()}
-            yLabel="Elder Ray"
-            yDisplayFormat={(value) => pricesDisplayFormat(value)}
-          />
-        </Chart>
-        <CrossHairCursor />
-      </ChartCanvas>
-      <div className="flex flex-wrap gap-2 mt-4">
-        {getStockQuestions(tickers)?.map((msg, idx) => (
-          <Button
-            key={idx}
-            variant="ghost"
-            className="h-auto p-1 pr-2 text-base shadow-sm border border-slate-100 grow md:grow-0 text-left justify-start"
-            onClick={async () => {
-              submitMessage(msg.message);
-            }}
-          >
-            <Badge variant="outline" className="m-1 mr-2 bg-amber-200">
-              {idx + 1}
-            </Badge>
-            {msg.heading}
-          </Button>
-        ))}
+    <div className="space-y-4">
+      <div className="h-96 w-full" aria-label={`${stableTickers.join(", ")} stock-price chart`}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data} margin={{ left: 4, right: 12, top: 12 }}>
+            <CartesianGrid vertical={false} strokeDasharray="3 3" />
+            <XAxis
+              dataKey="date"
+              minTickGap={32}
+              tickFormatter={(value: string) => value.slice(5)}
+            />
+            <YAxis domain={["auto", "auto"]} width={56} />
+            <Tooltip />
+            <Legend />
+            {stableTickers.map((ticker, index) => (
+              <Line
+                key={ticker}
+                type="monotone"
+                dataKey={ticker}
+                stroke={COLORS[index % COLORS.length]}
+                strokeWidth={2}
+                dot={false}
+                connectNulls
+              />
+            ))}
+          </LineChart>
+        </ResponsiveContainer>
       </div>
+      <Button
+        variant="outline"
+        className="h-auto justify-start text-left"
+        onClick={() => submitMessage(analysisPrompt)}
+      >
+        <Badge variant="outline" className="mr-2 bg-amber-200">
+          1
+        </Badge>
+        比較 {stableTickers.join(", ")} 的股價與 ESG 解讀限制
+      </Button>
     </div>
   );
-};
-
-export default Financial;
+}

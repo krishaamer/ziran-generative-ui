@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { Toaster } from "@/components/ui/toaster";
-import { AI } from "./action";
 import { Providers } from "@/components/providers";
 import { SessionProvider } from "next-auth/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -62,21 +61,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable}`}
-      >
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+    >
+      <body className="font-sans antialiased">
         <Toaster />
-        <AI>
-          <Providers
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <SessionProvider>{children}</SessionProvider>
-          </Providers>
-        </AI>
+        <Providers
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SessionProvider>{children}</SessionProvider>
+        </Providers>
         <NextAnalytics />
         <ClientAnalytics />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""} />
@@ -85,5 +84,4 @@ export default function RootLayout({
   );
 }
 
-export const runtime = "edge";
 export const preferredRegion = ["sin1", "kix1", "icn1", "hnd1", "iad1"];

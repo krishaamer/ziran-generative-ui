@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Report({
-  submitMessage,
   reportID,
 }: {
-  submitMessage: (message: string) => void;
   reportID: string;
 }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +32,7 @@ export default function Report({
       }
     };
     fetchData();
-  }, []);
+  }, [reportID]);
 
   if (isLoading) {
     return (

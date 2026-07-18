@@ -66,14 +66,14 @@ export function BotMessage({
 
   return (
     <>
-      {animated ?? (
+      {animated ? (
         <Lottie
           animationData={easy}
           loop={true}
           className="tinySvg"
           role="img"
         />
-      )}
+      ) : null}
       <div
         className={cn(
           "group relative flex items-start z-10 max-w-[80%] md:-ml-12",

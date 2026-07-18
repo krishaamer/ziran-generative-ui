@@ -11,8 +11,10 @@ import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
 
 export function Search({
   submitMessage,
+  disabled = false,
 }: {
-  submitMessage: (message: string) => void;
+  submitMessage: (message: string) => void | Promise<void>;
+  disabled?: boolean;
 }) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [inputValue, setInputValue] = useState("");
@@ -23,8 +25,8 @@ export function Search({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "/") {
         if (
-          e.target &&
-          ["INPUT", "TEXTAREA"].includes((e.target as any).nodeName)
+          e.target instanceof HTMLElement &&
+          ["INPUT", "TEXTAREA"].includes(e.target.nodeName)
         ) {
           return;
         }
@@ -52,10 +54,13 @@ export function Search({
           <div>
             <form
               ref={formRef}
-              onSubmit={async (e: any) => {
+              onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
                 if (window.innerWidth < 600) {
-                  e.target["message"]?.blur();
+                  const messageField = e.currentTarget.elements.namedItem("message");
+                  if (messageField instanceof HTMLTextAreaElement) {
+                    messageField.blur();
+                  }
                 }
                 const value = inputValue.trim();
                 setInputValue("");
@@ -86,6 +91,7 @@ export function Search({
                     <TooltipTrigger asChild>
                       <Button
                         type="submit"
+                        disabled={disabled}
                         className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                         size="lg"
                       >
